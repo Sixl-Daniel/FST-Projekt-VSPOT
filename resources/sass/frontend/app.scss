@@ -1,3 +1,18 @@
 /*
  * FRONTEND STYLES
  */
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Theme
+@import '../shared/shared';
+@import 'general';
+@import 'layout';
+@import 'pages';

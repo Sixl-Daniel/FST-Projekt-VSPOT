@@ -9,7 +9,7 @@
             {{ $item['text'] }}
           ">
           <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                <button type="submit" name="search" id="search-btn" class="btn">
                   <i class="fas fa-search"></i>
                 </button>
               </span>

@@ -113,7 +113,7 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        'theme' => 'vspot_v1',
 
         'paths' => [
             resource_path('views/vendor/mail'),

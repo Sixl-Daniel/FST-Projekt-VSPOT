@@ -15,7 +15,7 @@ return [
 
     'title' => env('APP_NAME'),
 
-    'title_prefix' => '',
+    'title_prefix' => env('APP_NAME') . ' — ',
 
     'title_postfix' => '',
 
@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b>'.env('APP_NAME').'</b>',
 
-    'logo_mini' => '<small>VSPOT</small>',
+    'logo_mini' => '<small>'.env('APP_NAME').'</small>',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'black',
+    'skin' => 'black-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
@@ -126,85 +126,45 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-        ],
         ['header' => 'main_navigation'],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Dashboard',
+            'url'  => 'dashboard',
+            'icon'        => 'fas fa-fw fa-th',
+            //'can'  => 'show-dashboard',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Users',
+            'url'  => 'admin/users',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            //'can'  => 'manage-users',
+        ],
+        [
+            'text' => 'Devices',
+            'url'  => 'admin/devices',
+            'icon'        => 'fas fa-fw fa-desktop',
+            //'can'  => 'manage-devices',
+        ],
+        [
+            'text' => 'Channels',
+            'url'  => 'admin/channels',
+            'icon'        => 'fas fa-fw fa-project-diagram',
+            //'can'  => 'manage-channels',
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Account',
+            'url'  => 'admin/account',
             'icon' => 'fas fa-fw fa-user',
+            //'can'  => 'manage-own-account',
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/password',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
-        ],
+            //'can'  => 'change-own-password',
+        ]
+
     ],
 
     /*
@@ -305,7 +265,7 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-minimal.min.css',
                 ],
                 [
                     'type' => 'js',

@@ -7,26 +7,48 @@
 @section('body_class', 'register-page')
 
 @section('body')
-    <div class="register-box">
-        <div class="register-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+    <div class="auth-box register-box">
+        <div class="login-logo">
+            <a href="{{ url('/') }}">@include('svg.logo')</a>
         </div>
-
         <div class="register-box-body">
             <p class="login-box-msg">{{ __('adminlte::adminlte.register_message') }}</p>
             <form class="backend-gate-form" action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {{ csrf_field() }}
 
-                <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                           placeholder="{{ __('adminlte::adminlte.full_name') }}">
+                <div class="form-group has-feedback {{ $errors->has('username') ? 'has-error' : '' }}">
+                    <input type="text" name="username" class="form-control" value="{{ old('username') }}"
+                           placeholder="{{ __('validation.attributes.username') }}">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    @if ($errors->has('name'))
+                    @if ($errors->has('username'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('username') }}</strong>
                         </span>
                     @endif
                 </div>
+
+                <div class="form-group has-feedback {{ $errors->has('first_name') ? 'has-error' : '' }}">
+                    <input type="text" name="first_name" class="form-control" value="{{ old('first_name') }}"
+                           placeholder="{{ __('validation.attributes.first_name') }}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('first_name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('first_name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group has-feedback {{ $errors->has('last_name') ? 'has-error' : '' }}">
+                    <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}"
+                           placeholder="{{ __('validation.attributes.last_name') }}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('last_name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('last_name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                            placeholder="{{ __('adminlte::adminlte.email') }}">
@@ -57,7 +79,7 @@
                         </span>
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                <button type="submit" class="btn btn-primary btn-block">
                     {{ __('adminlte::adminlte.register') }}
                 </button>
             </form>

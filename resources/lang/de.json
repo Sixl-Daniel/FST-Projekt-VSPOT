@@ -1,5 +1,5 @@
 {
-    "A fresh verification link has been sent to your email address.": "Ein neuer Verifikationslink wurde verschickt.",
+    "A fresh verification link has been sent to your email address.": "Ein neuer Bestätigungslink wurde verschickt.",
     "All rights reserved.": "Alle Rechte vorbehalten.",
     "All rights reserved": "Alle Rechte vorbehalten",
     "Before proceeding, please check your email for a verification link.": "Bestätigen Sie bitte zuerst Ihre E-Mail.",
@@ -12,6 +12,7 @@
     "Go Home": "Nach Hause",
     "Hello!": "Hallo!",
     "hi": "hallo",
+    "You have to confirm your email address before continuing. If the e-mail has not arrived within 15 minutes, please check your spam, bulk or junk mail folder to locate it.": "Um VSPOT nutzen zu können, müssen Sie Ihre E-Mail bestätigen. Sollte die E-Mail nicht innerhalb von 15 Minuten angekommen sein, dann prüfen Sie bitte auch Ihre SPAM- und Junk-Ordner, um sie zu finden. Ansonsten lassen Sie sie bitte erneut zustellen.",
     "If you did not create an account, no further action is required.": "Wenn Sie keinen Account beantragt haben, ist keine weitere Handlung nötig. Löschen Sie diese E-Mail einfach.",
     "If you did not receive the email": "Wenn Sie keine E-Mail erhalten haben",
     "If you did not request a password reset, no further action is required.": "Wenn Sie keine Zurücksetzung beantragt haben, ist keine weitere Handlung nötig. Löschen Sie diese E-Mail einfach.",
@@ -27,6 +28,7 @@
     "Regards": "Mit freundlichen Grüßen",
     "Register": "Registrieren",
     "Remember Me": "Angemeldet bleiben",
+    "Resend verification link": "Bestätigungslink erneut versenden",
     "Reset Password": "Passwort zurücksetzen",
     "Reset Password Notification": "Zurücksetzen des Passwortes Ihres Accounts",
     "Send Password Reset Link": "Link anfordern",

@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "jeroennoten/laravel-adminlte": "^2.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "laravel/ui": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -38,6 +39,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "bootstrap/helpers.php"
         ]
     },
     "autoload-dev": {

@@ -1,23 +1,42 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// SHARE VIEW NAME
 
-Route::get('/', function () {
-    return view('frontend.pages.front');
+View::composer('*', function($view){
+    View::share('view_name', $view->getName());
 });
 
-Auth::routes();
+// PUBLIC PRIMARY PAGES
 
-Route::get('/home', function() {
-    $data['user'] = Auth::user();
-    return view('backend.dashboard', $data);
-})->name('home')->middleware('auth');
+Route::get('/', function () {
+    return view('frontend.pages.primary.front');
+});
+
+Route::get('/produkt', function () {
+    return view('frontend.pages.primary.produkt');
+});
+
+// PUBLIC SECONDARY PAGES
+
+Route::get('/impressum', function () {
+    return view('frontend.pages.secondary.impressum');
+});
+
+Route::get('/datenschutz', function () {
+    return view('frontend.pages.secondary.datenschutz');
+});
+
+// VERIFIED USERS
+
+Auth::routes(['verify' => true]);
+
+Route::group(['middleware' => ['verified']], function () {
+
+    Route::view('/freischaltung', 'frontend.pages.feedback.waiting_for_approval');
+
+    Route::get('/dashboard', function() {
+        $data['user'] = Auth::user();
+        return view('backend.dashboard', $data);
+    })->name('dashboard');
+
+});
