@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 
+@section('pageTitle', 'Impressum')
+
 @section('content')
 <main>
 <div class="container content">
