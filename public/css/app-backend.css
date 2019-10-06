@@ -54,6 +54,58 @@ body {
   }
 }
 
+/*
+ * x-Axis
+ */
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(-5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(-5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 body.vspot {
   font-family: "Nunito", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -164,5 +216,10 @@ body.vspot .h6 {
 .vspot.skin-black-light .sidebar-menu > li.header {
   color: #666;
   background: #e6e6e6;
+}
+
+.vspot.skin-black-light .sidebar-menu > li.active > a {
+  font-weight: 600;
+  border-left: 3px solid #c70038;
 }
 

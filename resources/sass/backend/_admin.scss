@@ -28,5 +28,8 @@
         color: #666;
         background: #e6e6e6;
     }
+    .sidebar-menu > li.active > a {
+        font-weight: 600;
+        border-left: 3px solid $color_primary;
+    }
 }
-

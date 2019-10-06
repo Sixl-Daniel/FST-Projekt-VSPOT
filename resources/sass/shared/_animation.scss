@@ -1,3 +1,5 @@
+// fadeIn
+
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
@@ -9,6 +11,8 @@
     animation-fill-mode: both;
     animation-delay: 600ms;
 }
+
+// fadeInUp
 
 @keyframes fadeInUp {
     from {
@@ -26,4 +30,53 @@
     animation-duration: 600ms;
     animation-fill-mode: both;
     animation-delay: 300ms;
+}
+
+/*
+ * x-Axis
+ */
+
+$xOffset: 5%;
+$xDuration: 300ms;
+
+// fadeInLeft
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d($xOffset, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@mixin fadeInLeft {
+    animation-name: fadeInLeft;
+    animation-duration: $xDuration;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+    animation-timing-function: ease-out;
+}
+
+// fadeInRight
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(-$xOffset, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@mixin fadeInRight {
+    animation-name: fadeInRight;
+    animation-duration: $xDuration;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+    animation-timing-function: ease-out;
 }
