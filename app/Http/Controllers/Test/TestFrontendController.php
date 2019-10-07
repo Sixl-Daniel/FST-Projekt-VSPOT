@@ -13,6 +13,6 @@ class TestFrontendController extends Controller
 {
     public function email () {
         Mail::to(env('INITIAL_ADMIN_EMAIL'))->send(new TestEmailStandard());
-        return redirect()->route('front')->with('success', 'Ihre Test-E-Mail wurde versendet.');
+        return redirect()->route('front')->with('toast-success', 'Ihre Test-E-Mail wurde versendet.');
     }
 }
