@@ -8,9 +8,9 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,900&display=swap">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @yield('css-top')
-    @yield('js-top')
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('js-top')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body id="vspot" class="view-{{ str_replace('.', '-', $view_name) }}">
 
@@ -18,15 +18,16 @@
         @include('frontend.partials.header')
     @show
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
     @section('footer')
         @include('frontend.partials.footer')
     @show
 
-    @yield('css-bottom')
+    @stack('js-bottom')
 
-    @yield('js-bottom')
-
+    @include('shared.partials.js.flash-message')
 </body>
 </html>

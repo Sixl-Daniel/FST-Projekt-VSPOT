@@ -3,10 +3,6 @@
 @section('pageTitle', 'Freischaltung')
 
 @section('content')
-
-{{-- @php dd($user->approved, $user->rejected, $user->pending) @endphp --}}
-
-<main>
 <div class="container content">
 
     <div class="row justify-content-center mb-3">
@@ -44,5 +40,4 @@
     </div>
 
 </div>
-</main>
 @endsection

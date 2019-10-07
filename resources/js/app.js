@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+window.toast = require('izitoast');
+
 // window.Vue = require('vue');
 
 /**
