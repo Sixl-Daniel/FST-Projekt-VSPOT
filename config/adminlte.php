@@ -15,9 +15,9 @@ return [
 
     'title' => env('APP_NAME'),
 
-    'title_prefix' => env('APP_NAME') . ' — ',
+    'title_prefix' => '',
 
-    'title_postfix' => '',
+    'title_postfix' => ' — ' . env('APP_NAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -129,14 +129,14 @@ return [
         ['header' => 'main_navigation'],
         [
             'text' => 'Dashboard',
-            'url'  => 'dashboard',
-            'icon'        => 'fas fa-fw fa-th',
+            'url' => 'dashboard',
+            'icon' => 'fas fa-fw fa-th',
             //'can'  => 'show-dashboard',
         ],
         [
             'text' => 'Users',
             'url'  => 'admin/users',
-            'icon'        => 'fas fa-fw fa-users-cog',
+            'icon' => 'fas fa-fw fa-users-cog',
             //'can'  => 'manage-users',
         ],
         [

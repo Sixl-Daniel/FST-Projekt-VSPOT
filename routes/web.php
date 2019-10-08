@@ -40,10 +40,16 @@ Route::group(['middleware' => ['verified']], function () {
 
         Route::middleware(['admin'])->group(function () {
 
-            // testing area for admins: /test/
-            Route::prefix('test')->group(function () {
-                Route::get('email', 'Test\TestFrontendController@email')->name('test-email');
+            // ns \Admin & prefix /admin
+            Route::namespace('Admin')->prefix('admin')->group(function () {
+                Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
             });
+
+            // ns \Test & prefix /test
+            Route::namespace('Test')->prefix('test')->group(function () {
+                Route::get('email', 'TestFrontendController@email')->name('test-email');
+            });
+
 
         });
 
