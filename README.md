@@ -1,13 +1,12 @@
-![VSPOT Digital Signage Solution](/public/media/branding/logo.svg?raw=true&sanitize=true "VSPOT Digital Signage Solution")
-
-<div align="center">
+<div style="text-align:center;">
+<img src="./public/media/branding/logo.png?raw=true" width="300" height="300">
 <h1>VSPOT<br>Digital Signage Solution</h1>
-<p>  
-
+<p>
+  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </p>
-<p>VSPOT is a graduation project for "Fachschule für Techniker der Stadt Erlangen".</p>
+<p>VSPOT is a graduation project (State-Certified Engineer CS).</p>
 </div>
 
 ## Author
