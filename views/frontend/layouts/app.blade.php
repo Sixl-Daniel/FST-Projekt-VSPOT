@@ -28,6 +28,6 @@
 
     @stack('js-bottom')
 
-    @include('shared.partials.js.flash-message')
+    @include('frontend.partials.js.flash-message')
 </body>
 </html>

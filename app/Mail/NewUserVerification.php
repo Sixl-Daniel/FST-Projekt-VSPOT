@@ -32,7 +32,7 @@ class NewUserVerification extends Mailable
     public function build()
     {
         return $this
-            ->subject('Ein neuer Nutzer wartet auf Freigabe')
+            ->subject('Ein neuer Nutzer hat sich registriert')
             ->markdown('emails.admin.userverification', ['user' => $this->new_user]);
     }
 }

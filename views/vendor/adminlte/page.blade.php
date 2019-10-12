@@ -1,8 +1,7 @@
 @extends('adminlte::master')
 
 @section('adminlte_css')
-    <link rel="stylesheet"
-          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
     @stack('css')
     @yield('css')
 @stop
@@ -58,13 +57,13 @@
 
                     <ul class="nav navbar-nav">
                         <li>
-
+                            <a><i class="fas fa-user fa-fw"></i> {{ auth()->user()->name }}</a>
+                        </li>
+                        <li>
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fa fa-fw fa-power-off"></i> {{ __('adminlte::adminlte.log_out') }}
+                                <i class="fas fa-power-off fa-fw"></i> {{ __('adminlte::adminlte.log_out') }}
                             </a>
-                            <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST">
-                                {{ csrf_field() }}
-                            </form>
+                            <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST">{{ csrf_field() }}</form>
                         </li>
                         @if(config('adminlte.right_sidebar') and (config('adminlte.layout') != 'top-nav'))
                         <!-- Control Sidebar Toggle Button -->

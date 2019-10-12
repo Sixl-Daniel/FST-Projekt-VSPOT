@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'last_name', 'email', 'password', 'is_admin', 'approved_at', 'rejected_at'
+        'username', 'first_name', 'last_name', 'email', 'password'
     ];
 
     /**
@@ -34,7 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'is_admin' => 'boolean'
+        //
     ];
 
     /**
@@ -43,8 +43,26 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $dates = [
-        'email_verified_at', 'approved_at', 'rejected_at'
+        'email_verified_at'
     ];
+
+    /* check roles */
+
+    public function hasAnyRoles($roles)
+    {
+        if($this->roles()->whereIn('name', $roles)->first()) return true;
+
+        return false;
+    }
+
+    public function is($role)
+    {
+        if($role == 'guest') return empty($this->roles()->get()->toArray()) ? true : false;
+
+        if($this->roles()->where('name', $role)->first()) return true;
+
+        return false;
+    }
 
     /* custom attributes */
 
@@ -53,60 +71,53 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getRejectedAttribute()
+    public function getGuestAttribute()
     {
-        return $this->rejected_at == null ? false : true;
-    }
-
-    public function getApprovedAttribute()
-    {
-        return $this->approved_at == null ? false : true;
-    }
-
-    public function getPendingAttribute()
-    {
-        return ($this->approved_at == null && $this->rejected_at == null) ? true : false;
+        return empty($this->roles()->get()->toArray()) ? true : false;
     }
 
     /* local scopes */
 
-    public function scopeAdmins($query) {
-        return $query
-                ->whereNotNull('email_verified_at')
-                ->where('is_admin', 1);
+    public function scopeGuests() {
+        return User::whereDoesntHave('roles')->get();
     }
 
-    public function scopeConsumers($query) {
-        return $query
-                ->whereNotNull('email_verified_at')
-                ->where('is_admin', 0);
+    public function scopeAdministrators() {
+        return Role::whereName('admin')->first()->users()->whereNotNull('email_verified_at')->get();
     }
 
-    public function scopeRejected($query) {
-        return $query
-                ->whereNotNull('email_verified_at')
-                ->whereNotNull('rejected_at');
+    public function scopeSuperadministrators() {
+        return Role::whereName('superadmin')->first()->users()->whereNotNull('email_verified_at')->get();
     }
 
-    public function scopeApproved($query) {
-        return $query
-                ->whereNotNull('email_verified_at')
-                ->whereNotNull('approved_at');
+    public function scopeAdministrators_all()
+    {
+        $regularAdmins = Role::whereName('admin')->first()->users()->whereNotNull('email_verified_at')->get();
+        $superAdmins = Role::whereName('superadmin')->first()->users()->whereNotNull('email_verified_at')->get();
+        $allAdmins = $regularAdmins->merge($superAdmins);
+        return $allAdmins->all();
     }
 
-    public function scopePending($query) {
-        return $query
-                ->whereNotNull('email_verified_at')
-                ->whereNull('approved_at')
-                ->whereNull('rejected_at');
+    public function scopeUser()
+    {
+        return Role::whereName('user')->first()->users()->whereNotNull('email_verified_at')->get();
     }
 
-    public function scopeVerified($query) {
+    public function scopeVerified($query)
+    {
         return $query->whereNotNull('email_verified_at');
     }
 
-    public function scopeUnverified($query) {
+    public function scopeUnverified($query)
+    {
         return $query->whereNull('email_verified_at');
+    }
+
+    /* relations */
+
+    public function roles ()
+    {
+        return $this->belongsToMany('App\Role');
     }
 
 }

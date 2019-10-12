@@ -23,15 +23,19 @@
                 <!-- navbar right -->
                 <div class="navbar-nav ml-auto">
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Backend</a>
+                        @auth
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle fa-fw"></i> {{ auth()->user()->name }}</a>
+                        @else
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle fa-fw"></i> Account</a>
+                        @endauth
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @auth
-                                <a class="dropdown-item" href="{{ url('/dashboard') }}">{{ __('Administration') }}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                <a class="dropdown-item" href="{{ url('/dashboard') }}"><i class="fas fa-tools fa-fw"></i> {{ __('Administration') }}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
                                 <form id="logout-form" class="hidden-form" action="{{ route('logout') }}" method="POST">@csrf</form>
                             @else
-                                <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-fw"></i> {{ __('Login') }}</a>
+                                <a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus fa-fw"></i> {{ __('Register') }}</a>
                             @endauth
                         </div>
                     </div>

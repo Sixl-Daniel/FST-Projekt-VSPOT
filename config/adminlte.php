@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'black-light',
+    'skin' => 'black',
 
     /*
     |--------------------------------------------------------------------------
@@ -131,39 +131,39 @@ return [
             'text' => 'Dashboard',
             'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-th',
-            //'can'  => 'show-dashboard',
         ],
         [
             'text' => 'Users',
-            'url'  => 'admin/users',
+            'url' => 'admin/users',
             'icon' => 'fas fa-fw fa-users-cog',
-            //'can'  => 'manage-users',
+            'active' => ['admin/users', 'admin/users/*/*'],
+            'can'  => 'manage-users',
         ],
         [
             'text' => 'Devices',
-            'url'  => 'admin/devices',
-            'icon'        => 'fas fa-fw fa-desktop',
-            //'can'  => 'manage-devices',
+            'url' => 'admin/devices',
+            'icon' => 'fas fa-fw fa-desktop',
+            'can'  => 'manage-signage',
         ],
         [
             'text' => 'Channels',
-            'url'  => 'admin/channels',
-            'icon'        => 'fas fa-fw fa-project-diagram',
-            //'can'  => 'manage-channels',
+            'url' => 'admin/channels',
+            'icon' => 'fas fa-fw fa-project-diagram',
+            'can'  => 'manage-signage',
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'Account',
-            'url'  => 'admin/account',
-            'icon' => 'fas fa-fw fa-user',
-            //'can'  => 'manage-own-account',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/password',
-            'icon' => 'fas fa-fw fa-lock',
-            //'can'  => 'change-own-password',
-        ]
+//        ['header' => 'account_settings'],
+//        [
+//            'text' => 'Account',
+//            'url' => 'admin/account',
+//            'icon' => 'fas fa-fw fa-user',
+//            //'can' => 'manage-own-account',
+//        ],
+//        [
+//            'text' => 'change_password',
+//            'url'  => 'admin/password',
+//            'icon' => 'fas fa-fw fa-lock',
+//            //'can'  => 'change-own-password',
+//        ]
 
     ],
 
@@ -272,6 +272,17 @@ return [
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
                 ],
+            ],
+        ],
+        [
+            'name' => 'FontAwesome',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css',
+                ]
             ],
         ],
     ],

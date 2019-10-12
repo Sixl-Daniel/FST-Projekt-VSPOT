@@ -22,37 +22,28 @@ Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['verified']], function () {
 
-    Route::get('aktivierung', function() {
-        $data['user'] = Auth::user();
-        return view('frontend.pages.feedback.waiting_for_approval', $data);
-    })->name('approval');
+    // Route::view('dashboard', 'backend.dashboard')->name('dashboard');
+    Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
-    // AUTHORIZED USERS
-
-    Route::middleware(['approved'])->group(function () {
-
-        Route::get('dashboard', function() {
-            $data['user'] = Auth::user();
-            return view('backend.dashboard', $data);
-        })->name('dashboard');
-
-        // ADMIN USERS
-
-        Route::middleware(['admin'])->group(function () {
-
-            // ns \Admin & prefix /admin
-            Route::namespace('Admin')->prefix('admin')->group(function () {
-                Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
-            });
-
-            // ns \Test & prefix /test
-            Route::namespace('Test')->prefix('test')->group(function () {
-                Route::get('email', 'TestFrontendController@email')->name('test-email');
-            });
-
-
+    // gate: manage users
+    Route::middleware('can:manage-users')->group(function () {
+        // ns \Admin & prefix /admin
+        Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
+            Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
         });
+    });
 
+    // gate: manage signage
+    Route::middleware('can:manage-signage')->group(function () {
+        //
+    });
+
+    // gate: run tests
+    Route::middleware('can:run-tests')->group(function () {
+        // ns \Test & prefix /test
+        Route::namespace('Test')->name('test.')->prefix('test')->group(function () {
+            Route::get('email', 'TestFrontendController@email')->name('test-email');
+        });
     });
 
 });

@@ -1,9 +1,10 @@
 <?php
 
+use App\Role;
+use App\User;
+
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Carbon;
 
 class UsersTableSeeder extends Seeder
@@ -17,52 +18,50 @@ class UsersTableSeeder extends Seeder
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
-        $admin = new \App\User();
-            $admin->username = env('INITIAL_ADMIN_USERNAME');
-            $admin->first_name = env('INITIAL_ADMIN_FIRST_NAME');
-            $admin->last_name = env('INITIAL_ADMIN_LAST_NAME');
-            $admin->email = env('INITIAL_ADMIN_EMAIL');
-            $admin->email_verified_at = $now;
-            $admin->approved_at = $now;
-            $admin->rejected_at = null;
-            $admin->password = Hash::make(env('INITIAL_ADMIN_PASSWORD'));
-            $admin->is_admin = true;
-        $admin->save();
+        $superadminRole = Role::whereName('superadmin')->first();
+        $adminRole = Role::whereName('admin')->first();
+        $inspectorRole = Role::whereName('inspector')->first();
+        $userRole = Role::whereName('user')->first();
 
-        $user = new \App\User();
-            $user->username = env('INITIAL_USER_USERNAME');
-            $user->first_name = env('INITIAL_USER_FIRST_NAME');
-            $user->last_name = env('INITIAL_USER_LAST_NAME');
-            $user->email = env('INITIAL_USER_EMAIL');
-            $user->email_verified_at = $now;
-            $user->approved_at = $now;
-            $user->rejected_at = null;
-            $user->password = Hash::make(env('INITIAL_USER_PASSWORD'));
-            $user->is_admin = false;
-        $user->save();
+        $superadmin = new User();
+            $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
+            $superadmin->first_name = env('INITIAL_SUPERADMIN_FIRST_NAME');
+            $superadmin->last_name = env('INITIAL_SUPERADMIN_LAST_NAME');
+            $superadmin->email = env('INITIAL_SUPERADMIN_EMAIL');
+            $superadmin->email_verified_at = $now;
+            $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
+        $superadmin->save();
 
-        $userUnapproved = new \App\User();
-            $userUnapproved->username = env('INITIAL_USER_USERNAME_UNAPPROVED');
-            $userUnapproved->first_name = env('INITIAL_USER_FIRST_NAME_UNAPPROVED');
-            $userUnapproved->last_name = env('INITIAL_USER_LAST_NAME_UNAPPROVED');
-            $userUnapproved->email = env('INITIAL_USER_EMAIL_UNAPPROVED');
-            $userUnapproved->email_verified_at = $now;
-            $userUnapproved->approved_at = null;
-            $userUnapproved->rejected_at = null;
-            $userUnapproved->password = Hash::make(env('INITIAL_USER_PASSWORD_UNAPPROVED'));
-            $userUnapproved->is_admin = false;
-        $userUnapproved->save();
+        $user1 = new User();
+            $user1->username = env('INITIAL_USER_USERNAME_1');
+            $user1->first_name = env('INITIAL_USER_FIRST_NAME_1');
+            $user1->last_name = env('INITIAL_USER_LAST_NAME_1');
+            $user1->email = env('INITIAL_USER_EMAIL_1');
+            $user1->email_verified_at = $now;
+            $user1->password = Hash::make(env('INITIAL_USER_PASSWORD_1'));
+        $user1->save();
 
-        $userRejected = new \App\User();
-            $userRejected->username = env('INITIAL_USER_USERNAME_REJECTED');
-            $userRejected->first_name = env('INITIAL_USER_FIRST_NAME_REJECTED');
-            $userRejected->last_name = env('INITIAL_USER_LAST_NAME_REJECTED');
-            $userRejected->email = env('INITIAL_USER_EMAIL_REJECTED');
-            $userRejected->email_verified_at = $now;
-            $userRejected->approved_at = null;
-            $userRejected->rejected_at = $now;
-            $userRejected->password = Hash::make(env('INITIAL_USER_PASSWORD_REJECTED'));
-            $userRejected->is_admin = false;
-        $userRejected->save();
+        $user2 = new User();
+            $user2->username = env('INITIAL_USER_USERNAME_2');
+            $user2->first_name = env('INITIAL_USER_FIRST_NAME_2');
+            $user2->last_name = env('INITIAL_USER_LAST_NAME_2');
+            $user2->email = env('INITIAL_USER_EMAIL_2');
+            $user2->email_verified_at = $now;
+            $user2->password = Hash::make(env('INITIAL_USER_PASSWORD_2'));
+        $user2->save();
+
+        $user3 = new User();
+            $user3->username = env('INITIAL_USER_USERNAME_3');
+            $user3->first_name = env('INITIAL_USER_FIRST_NAME_3');
+            $user3->last_name = env('INITIAL_USER_LAST_NAME_3');
+            $user3->email = env('INITIAL_USER_EMAIL_3');
+            $user3->email_verified_at = null;
+            $user3->password = Hash::make(env('INITIAL_USER_PASSWORD_3'));
+        $user3->save();
+
+        // attach roles
+        $superadmin->roles()->attach($superadminRole);
+        $user1->roles()->attach($adminRole);
+        $user2->roles()->attach($userRole);
     }
 }

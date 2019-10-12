@@ -116,7 +116,7 @@ return [
         'theme' => 'vspot_v1',
 
         'paths' => [
-            resource_path('views/vendor/mail'),
+            base_path('views/vendor/mail'),
         ],
     ],
 
