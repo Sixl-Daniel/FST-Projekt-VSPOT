@@ -1,4 +1,4 @@
-<div style="text-align:center;">
+<div align="center">
 <img src="./public/media/branding/logo.png?raw=true" width="300" height="300">
 <h1>VSPOT<br>Digital Signage Solution</h1>
 <p>
