@@ -93,7 +93,7 @@ class UsersController extends Controller
         }
 
         try {
-            $user->roles()->detach();
+            // $user->roles()->detach(); // -> on delete cascade via db
             $user->delete();
             return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
         }
