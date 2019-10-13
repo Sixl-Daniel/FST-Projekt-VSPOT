@@ -207,7 +207,7 @@ body.vspot .h6 {
 
 .content-wrapper {
   background-color: #eeeeee;
-  background: #fff url("/media/branding/tile_4.png") repeat top left fixed;
+  background: #fff url("/media/branding/tile_3.png") repeat top left fixed;
 }
 
 .vspot.skin-black .content-header {
@@ -219,6 +219,11 @@ body.vspot .h6 {
 
 .vspot.skin-black .content-header h1 {
   font-weight: 100;
+}
+
+.vspot.skin-black .sidebar-menu > li.active > a {
+  font-weight: 600;
+  border-left: 3px solid #c70038;
 }
 
 .panel--user h2 {

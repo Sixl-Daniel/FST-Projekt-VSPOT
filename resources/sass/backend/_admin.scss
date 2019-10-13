@@ -21,15 +21,24 @@
 
 .content-wrapper {
     background-color: #eeeeee;
-    background: #fff url('/media/branding/tile_4.png') repeat top left fixed;
+    background: #fff url('/media/branding/tile_3.png') repeat top left fixed;
 }
 
-.vspot.skin-black .content-header {
-    background-color: rgb(34, 45, 50, 0.7);
-    box-shadow: none;
-    padding: 15px;
-    color: #fff;
-    h1 { font-weight: 100; }
+.vspot.skin-black {
+
+    .content-header {
+        background-color: rgb(34, 45, 50, 0.7);
+        box-shadow: none;
+        padding: 15px;
+        color: #fff;
+        h1 { font-weight: 100; }
+    }
+
+    .sidebar-menu > li.active > a {
+        font-weight: 600;
+        border-left: 3px solid $color_primary;
+    }
+
 }
 
 //
