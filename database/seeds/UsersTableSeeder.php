@@ -18,10 +18,11 @@ class UsersTableSeeder extends Seeder
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
-        $superadminRole = Role::whereName('superadmin')->first();
-        $adminRole = Role::whereName('admin')->first();
-        $inspectorRole = Role::whereName('inspector')->first();
-        $userRole = Role::whereName('user')->first();
+        $superadminRole = Role::whereName('Superadmin')->first();
+        $adminRole = Role::whereName('Admin')->first();
+        $userRole = Role::whereName('User')->first();
+        $inspectorRole = Role::whereName('Inspector')->first();
+        $dummyRole = Role::whereName('Dummy')->first();
 
         $superadmin = new User();
             $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
@@ -60,8 +61,15 @@ class UsersTableSeeder extends Seeder
         $user3->save();
 
         // attach roles
+
         $superadmin->roles()->attach($superadminRole);
+
         $user1->roles()->attach($adminRole);
+        $user1->roles()->attach($dummyRole);
+
         $user2->roles()->attach($userRole);
+        $user2->roles()->attach($dummyRole);
+
+        $user3->roles()->attach($dummyRole);
     }
 }
