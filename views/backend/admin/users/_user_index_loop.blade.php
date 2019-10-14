@@ -26,7 +26,6 @@
                         <th>Nachname</th>
                         <th>Vorname</th>
                         <th>E-Mail</th>
-                        <th>Anmeldung</th>
                         <th>ID</th>
                     </tr>
                     </thead>
@@ -35,13 +34,15 @@
                         <td>{{ $user->last_name }}</td>
                         <td>{{ $user->first_name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at->formatLocalized('%d.%m.%Y') }}</td>
                         <td>{{ $user->id }}</td>
                     </tr>
                     </tbody>
                 </table>
+                <ul class="list-group">
+                <li class="list-group-item">
+                    <p>Der Nutzer wurde {{ $user->created_at->diffForHumans() }}, {{ $user->created_at->formatLocalized('am %d.%m.%Y um %H:%m Uhr') }}, im System registriert.</p>
+                </li>
                 @if(!$user->is('superadmin'))
-                    <ul class="list-group">
                         <li class="list-group-item text-right">
                             <form class="inline-form" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                 @csrf
@@ -50,14 +51,12 @@
                             </form>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-default">Editieren</a>
                         </li>
-                    </ul>
                 @else
-                    <ul class="list-group">
                         <li class="list-group-item text-right">
                             <p class="text-center text-muted text-fit-button-line">Geschützter Benutzer</p>
                         </li>
-                    </ul>
                 @endif
+                    </ul>
             </div>
         </div>
     @endforeach
