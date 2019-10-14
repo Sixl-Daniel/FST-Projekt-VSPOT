@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
-use Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -22,8 +21,7 @@ class UsersController extends Controller
         {
             $users = User::verified()->paginate(6);
             return view('backend.admin.users.index')
-                ->with('users', $users)
-                ->with('now', Carbon::now());
+                ->with('users', $users);
         }
         catch(ModelNotFoundException $e)
         {
@@ -43,8 +41,7 @@ class UsersController extends Controller
         {
             $users = User::unverified()->paginate(6);
             return view('backend.admin.users.index_registrations')
-                ->with('users', $users)
-                ->with('now', Carbon::now());
+                ->with('users', $users);
         }
         catch(ModelNotFoundException $e)
         {
