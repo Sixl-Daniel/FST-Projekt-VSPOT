@@ -30,6 +30,7 @@ Route::group(['middleware' => ['verified']], function () {
         // ns \Admin & prefix /admin
         Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
             Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+            Route::get('registrations', 'UsersController@indexRegistrations');
         });
     });
 

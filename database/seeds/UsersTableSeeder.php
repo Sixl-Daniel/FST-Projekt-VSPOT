@@ -18,11 +18,16 @@ class UsersTableSeeder extends Seeder
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
+        // fetch user roles
+
         $superadminRole = Role::whereName('Superadmin')->first();
         $adminRole = Role::whereName('Admin')->first();
         $userRole = Role::whereName('User')->first();
         $inspectorRole = Role::whereName('Inspector')->first();
+        $testerRole = Role::whereName('Tester')->first();
         $dummyRole = Role::whereName('Dummy')->first();
+
+        // create initial users from .env
 
         $superadmin = new User();
             $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
@@ -32,6 +37,7 @@ class UsersTableSeeder extends Seeder
             $superadmin->email_verified_at = $now;
             $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
         $superadmin->save();
+        $superadmin->roles()->attach($superadminRole);
 
         $user1 = new User();
             $user1->username = env('INITIAL_USER_USERNAME_1');
@@ -41,6 +47,7 @@ class UsersTableSeeder extends Seeder
             $user1->email_verified_at = $now;
             $user1->password = Hash::make(env('INITIAL_USER_PASSWORD_1'));
         $user1->save();
+        $user1->roles()->attach($adminRole);
 
         $user2 = new User();
             $user2->username = env('INITIAL_USER_USERNAME_2');
@@ -50,26 +57,25 @@ class UsersTableSeeder extends Seeder
             $user2->email_verified_at = $now;
             $user2->password = Hash::make(env('INITIAL_USER_PASSWORD_2'));
         $user2->save();
+        $user2->roles()->attach($userRole);
 
         $user3 = new User();
             $user3->username = env('INITIAL_USER_USERNAME_3');
             $user3->first_name = env('INITIAL_USER_FIRST_NAME_3');
             $user3->last_name = env('INITIAL_USER_LAST_NAME_3');
             $user3->email = env('INITIAL_USER_EMAIL_3');
-            $user3->email_verified_at = null;
+            $user3->email_verified_at = $now;
             $user3->password = Hash::make(env('INITIAL_USER_PASSWORD_3'));
         $user3->save();
+        $user3->roles()->attach($testerRole);
+        $user3->roles()->attach($inspectorRole);
 
-        // attach roles
+        // generate dummy users
 
-        $superadmin->roles()->attach($superadminRole);
+        factory(App\User::class, 16)->create()->each(function($user) use ($dummyRole) {
+            $user->roles()->attach($dummyRole);
+        });
 
-        $user1->roles()->attach($adminRole);
-        $user1->roles()->attach($dummyRole);
-
-        $user2->roles()->attach($userRole);
-        $user2->roles()->attach($dummyRole);
-
-        $user3->roles()->attach($dummyRole);
+        factory(App\User::class, 8)->create(['email_verified_at'=>null]);
     }
 }
