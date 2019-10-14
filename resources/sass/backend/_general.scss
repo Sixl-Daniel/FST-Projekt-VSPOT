@@ -7,6 +7,15 @@ body.vspot {
     }
 }
 
+p {
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    &.text-fit-button-line {
+        padding: 7px 12px;
+    }
+}
+
 #logout-form {
     display: none;
 }

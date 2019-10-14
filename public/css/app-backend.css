@@ -126,6 +126,14 @@ body.vspot .h6 {
   font-family: "Nunito", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+p.text-fit-button-line {
+  padding: 7px 12px;
+}
+
 #logout-form {
   display: none;
 }

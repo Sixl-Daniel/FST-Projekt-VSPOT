@@ -51,6 +51,12 @@
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-default">Editieren</a>
                         </li>
                     </ul>
+                @else
+                    <ul class="list-group">
+                        <li class="list-group-item text-right">
+                            <p class="text-center text-muted text-fit-button-line">Geschützter Benutzer</p>
+                        </li>
+                    </ul>
                 @endif
             </div>
         </div>
