@@ -15,7 +15,8 @@
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.0",
         "laravelcollective/html": "^6.0",
-        "laravolt/avatar": "^3.0"
+        "laravolt/avatar": "^3.0",
+        "simplesoftwareio/simple-qrcode": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
