@@ -23,13 +23,15 @@
         justify-content: center;
         align-items: center;
         display: flex;
+        margin: 0;
+        padding: 0;
     }
 
 }
 
 .front-logo-wrapper {
-    max-width: 640px;
     margin: 55px auto 0;
+    max-width: 560px;
     @include fadeIn;
 }
 

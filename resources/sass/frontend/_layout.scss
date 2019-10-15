@@ -13,3 +13,9 @@ main {
     padding-top: $spacer * 3;
     padding-bottom: $spacer * 3;
 }
+
+footer {
+    @include media-breakpoint-down(sm) {
+       .container { flex-direction: column; }
+    }
+}
