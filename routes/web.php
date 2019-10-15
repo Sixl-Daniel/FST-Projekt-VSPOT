@@ -25,6 +25,11 @@ Route::group(['middleware' => ['verified']], function () {
     // Route::view('dashboard', 'backend.dashboard')->name('dashboard');
     Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
+    // gate: administer vspot
+    Route::middleware('can:manage-vspot')->group(function () {
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    });
+
     // gate: manage users
     Route::middleware('can:manage-users')->group(function () {
         // ns \Admin & prefix /admin

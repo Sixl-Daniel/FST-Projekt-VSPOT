@@ -126,16 +126,38 @@ return [
     */
 
     'menu' => [
-        ['header' => 'main_navigation'],
         [
             'text' => 'Frontend',
             'url' => '/',
             'icon' => 'fas fa-fw fa-arrow-left',
         ],
+        ['header' => 'Hauptmenü'],
         [
             'text' => 'Dashboard',
             'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-chalkboard',
+        ],
+        [
+            'text' => 'Devices',
+            'url' => 'admin/devices',
+            'icon' => 'fas fa-fw fa-desktop',
+            'can'  => 'manage-signage',
+        ],
+        [
+            'text' => 'Channels',
+            'url' => 'admin/channels',
+            'icon' => 'fas fa-fw fa-project-diagram',
+            'can'  => 'manage-signage',
+        ],
+        [
+            'header' => 'Administration',
+            'can'  => 'view-admin-menu',
+        ],
+        [
+        'text' => 'Logs',
+        'url' => '/logs',
+        'icon' => 'fas fa-fw fa-clipboard-check',
+        'can'  => 'manage-vspot',
         ],
         [
             'text'    => 'Benutzerverwaltung',
@@ -157,19 +179,6 @@ return [
                 ],
             ],
         ],
-        [
-            'text' => 'Devices',
-            'url' => 'admin/devices',
-            'icon' => 'fas fa-fw fa-desktop',
-            'can'  => 'manage-signage',
-        ],
-        [
-            'text' => 'Channels',
-            'url' => 'admin/channels',
-            'icon' => 'fas fa-fw fa-project-diagram',
-            'can'  => 'manage-signage',
-        ],
-//        ['header' => 'account_settings'],
 //        [
 //            'text' => 'Account',
 //            'url' => 'admin/account',
