@@ -128,9 +128,14 @@ return [
     'menu' => [
         ['header' => 'main_navigation'],
         [
+            'text' => 'Frontend',
+            'url' => '/',
+            'icon' => 'fas fa-fw fa-arrow-left',
+        ],
+        [
             'text' => 'Dashboard',
             'url' => 'dashboard',
-            'icon' => 'fas fa-fw fa-th',
+            'icon' => 'fas fa-fw fa-chalkboard',
         ],
         [
             'text'    => 'Benutzerverwaltung',
