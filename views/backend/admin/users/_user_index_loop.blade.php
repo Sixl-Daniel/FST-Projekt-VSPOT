@@ -41,7 +41,7 @@
                 </table>
                 <ul class="list-group">
                 <li class="list-group-item">
-                    <p>Der Nutzer wurde {{ $user->created_at->diffForHumans() }}, {{ $user->created_at->formatLocalized('am %d.%m.%Y um %H:%m Uhr') }}, im System registriert.</p>
+                    <p>Der Nutzer wurde {{ $user->created_at->diffForHumans() }}, am {{ $user->created_at->isoFormat('D.MM.Y') }}, um {{ $user->created_at->isoFormat('HH:mm') }} Uhr im System registriert.</p>
                 </li>
                 @if(!$user->is('superadmin'))
                         <li class="list-group-item text-right">
