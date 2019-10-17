@@ -101,11 +101,6 @@ class UsersTableSeeder extends Seeder
 
 
 
-
-        //$channelDemo->devices()->saveMany([$deviceMonitor1]);
-        //$superadmin->devices()->saveMany([$deviceMonitor1]);
-        //$channelDemo->screens()->saveMany([$screen1, $screen2]);
-
         /*
          * create other initial users from .env
          */
@@ -142,11 +137,12 @@ class UsersTableSeeder extends Seeder
         $user3->roles()->attach($inspectorRole);
 
         // generate some dummy users
-
         factory(App\User::class, 16)->create()->each(function($user) use ($dummyRole) {
             $user->roles()->attach($dummyRole);
         });
 
+        // generate some unverified dummy users
         factory(App\User::class, 8)->create(['email_verified_at'=>null]);
+
     }
 }
