@@ -8,8 +8,6 @@
 
 @section('content')
 
-@if ($users->isNotEmpty())
 @include('backend.admin.users._user_index_loop')
-@endif
 
 @stop

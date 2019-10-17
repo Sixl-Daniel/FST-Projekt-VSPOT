@@ -1,3 +1,4 @@
+@if ($users->isNotEmpty())
 <div class="row">
     @foreach($users as $user)
         <div class="col-lg-6">
@@ -61,5 +62,15 @@
         </div>
     @endforeach
 </div>
-
 {{ $users->links() }}
+@else
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default panel--user-empty">
+            <div class="panel-body text-center">
+                <p class="text-muted">Es sind keine Benutzer für diese Ansicht vorhanden.</p>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
