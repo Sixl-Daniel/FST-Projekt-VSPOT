@@ -145,8 +145,7 @@ class UsersController extends Controller
 
         try {
             $user->delete();
-            // return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
-            return back()->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
+            return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
         }
         catch(ModelNotFoundException $e)
         {

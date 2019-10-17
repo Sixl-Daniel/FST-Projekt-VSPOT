@@ -27,7 +27,7 @@ Route::group(['middleware' => ['verified']], function () {
 
     // gate: administer vspot
     Route::middleware('can:manage-vspot')->group(function () {
-        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
     });
 
     // gate: manage users
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['verified']], function () {
         // ns \Admin & prefix /admin
         Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
             Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
-            Route::get('registrations', 'UsersController@indexRegistrations');
+            Route::get('registrations', 'UsersController@indexRegistrations')->name('unverified-users');
         });
     });
 
@@ -53,9 +53,9 @@ Route::group(['middleware' => ['verified']], function () {
             Route::get('email', 'TestFrontendController@email')->name('test-email');
             // test QR-Codes
             Route::prefix('qrcode')->group(function () {
-                Route::get('email', 'TestQRCodeController@email');
-                Route::get('link', 'TestQRCodeController@link');
-                Route::get('phone', 'TestQRCodeController@phone');
+                Route::get('email', 'TestQRCodeController@email')->name('test-qr-email');
+                Route::get('link', 'TestQRCodeController@link')->name('test-qr-link');
+                Route::get('phone', 'TestQRCodeController@phone')->name('test-qr-phone');
             });
 
         });

@@ -60,7 +60,7 @@
     }
 
     .div-scroll {
-      height: 80vh;
+      /* height: 80vh; */
       overflow: hidden auto;
     }
     .nowrap {

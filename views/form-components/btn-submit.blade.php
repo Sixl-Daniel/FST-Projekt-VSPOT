@@ -1,1 +1,1 @@
-{{ Form::submit($text, ['class' => 'btn btn-primary']) }}
+{{ Form::button('<i class="fas fa-save"></i> ' . $text, ['type' => 'submit', 'class' => 'btn btn-primary has-icon-left'] )  }}

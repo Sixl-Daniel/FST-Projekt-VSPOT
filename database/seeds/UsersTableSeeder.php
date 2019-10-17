@@ -66,13 +66,29 @@ class UsersTableSeeder extends Seeder
         // create a standard device
 
         $deviceMonitor1 = new Device();
-        $deviceMonitor1->name = 'Monitor_1';
-        $deviceMonitor1->description = 'Samsung SyncMaster 2253BW';
-        $deviceMonitor1->location = 'Mobiler Testmonitor mit Raspberry Pi "Gamma"';
+        $deviceMonitor1->display_name = 'Monitor_1';
+        $deviceMonitor1->description = 'Mobiler Testmonitor mit Raspberry Pi "Gamma"';
+        $deviceMonitor1->product_reference = 'Samsung SyncMaster 2253BW';
+        $deviceMonitor1->location = 'Wohnzimmer';
         $deviceMonitor1->user()->associate($superadmin);
         $deviceMonitor1->channel()->associate($channelDemo);
-
         $deviceMonitor1->save();
+
+        $deviceMonitor2 = new Device();
+        $deviceMonitor2->display_name = 'Monitor_2';
+        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Delta"';
+        $deviceMonitor2->product_reference = 'HP Envy 27';
+        $deviceMonitor2->location = 'Wohnzimmer';
+        $deviceMonitor2->user()->associate($superadmin);
+        $deviceMonitor2->channel()->associate($channelDemo);
+        $deviceMonitor2->save();
+
+        $deviceMonitor3 = new Device();
+        $deviceMonitor3->display_name = 'Monitor_3';
+        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Epsilon"';
+        $deviceMonitor3->user()->associate($superadmin);
+        $deviceMonitor3->channel()->associate($channelDemo);
+        $deviceMonitor3->save();
 
         // now make some screens with a layout for that channel
 

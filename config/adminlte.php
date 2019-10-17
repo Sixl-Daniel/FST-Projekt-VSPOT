@@ -135,13 +135,26 @@ return [
         [
             'text' => 'Dashboard',
             'url' => 'dashboard',
-            'icon' => 'fas fa-fw fa-chalkboard',
+            'icon' => 'fas fa-fw fa-thumbtack',
         ],
         [
             'text' => 'Devices',
-            'url' => 'devices',
             'icon' => 'fas fa-fw fa-desktop',
             'can'  => 'manage-signage',
+            'submenu' => [
+                [
+                    'text' => 'Geräteliste',
+                    'url' => 'devices',
+                    'icon' => 'fas fa-fw fa-clipboard-list',
+                    'active' => ['devices', 'devices/?page=*'],
+                ],
+                [
+                    'text' => 'Neues Gerät',
+                    'url' => 'devices/create',
+                    'icon' => 'fas fa-fw fa-plus-square',
+                    'active' => ['devices/create'],
+                ],
+            ],
         ],
         [
             'text' => 'Channels',
@@ -157,13 +170,12 @@ return [
         'text' => 'Logs',
         'url' => '/logs',
         'target' => '_blank',
-        'icon' => 'fas fa-fw fa-clipboard-check',
+        'icon' => 'fas fa-fw fa-scroll',
         'can'  => 'manage-vspot',
         ],
         [
             'text'    => 'Benutzerverwaltung',
             'icon'    => 'fas fa-fw fa-users',
-            'active' => ['admin/users', 'admin/registrations'],
             'can'  => 'manage-users',
             'submenu' => [
                 [

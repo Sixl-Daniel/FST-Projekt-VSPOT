@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
         Form::component('vspotEmail', 'form-components.text', ['name', 'label' => null, 'value' => null, 'attributes' => []]);
         Form::component('vspotPassword', 'form-components.password', ['name', 'label' => null, 'value' => null, 'attributes' => []]);
         Form::component('vspotSubmit', 'form-components.btn-submit', ['text' => 'Speichern']);
-
+        Form::component('vspotBack', 'form-components.btn-back', ['text' => 'Zurück']);
     }
 }

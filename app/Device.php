@@ -8,7 +8,7 @@ class Device extends Model
 {
 
     protected $fillable = [
-        'name', 'description', 'location'
+        'display_name', 'product_reference', 'description', 'location'
     ];
 
     // relationships

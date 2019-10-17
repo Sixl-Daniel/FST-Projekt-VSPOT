@@ -174,5 +174,9 @@ return [
         'time'                  => 'Uhrzeit',
         'available'             => 'verfügbar',
         'size'                  => 'Größe',
+        'display_name'          => 'Anzeigename',
+        'product_reference'     => 'Gerätekennung',
+        'location'              => 'Ort',
+
     ],
 ];
