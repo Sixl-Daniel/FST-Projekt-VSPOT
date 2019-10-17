@@ -156,6 +156,7 @@ return [
         [
         'text' => 'Logs',
         'url' => '/logs',
+        'target' => '_blank',
         'icon' => 'fas fa-fw fa-clipboard-check',
         'can'  => 'manage-vspot',
         ],
