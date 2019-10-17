@@ -26,7 +26,8 @@ class UsersController extends Controller
         catch(ModelNotFoundException $e)
         {
             Log::error('Fehler in "UsersController@index"!');
-            return redirect()->route('dashboard')->with('flash-error', "Die Benutzer können wegen eines Fehlers nicht angezeigt werden.");
+            // return redirect()->route('dashboard')->with('flash-error', "Die Benutzer können wegen eines Fehlers nicht angezeigt werden.");
+            return back()->with('flash-error', "Die Benutzer können wegen eines Fehlers nicht angezeigt werden.");
         }
     }
 
@@ -46,7 +47,8 @@ class UsersController extends Controller
         catch(ModelNotFoundException $e)
         {
             Log::error('Fehler in "UsersController@indexRegistrations"!');
-            return redirect()->route('dashboard')->with('flash-error', "Die Registrierungen (unverifizierte Benutzer) können wegen eines Fehlers nicht angezeigt werden.");
+            // return redirect()->route('dashboard')->with('flash-error', "Die Registrierungen (unverifizierte Benutzer) können wegen eines Fehlers nicht angezeigt werden.");
+            return back()->with('flash-error', "Die Registrierungen (unverifizierte Benutzer) können wegen eines Fehlers nicht angezeigt werden.");
         }
     }
 
@@ -60,13 +62,13 @@ class UsersController extends Controller
     {
         // no editing of superadmins
         if($user->is('superadmin')) {
-            return redirect()->route('admin.users.index')->with('flash-error', 'Superadministratoren dürfen nicht editiert werden.');
+            // return redirect()->route('admin.users.index')->with('flash-error', 'Superadministratoren dürfen nicht editiert werden.');
+            return back()->with('flash-error', 'Superadministratoren dürfen nicht editiert werden.');
         }
 
         try
         {
             $standardRolesAvailable = Role::standard()->pluck('name', 'id');
-
             return view('backend.admin.users.edit')
                 ->with([
                     'user' => $user,
@@ -76,7 +78,8 @@ class UsersController extends Controller
         catch(Exception $e)
         {
             Log::error('Fehler in "UsersController@edit"!');
-            return redirect()->route('dashboard')->with('flash-error', "Der Benutzer $user->name kann wegen eines Fehlers nicht editiert werden.");
+            // return redirect()->route('dashboard')->with('flash-error', "Der Benutzer $user->name kann wegen eines Fehlers nicht editiert werden.");
+            return back()->with('flash-error', "Der Benutzer $user->name kann wegen eines Fehlers nicht editiert werden.");
         }
     }
 
@@ -92,7 +95,8 @@ class UsersController extends Controller
     {
         // no updating of superadmins
         if($user->is('superadmin')) {
-            return redirect()->route('admin.users.index')->with('flash-error', 'Superadministratoren dürfen nicht verändert werden.');
+            // return redirect()->route('admin.users.index')->with('flash-error', 'Superadministratoren dürfen nicht verändert werden.');
+            return back()->with('flash-error', 'Superadministratoren dürfen nicht verändert werden.');
         }
 
         // validate
@@ -107,17 +111,18 @@ class UsersController extends Controller
         );
 
         // update and save
-
         try
         {
             $user->roles()->sync($request->roles);
             $user->fill($request->all())->save();
-            return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde aktualisiert.");
+            // return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde aktualisiert.");
+            return back()->with('flash-success', "Der Benutzer $user->name wurde aktualisiert.");
         }
         catch(ModelNotFoundException $e)
         {
             Log::error('Fehler in "UsersController@update"!');
-            return redirect()->route('admin.users.index')->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht aktualisiert werden.");
+            // return redirect()->route('admin.users.index')->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht aktualisiert werden.");
+            return back()->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht aktualisiert werden.");
         }
 
     }
@@ -134,18 +139,20 @@ class UsersController extends Controller
         // no deleting of superadmins
         if($user->is('superadmin'))
         {
-            return redirect()->route('admin.users.index')->with('flash-error', 'Der Benutzer $user->name ist Superadministrator und kann nicht gelöscht werden.');
+            // return redirect()->route('admin.users.index')->with('flash-error', 'Der Benutzer $user->name ist Superadministrator und kann nicht gelöscht werden.');
+            return back()->with('flash-error', 'Der Benutzer $user->name ist Superadministrator und kann nicht gelöscht werden.');
         }
 
         try {
-            // $user->roles()->detach(); // -> on delete cascade via db
             $user->delete();
-            return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
+            // return redirect()->route('admin.users.index')->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
+            return back()->with('flash-success', "Der Benutzer $user->name wurde gelöscht.");
         }
         catch(ModelNotFoundException $e)
         {
             Log::error('Fehler in "UsersController@destroy"!');
-            return redirect()->route('admin.users.index')->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht gelöscht werden.");
+            // return redirect()->route('admin.users.index')->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht gelöscht werden.");
+            return back()->with('flash-error', "Der Benutzer $user->name konnte wegen eines Fehlers nicht gelöscht werden.");
         }
     }
 

@@ -14,7 +14,7 @@
                                 {!! $user->is('admin') ? '<span class="label label-primary">Admin</span>' : '' !!}
                                 {!! $user->is('guest') ? '<span class="label label-danger">Gast</span>' : '' !!}
                             </div>
-                            <h2 class="h3">{{$user->name}}</h2>
+                            <h2 class="h3">{{$user->last_name}}, {{$user->first_name}}</h2>
                             <p>Username: <b>{{$user->username}}</b><br>
                                 Rollen:@forelse($user->roles as $role)@if(!$loop->first),@endif <b>{{ ucfirst($role->name) }}</b>@empty <b class="text-danger">Gast, ohne Benutzerrolle</b>@endforelse
                             </p>

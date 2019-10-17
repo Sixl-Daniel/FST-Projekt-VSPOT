@@ -115,12 +115,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeVerified($query)
     {
-        return $query->whereNotNull('email_verified_at');
+        return $query->whereNotNull('email_verified_at')->orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC');
     }
 
     public function scopeUnverified($query)
     {
-        return $query->whereNull('email_verified_at');
+        return $query->whereNull('email_verified_at')->orderBy('last_name', 'ASC')->orderBy('first_name', 'ASC');
     }
 
     /* relationships */
