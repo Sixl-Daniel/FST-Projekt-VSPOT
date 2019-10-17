@@ -139,13 +139,13 @@ return [
         ],
         [
             'text' => 'Devices',
-            'url' => 'admin/devices',
+            'url' => 'devices',
             'icon' => 'fas fa-fw fa-desktop',
             'can'  => 'manage-signage',
         ],
         [
             'text' => 'Channels',
-            'url' => 'admin/channels',
+            'url' => 'channels',
             'icon' => 'fas fa-fw fa-project-diagram',
             'can'  => 'manage-signage',
         ],

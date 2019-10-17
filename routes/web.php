@@ -41,10 +41,8 @@ Route::group(['middleware' => ['verified']], function () {
 
     // gate: manage signage
     Route::middleware('can:manage-signage')->group(function () {
-        // ns \Signage & prefix /signage
-        Route::namespace('Signage')->name('signage.')->prefix('signage')->group(function () {
-            //
-        });
+        Route::resource('devices', 'DeviceController', ['except' => ['show']]);
+        Route::resource('channels', 'ChannelController', ['except' => ['show']]);
     });
 
     // gate: run tests

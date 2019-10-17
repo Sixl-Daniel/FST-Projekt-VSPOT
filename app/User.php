@@ -123,11 +123,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->whereNull('email_verified_at');
     }
 
-    /* relations */
+    /* relationships */
 
     public function roles ()
     {
         return $this->belongsToMany('App\Role');
+    }
+
+    public function devices ()
+    {
+        return $this->hasMany('App\Device');
     }
 
 }

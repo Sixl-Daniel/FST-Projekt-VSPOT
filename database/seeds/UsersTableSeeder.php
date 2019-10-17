@@ -1,7 +1,12 @@
 <?php
 
+use App\Channel;
+use App\Device;
+use App\Element;
+use App\Layout;
 use App\Role;
 use App\User;
+use App\Screen;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +23,9 @@ class UsersTableSeeder extends Seeder
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
-        // fetch user roles
+        /*
+         * fetch user roles
+         */
 
         $superadminRole = Role::whereName('Superadmin')->first();
         $adminRole = Role::whereName('Admin')->first();
@@ -27,7 +34,17 @@ class UsersTableSeeder extends Seeder
         $testerRole = Role::whereName('Tester')->first();
         $dummyRole = Role::whereName('Dummy')->first();
 
-        // create initial users from .env
+        /*
+         * fetch layouts
+         */
+
+        $demoLayout = Layout::whereName('Demo')->first();
+        $basicLayout = Layout::whereName('Basic')->first();
+
+
+        /*
+         * create initial superadmin from .env
+         */
 
         $superadmin = new User();
             $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
@@ -38,6 +55,60 @@ class UsersTableSeeder extends Seeder
             $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
         $superadmin->save();
         $superadmin->roles()->attach($superadminRole);
+
+        // create a demo channel
+        $channelDemo = new Channel();
+        $channelDemo->name = "Demo-Channel Uno";
+        $channelDemo->description = "Erster Channel für eine kleine Demonstration";
+
+        $channelDemo->save();
+
+        // create a standard device
+
+        $deviceMonitor1 = new Device();
+        $deviceMonitor1->name = 'Monitor_1';
+        $deviceMonitor1->description = 'Samsung SyncMaster 2253BW';
+        $deviceMonitor1->location = 'Mobiler Testmonitor mit Raspberry Pi "Gamma"';
+        $deviceMonitor1->user()->associate($superadmin);
+        $deviceMonitor1->channel()->associate($channelDemo);
+
+        $deviceMonitor1->save();
+
+        // now make some screens with a layout for that channel
+
+        $screen1 = new Screen();
+        $screen1->name = "Intro";
+        $screen1->description = "Der allererste Screen";
+        $screen1->background_color = "#000000";
+        $screen1->text_color = "#FFFFFF";
+        $screen1->heading = "Intro";
+        $screen1->layout()->associate($demoLayout);
+        $screen1->channel()->associate($channelDemo);
+
+        $screen1->save();
+
+        $screen2 = new Screen();
+        $screen2->name = "Hello";
+        $screen2->description = "Der zweite Screen";
+        $screen2->background_color = "#FFFFFF";
+        $screen2->text_color = "#000000";
+        $screen2->heading = "Hallo";
+        $screen2->subheading = "Es funktioniert";
+        $screen2->layout()->associate($basicLayout);
+        $screen2->channel()->associate($channelDemo);
+
+        $screen2->save();
+
+
+
+
+        //$channelDemo->devices()->saveMany([$deviceMonitor1]);
+        //$superadmin->devices()->saveMany([$deviceMonitor1]);
+        //$channelDemo->screens()->saveMany([$screen1, $screen2]);
+
+        /*
+         * create other initial users from .env
+         */
 
         $user1 = new User();
             $user1->username = env('INITIAL_USER_USERNAME_1');
@@ -70,7 +141,7 @@ class UsersTableSeeder extends Seeder
         $user3->roles()->attach($testerRole);
         $user3->roles()->attach($inspectorRole);
 
-        // generate dummy users
+        // generate some dummy users
 
         factory(App\User::class, 16)->create()->each(function($user) use ($dummyRole) {
             $user->roles()->attach($dummyRole);
