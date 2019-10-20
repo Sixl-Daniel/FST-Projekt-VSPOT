@@ -131,6 +131,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'channel_id' => [
+            'exists' => 'Dieser Channel existiert nicht.',
+        ],
     ],
 
     /*

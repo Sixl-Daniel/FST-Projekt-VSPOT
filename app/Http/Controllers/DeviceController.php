@@ -101,7 +101,10 @@ class DeviceController extends Controller
     {
         try
         {
+            $channels = auth()->user()->channels()->orderBy('name','asc')->pluck('name', 'id');
+            $channels['0'] = 'Ohne Channel';
             return view('backend.signage.devices.edit')
+                ->with('channels', $channels)
                 ->with('device', $device);
         }
         catch(Exception $e)
@@ -127,12 +130,20 @@ class DeviceController extends Controller
                 'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,'.$device->id,
                 'product_reference' => 'nullable | string | max:32',
                 'location' => 'nullable | string | max:32',
-                'description' => 'nullable | string | max:64'
+                'description' => 'nullable | string | max:64',
+                'channel_id' => 'nullable | exists:channels,id'
             ]
         );
         // update and save
         try
         {
+            $channelId = $request->channel;
+            if($channelId === 0) {
+                $device->channel()->associate(null);
+            } else {
+                $newChannel = auth()->user()->channels()->find($channelId);
+                $device->channel()->associate($newChannel);
+            }
             $device->fill($request->all())->save();
             return redirect()->route('devices.index')->with('flash-success', "Das Gerät $device->display_name wurde aktualisiert.");
         }

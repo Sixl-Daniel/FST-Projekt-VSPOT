@@ -15,8 +15,10 @@
                     <li class="list-group-item">
                         <p><b>Kennzeichnung:</b> {{ $device->product_name ?? 'keine Kennzeichnung' }}</p>
                     </li>
+                    <li class="list-group-item">
+                        <p><b>Channel:</b> <span class="text-bold text-primary {{ $device->channel->name ?? 'text-danger' }}">{{ $device->channel->name ?? 'kein Channel aufgeschaltet' }}</span></p>
+                    </li>
                 </ul>
-
                 <div class="panel-footer text-right">
                     <form class="inline-form" action="{{ route('devices.destroy', $device->id) }}" method="post">
                         @csrf
