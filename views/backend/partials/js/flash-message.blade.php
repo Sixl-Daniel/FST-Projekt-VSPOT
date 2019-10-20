@@ -3,7 +3,7 @@
     const Flash = Swal.mixin({
         showConfirmButton: false,
         timer: 4000,
-        backdrop: '#ffffff'
+        backdrop: 'rgba(34,45,50,0.95)'
     })
 
     @if ($message = Session::get('flash'))
