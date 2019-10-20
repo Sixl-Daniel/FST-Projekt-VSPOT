@@ -64,7 +64,7 @@ class DeviceController extends Controller
                 'description' => 'nullable | string | max:64'
             ]
         );
-        // update and save
+        // save
         try
         {
             $device = new Device();
@@ -75,7 +75,7 @@ class DeviceController extends Controller
         }
         catch(ModelNotFoundException $e)
         {
-            Log::error('Fehler in "UsersController@update"!');
+            Log::error('Fehler in "DeviceController@store"!');
             return back()->with('flash-error', "Das neue Gerät konnte wegen eines Fehlers nicht angelegt werden.");
         }
     }
@@ -88,7 +88,7 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        //
+        return redirect()->route('devices.index');
     }
 
     /**
