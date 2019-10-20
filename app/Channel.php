@@ -7,7 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
 
+    protected $fillable = [
+        'name', 'description'
+    ];
+
     // relationships
+
+    /**
+     * Get the user that owns the channel.
+     */
+    public function user ()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     /**
      * Get the devices of the channel.

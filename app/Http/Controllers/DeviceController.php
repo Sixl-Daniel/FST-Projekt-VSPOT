@@ -124,7 +124,7 @@ class DeviceController extends Controller
         $this->validate(
             $request,
             [
-                'display_name' => 'required | alpha_dash | max:32 | unique:devices',
+                'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,'.$device->id,
                 'product_reference' => 'nullable | string | max:32',
                 'location' => 'nullable | string | max:32',
                 'description' => 'nullable | string | max:64'
@@ -152,10 +152,10 @@ class DeviceController extends Controller
     public function destroy(Device $device)
     {
 
-        if(auth()->user()->devices()->count() < 2)
-        {
-            return back()->with('flash-error', 'Das letzte verbleibende Gerät darf nicht gelöscht werden.');
-        }
+//        if(auth()->user()->devices()->count() < 2)
+//        {
+//            return back()->with('flash-error', 'Das letzte verbleibende Gerät darf nicht gelöscht werden.');
+//        }
 
         try {
             $device->delete();

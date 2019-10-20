@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
         $channelDemo = new Channel();
         $channelDemo->name = "Demo-Channel Uno";
         $channelDemo->description = "Erster Channel für eine kleine Demonstration";
-
+        $channelDemo->user()->associate($superadmin);
         $channelDemo->save();
 
         // create a standard device
@@ -100,7 +100,6 @@ class UsersTableSeeder extends Seeder
         $screen1->heading = "Intro";
         $screen1->layout()->associate($demoLayout);
         $screen1->channel()->associate($channelDemo);
-
         $screen1->save();
 
         $screen2 = new Screen();
@@ -108,13 +107,22 @@ class UsersTableSeeder extends Seeder
         $screen2->description = "Der zweite Screen";
         $screen2->background_color = "#FFFFFF";
         $screen2->text_color = "#000000";
-        $screen2->heading = "Hallo";
-        $screen2->subheading = "Es funktioniert";
+        $screen2->heading = "2: Hallo";
+        $screen2->subheading = "Unterüberschrift";
         $screen2->layout()->associate($basicLayout);
         $screen2->channel()->associate($channelDemo);
-
         $screen2->save();
 
+        $screen3 = new Screen();
+        $screen3->name = "Hello";
+        $screen3->description = "Der dritte Screen";
+        $screen3->background_color = "#FFFFFF";
+        $screen3->text_color = "#000000";
+        $screen3->heading = "3: Hallo";
+        $screen3->subheading = "Unterüberschrift";
+        $screen3->layout()->associate($basicLayout);
+        $screen3->channel()->associate($channelDemo);
+        $screen3->save();
 
 
         /*

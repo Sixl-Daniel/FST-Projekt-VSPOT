@@ -158,9 +158,22 @@ return [
         ],
         [
             'text' => 'Channels',
-            'url' => 'channels',
             'icon' => 'fas fa-fw fa-project-diagram',
             'can'  => 'manage-signage',
+            'submenu' => [
+                [
+                    'text' => 'Channelliste',
+                    'url' => 'channels',
+                    'icon' => 'fas fa-fw fa-clipboard-list',
+                    'active' => ['channels', 'channels/?page=*'],
+                ],
+                [
+                    'text' => 'Neuer Channel',
+                    'url' => 'channels/create',
+                    'icon' => 'fas fa-fw fa-plus-square',
+                    'active' => ['channels/create'],
+                ],
+            ],
         ],
         [
             'header' => 'Administration',
