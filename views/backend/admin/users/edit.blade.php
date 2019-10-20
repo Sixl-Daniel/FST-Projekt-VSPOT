@@ -56,7 +56,7 @@
                                 'class' => 'roles-select-multiple js-enhanced-select'
                             ]) }}
                             @if($errors->has('roles'))
-                                <span class="help-block"><strong>{{ $errors->first($name) }}</strong></span>
+                                <span class="help-block"><strong>{{ $errors->first('roles') }}</strong></span>
                             @endif
                         </div>
                     </div>
