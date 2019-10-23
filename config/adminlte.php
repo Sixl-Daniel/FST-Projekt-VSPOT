@@ -146,7 +146,7 @@ return [
                     'text' => 'Geräteliste',
                     'url' => 'devices',
                     'icon' => 'fas fa-fw fa-clipboard-list',
-                    'active' => ['devices', 'devices/*', 'devices/?page=*'],
+                    'active' => ['devices', 'devices/?page=*', 'devices/*/edit'],
                 ],
                 [
                     'text' => 'Neues Gerät',
@@ -165,7 +165,7 @@ return [
                     'text' => 'Channelliste',
                     'url' => 'channels',
                     'icon' => 'fas fa-fw fa-clipboard-list',
-                    'active' => ['channels', 'channels/*', 'channels/?page=*'],
+                    'active' => ['channels', 'channels/?page=*', 'channels/*/screens', 'channels/*/screens/create', 'channels/*/screens/*/edit'],
                 ],
                 [
                     'text' => 'Neuer Channel',

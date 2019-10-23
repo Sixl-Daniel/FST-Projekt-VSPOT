@@ -32,10 +32,10 @@
                         <div class="form-group{{ $errors->has('channel') ? ' has-error' : '' }}">
                             <label for="user-role-select">Channel</label>
                             {{ Form::select('channel', $channels, $device->channel->id ?? 0, [
-                                'id' => 'user-role-select',
+                                'id' => 'device-channel-select',
                                 'multiple' => false,
                                 'style' => 'visibility: hidden;',
-                                'class' => 'channel-select-single js-enhanced-select'
+                                'class' => 'js-enhanced-select'
                             ]) }}
                             @if($errors->has('channel'))
                                 <span class="help-block"><strong>{{ $errors->first('channel') }}</strong></span>
@@ -54,11 +54,10 @@
 </div>
 @stop
 
-@section('adminlte_js')
-    <script>
-        jQuery(document).ready(function($) {
-            $('.channel-select-single').select2({width: '100%'});
-        });
-    </script>
+@section('js')
+<script>
+    jQuery(document).ready(function($) {
+        $('#device-channel-select').select2({width: '100%'});
+    });
+</script>
 @endsection
-

@@ -43,6 +43,7 @@ Route::group(['middleware' => ['verified']], function () {
     Route::middleware('can:manage-signage')->group(function () {
         Route::resource('devices', 'DeviceController', ['except' => ['show']]);
         Route::resource('channels', 'ChannelController', ['except' => ['show']]);
+        Route::resource('channels.screens', 'ScreenController', ['except' => ['show']]);
     });
 
     // gate: run tests
@@ -57,7 +58,6 @@ Route::group(['middleware' => ['verified']], function () {
                 Route::get('link', 'TestQRCodeController@link')->name('test-qr-link');
                 Route::get('phone', 'TestQRCodeController@phone')->name('test-qr-phone');
             });
-
         });
     });
 

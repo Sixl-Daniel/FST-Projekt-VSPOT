@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Screen extends Model
 {
 
+    protected $fillable = [
+        'name', 'description'
+    ];
+
     // relationships
 
     /**

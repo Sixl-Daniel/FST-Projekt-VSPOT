@@ -13,7 +13,7 @@
                         <p><b>Location:</b> {{ $device->location ?? 'kein Ort angegeben' }}</p>
                     </li>
                     <li class="list-group-item">
-                        <p><b>Kennzeichnung:</b> {{ $device->product_name ?? 'keine Kennzeichnung' }}</p>
+                        <p><b>Kennzeichnung:</b> {{ $device->product_reference ?? 'keine Kennzeichnung' }}</p>
                     </li>
                     <li class="list-group-item">
                         <p><b>Channel:</b> <span class="text-bold text-primary {{ $device->channel->name ?? 'text-danger' }}">{{ $device->channel->name ?? 'kein Channel aufgeschaltet' }}</span></p>
@@ -37,7 +37,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default panel--user-empty">
             <div class="panel-body text-center">
-                <p class="text-muted">Es sind keine Geräte für diese Ansicht vorhanden.</p>
+                <p class="text-muted">Es sind keine Geräte vorhanden.</p>
             </div>
         </div>
     </div>

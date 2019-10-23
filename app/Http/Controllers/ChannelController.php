@@ -24,7 +24,7 @@ class ChannelController extends Controller
         catch(ModelNotFoundException $e)
         {
             Log::error('Fehler in "ChannelController@index"!');
-            return back()->with('flash-error', "Die Channels des Benutzers können wegen eines Fehlers nicht angezeigt werden.");
+            return back()->with('flash-error', "Die Channels konnten wegen eines Fehlers nicht angezeigt werden.");
         }
     }
 

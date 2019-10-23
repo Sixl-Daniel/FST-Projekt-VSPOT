@@ -35,14 +35,6 @@ class UsersTableSeeder extends Seeder
         $dummyRole = Role::whereName('Dummy')->first();
 
         /*
-         * fetch layouts
-         */
-
-        $demoLayout = Layout::whereName('Demo')->first();
-        $basicLayout = Layout::whereName('Basic')->first();
-
-
-        /*
          * create initial superadmin from .env
          */
 
@@ -55,75 +47,6 @@ class UsersTableSeeder extends Seeder
             $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
         $superadmin->save();
         $superadmin->roles()->attach($superadminRole);
-
-        // create a demo channel
-        $channelDemo = new Channel();
-        $channelDemo->name = "Demo-Channel Uno";
-        $channelDemo->description = "Erster Channel für eine kleine Demonstration";
-        $channelDemo->user()->associate($superadmin);
-        $channelDemo->save();
-
-        // create a standard device
-
-        $deviceMonitor1 = new Device();
-        $deviceMonitor1->display_name = 'Monitor_1';
-        $deviceMonitor1->description = 'Mobiler Testmonitor mit Raspberry Pi "Gamma"';
-        $deviceMonitor1->product_reference = 'Samsung SyncMaster 2253BW';
-        $deviceMonitor1->location = 'Wohnzimmer';
-        $deviceMonitor1->user()->associate($superadmin);
-        $deviceMonitor1->channel()->associate($channelDemo);
-        $deviceMonitor1->save();
-
-        $deviceMonitor2 = new Device();
-        $deviceMonitor2->display_name = 'Monitor_2';
-        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Delta"';
-        $deviceMonitor2->product_reference = 'HP Envy 27';
-        $deviceMonitor2->location = 'Wohnzimmer';
-        $deviceMonitor2->user()->associate($superadmin);
-        $deviceMonitor2->channel()->associate($channelDemo);
-        $deviceMonitor2->save();
-
-        $deviceMonitor3 = new Device();
-        $deviceMonitor3->display_name = 'Monitor_3';
-        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Epsilon"';
-        $deviceMonitor3->user()->associate($superadmin);
-        $deviceMonitor3->channel()->associate($channelDemo);
-        $deviceMonitor3->save();
-
-        // now make some screens with a layout for that channel
-
-        $screen1 = new Screen();
-        $screen1->name = "Intro";
-        $screen1->description = "Der allererste Screen";
-        $screen1->background_color = "#000000";
-        $screen1->text_color = "#FFFFFF";
-        $screen1->heading = "Intro";
-        $screen1->layout()->associate($demoLayout);
-        $screen1->channel()->associate($channelDemo);
-        $screen1->save();
-
-        $screen2 = new Screen();
-        $screen2->name = "Hello";
-        $screen2->description = "Der zweite Screen";
-        $screen2->background_color = "#FFFFFF";
-        $screen2->text_color = "#000000";
-        $screen2->heading = "2: Hallo";
-        $screen2->subheading = "Unterüberschrift";
-        $screen2->layout()->associate($basicLayout);
-        $screen2->channel()->associate($channelDemo);
-        $screen2->save();
-
-        $screen3 = new Screen();
-        $screen3->name = "Hello";
-        $screen3->description = "Der dritte Screen";
-        $screen3->background_color = "#FFFFFF";
-        $screen3->text_color = "#000000";
-        $screen3->heading = "3: Hallo";
-        $screen3->subheading = "Unterüberschrift";
-        $screen3->layout()->associate($basicLayout);
-        $screen3->channel()->associate($channelDemo);
-        $screen3->save();
-
 
         /*
          * create other initial users from .env
@@ -167,6 +90,96 @@ class UsersTableSeeder extends Seeder
 
         // generate some unverified dummy users
         factory(App\User::class, 8)->create(['email_verified_at'=>null]);
+
+
+        /*
+         * generate demo content
+         */
+
+        // fetch layouts
+        $demoLayout = Layout::whereName('Demo')->first();
+        $basicLayout = Layout::whereName('Basic')->first();
+
+        // create a demo channel
+        $channelDemo1 = new Channel();
+        $channelDemo1->name = "Kanal-1";
+        $channelDemo1->description = "Erster Channel für eine kleine Demonstration";
+        $channelDemo1->user()->associate($superadmin);
+        $channelDemo1->save();
+
+        $channelDemo2 = new Channel();
+        $channelDemo2->name = "Kanal-2";
+        $channelDemo2->description = "Zweiter Channel für eine kleine Demonstration";
+        $channelDemo2->user()->associate($superadmin);
+        $channelDemo2->save();
+
+        $channelDemo3 = new Channel();
+        $channelDemo3->name = "Kanal-3";
+        $channelDemo3->description = "Dritter Channel für eine kleine Demonstration";
+        $channelDemo3->user()->associate($superadmin);
+        $channelDemo3->save();
+
+        // create a standard device
+
+        $deviceMonitor1 = new Device();
+        $deviceMonitor1->display_name = 'Monitor_1';
+        $deviceMonitor1->description = 'Mobiler Testmonitor mit Raspberry Pi "Gamma"';
+        $deviceMonitor1->product_reference = 'Samsung SyncMaster 2253BW';
+        $deviceMonitor1->location = 'Wohnzimmer';
+        $deviceMonitor1->user()->associate($superadmin);
+        $deviceMonitor1->channel()->associate($channelDemo1);
+        $deviceMonitor1->save();
+
+        $deviceMonitor2 = new Device();
+        $deviceMonitor2->display_name = 'Monitor_2';
+        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Delta"';
+        $deviceMonitor2->product_reference = 'HP Envy 27';
+        $deviceMonitor2->location = 'Wohnzimmer';
+        $deviceMonitor2->user()->associate($superadmin);
+        $deviceMonitor2->channel()->associate($channelDemo1);
+        $deviceMonitor2->save();
+
+        $deviceMonitor3 = new Device();
+        $deviceMonitor3->display_name = 'Monitor_3';
+        $deviceMonitor2->description = 'Mobiler Testmonitor mit Raspberry Pi "Epsilon"';
+        $deviceMonitor3->user()->associate($superadmin);
+        $deviceMonitor3->channel()->associate($channelDemo1);
+        $deviceMonitor3->save();
+
+        // now make some screens with a layout for that channel
+
+        $screen1 = new Screen();
+        $screen1->name = "Intro";
+        $screen1->description = "Der allererste Screen";
+        $screen1->background_color = "#000000";
+        $screen1->text_color = "#FFFFFF";
+        $screen1->heading = "Intro";
+        $screen1->layout()->associate($demoLayout);
+        $screen1->channel()->associate($channelDemo1);
+        $screen1->save();
+
+        $screen2 = new Screen();
+        $screen2->name = "Hello";
+        $screen2->description = "Der zweite Screen";
+        $screen2->background_color = "#FFFFFF";
+        $screen2->text_color = "#000000";
+        $screen2->heading = "2: Hallo";
+        $screen2->subheading = "Unterüberschrift";
+        $screen2->layout()->associate($basicLayout);
+        $screen2->channel()->associate($channelDemo1);
+        $screen2->save();
+
+        $screen3 = new Screen();
+        $screen3->name = "Hello";
+        $screen3->description = "Der dritte Screen";
+        $screen3->background_color = "#FFFFFF";
+        $screen3->text_color = "#000000";
+        $screen3->heading = "3: Hallo";
+        $screen3->subheading = "Unterüberschrift";
+        $screen3->layout()->associate($basicLayout);
+        $screen3->channel()->associate($channelDemo1);
+        $screen3->channel()->associate($channelDemo2);
+        $screen3->save();
 
     }
 }

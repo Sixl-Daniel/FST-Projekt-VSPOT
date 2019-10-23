@@ -53,7 +53,7 @@
                                 'id' => 'user-role-select',
                                 'multiple' => true,
                                 'style' => 'visibility: hidden;',
-                                'class' => 'roles-select-multiple js-enhanced-select'
+                                'class' => 'js-enhanced-select'
                             ]) }}
                             @if($errors->has('roles'))
                                 <span class="help-block"><strong>{{ $errors->first('roles') }}</strong></span>
@@ -73,10 +73,10 @@
 </div>
 @stop
 
-@section('adminlte_js')
-    <script>
+@section('js')
+<script>
     jQuery(document).ready(function($) {
-        $('.roles-select-multiple').select2({width: '100%'});
+        $('#user-role-select').select2({width: '100%'});
     });
-    </script>
+</script>
 @endsection
