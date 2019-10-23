@@ -12131,6 +12131,14 @@ main {
   background-color: rgba(0, 0, 0, 0.85);
   color: #FFF;
   text-align: center;
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
 }
 
 .cookie-consent__message {
