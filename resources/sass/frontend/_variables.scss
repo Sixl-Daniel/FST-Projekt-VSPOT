@@ -3,7 +3,7 @@ $a-tags: 'a, a:active, a:hover, a:visited';
 $a-tags-hover: 'a:active, a:hover';
 
 // Body
-$body-bg: #FFF;
+$body-bg: #ffffff;
 $body-color: #333;
 
 // Typography
@@ -14,13 +14,13 @@ $line-height-base: 1.6;
 // Colors Theme
 $unobtrusive: rgba(0, 0, 0, 0.2);
 
-$color_paradiso: #508484;
-$color_montana: #393d3f;
-$color_mexican_red: #9a3c3c;
-$color_tangerine: #f18f01;
-$color_sapphire: #0b3954;
-$color_sea_nymph:  #92B6B1;
+$color_b: #000000;
+$color_b_transparent: rgba(0, 0, 0, 0.85);
+$color_w: #ffffff;
+
+
+$color_primary: #c70038;
 
 $theme-colors: (
-    "primary": $color_mexican_red
+    "primary": $color_primary
 );

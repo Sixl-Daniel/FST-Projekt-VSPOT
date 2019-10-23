@@ -1,1 +1,44 @@
 @import "~izitoast/dist/css/iziToast.css";
+
+.cookie-consent {
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    background-color: $color_b_transparent;
+    color: #FFF;
+    text-align: center;
+
+    &__message {
+        line-height: 1;
+        margin: 0 0 2rem 0;
+    }
+
+    &__agree {
+        border: none;
+        padding: 1em 2em 1em;
+        line-height: 1;
+        border-radius: 3px;
+        background-color: $color_primary;
+        color: $color_w;
+    }
+
+}
+
+@media screen and (min-width : 768px) {
+
+    .cookie-consent {
+        flex-direction: row;
+        text-align: left;
+        &__message {
+            margin: 0 3rem 0 0;
+        }
+    }
+
+}

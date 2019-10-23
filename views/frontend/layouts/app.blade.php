@@ -29,5 +29,7 @@
     @stack('js-bottom')
 
     @include('frontend.partials.js.flash-message')
+
+    @include('cookieConsent::index')
 </body>
 </html>
