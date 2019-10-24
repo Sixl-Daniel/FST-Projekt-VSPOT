@@ -109,17 +109,14 @@ class ScreenController extends Controller
     public function edit($channel_id, Screen $screen)
     {
         try {
-
-            $formFragmentPath = 'backend.signage.screens._form_';
-            $formFragmentDefault = $formFragmentPath . 'default';
-            $formFragment = $formFragmentPath . $screen->layout->name;
+            $layoutName = lcfirst($screen->layout->name);
+            $layoutConfig = config('vspot.screens');
+            $screenConfig = array_key_exists($layoutName, $layoutConfig) ? $layoutConfig[$layoutName] : [];
             $layouts = Layout::all()->pluck('name', 'id');
-
             return view('backend.signage.screens.edit')
                 ->with('channel_id', $channel_id)
                 ->with('layouts', $layouts)
-                ->with('formFragmentDefault', $formFragmentDefault)
-                ->with('formFragment', $formFragment)
+                ->with('screenConfig', $screenConfig)
                 ->with('screen', $screen);
         }
         catch(Exception $e)

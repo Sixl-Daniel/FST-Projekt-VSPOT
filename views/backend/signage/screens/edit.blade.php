@@ -9,10 +9,6 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-
-{{--        {{ $content['db'] }}--}}
-{{--        {{ $content['model'] }}--}}
-
         {!! Form::model($screen, [
             'method' => 'patch',
             'route' => ['channels.screens.update', $channel_id, $screen]
@@ -40,7 +36,8 @@
                     <div class="col-xs-12 col-md-12 col-lg-6">
                         {{ Form::vspotText('description', 'Beschreibung') }}
                     </div>
-                    @includeFirst([$formFragment, $formFragmentDefault])
+                    {{-- @includeFirst([$formFragment, $formFragmentDefault])--}}
+                    @include('backend.signage.screens._form_elements_config')
                 </div>
             </div>
             <div class="panel-footer text-right">
