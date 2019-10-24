@@ -1,7 +1,7 @@
 @if ($screens->isNotEmpty())
     <div class="row">
         @foreach($screens as $screen)
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6">
                 <div class="panel panel-default panel--channel">
                     <div class="panel-heading"><h2>{{ $screen->name }} <small>mit {{ $screen->layout->name }} Layout</small></h2></div>
                     <div class="panel-body">

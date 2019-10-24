@@ -14,7 +14,7 @@ Route::view('impressum', 'frontend.pages.secondary.impressum')->name('impressum'
 Route::view('datenschutz', 'frontend.pages.secondary.datenschutz')->name('datenschutz');
 
 // PUBLIC TESTING
-Route::get('api/demo', 'Test\JsonDemoController@index')->name('json-demo');
+Route::get('api/demo', 'Test\JsonDemoController@index')->name('demo.api.json');
 
 // VERIFIED USERS
 
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['verified']], function () {
         // ns \Admin & prefix /admin
         Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
             Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
-            Route::get('registrations', 'UsersController@indexRegistrations')->name('unverified-users');
+            Route::get('registrations', 'UsersController@indexRegistrations')->name('users.unverified');
         });
     });
 
@@ -44,6 +44,9 @@ Route::group(['middleware' => ['verified']], function () {
         Route::resource('devices', 'DeviceController', ['except' => ['show']]);
         Route::resource('channels', 'ChannelController', ['except' => ['show']]);
         Route::resource('channels.screens', 'ScreenController', ['except' => ['show']]);
+        // custom routes for screen content types
+        Route::get('channels/{channel}/screens/{screen}/content/edit', 'ScreenController@editContent')->name('channels.screens.content.edit');
+        Route::get('channels/{channel}/screens/{screen}/content/update', 'ScreenController@updateContent')->name('channels.screens.content.update');
     });
 
     // gate: run tests

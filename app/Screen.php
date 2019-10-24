@@ -8,7 +8,8 @@ class Screen extends Model
 {
 
     protected $fillable = [
-        'name', 'description'
+        'name', 'description',
+        'background_color', 'text_color', 'bg_img_cdn_link', 'bg_img_opacity', 'overlay_color', 'heading', 'subheading', 'html_block'
     ];
 
     // relationships

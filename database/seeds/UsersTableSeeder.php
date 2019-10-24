@@ -150,32 +150,32 @@ class UsersTableSeeder extends Seeder
 
         $screen1 = new Screen();
         $screen1->name = "Intro";
-        $screen1->description = "Der allererste Screen";
+        $screen1->description = "Erster Screen";
         $screen1->background_color = "#000000";
         $screen1->text_color = "#FFFFFF";
-        $screen1->heading = "Intro";
+        $screen1->heading = "Willkommen";
         $screen1->layout()->associate($demoLayout);
         $screen1->channel()->associate($channelDemo1);
         $screen1->save();
 
         $screen2 = new Screen();
-        $screen2->name = "Hello";
-        $screen2->description = "Der zweite Screen";
+        $screen2->name = "Slide-1";
+        $screen2->description = "Zweiter Screen";
         $screen2->background_color = "#FFFFFF";
         $screen2->text_color = "#000000";
-        $screen2->heading = "2: Hallo";
-        $screen2->subheading = "Unterüberschrift";
+        $screen2->heading = "VSPOT";
+        $screen2->subheading = "Digital Signage Solution";
         $screen2->layout()->associate($basicLayout);
         $screen2->channel()->associate($channelDemo1);
         $screen2->save();
 
         $screen3 = new Screen();
-        $screen3->name = "Hello";
-        $screen3->description = "Der dritte Screen";
+        $screen3->name = "Slide-2";
+        $screen3->description = "Dritter Screen";
         $screen3->background_color = "#FFFFFF";
         $screen3->text_color = "#000000";
-        $screen3->heading = "3: Hallo";
-        $screen3->subheading = "Unterüberschrift";
+        $screen3->heading = "Autoren";
+        $screen3->subheading = "Stefan Süß & Daniel Sixl";
         $screen3->layout()->associate($basicLayout);
         $screen3->channel()->associate($channelDemo1);
         $screen3->channel()->associate($channelDemo2);
