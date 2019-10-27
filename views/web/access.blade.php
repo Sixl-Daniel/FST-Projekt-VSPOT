@@ -61,7 +61,7 @@ Kanal: {{ $channel->name }}
         @else
             @forelse ($screens as $screen)
                 <article class="swiper-slide swiper-slide-{{ $loop->iteration }}">
-                    @includeFirst(['web._layout_'.$screen->layout->name, 'web._layout_missing'])
+                    @includeFirst(['web.screentype.'.$screen->layout->name, 'web._layout_missing'])
                 </article>
             @empty
                 <article class="swiper-slide">

@@ -9,7 +9,7 @@
 @stack('top_scripts')
 @yield('top_info')
 @section('top_css')
-@include('web._base_css')
+@include('web.includes.base_css')
 @show
 </head>
 <body class="fadeIn">
