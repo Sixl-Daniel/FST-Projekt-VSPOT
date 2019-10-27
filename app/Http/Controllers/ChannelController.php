@@ -122,7 +122,10 @@ class ChannelController extends Controller
             $request,
             [
                 'name' => 'required | alpha_dash | max:32 | unique:channels,name,'.$channel->id,
-                'description' => 'nullable | string | max:64'
+                'description' => 'nullable | string | max:64',
+                'display_time' => 'integer | between:500,30000',
+                'transition_time' => 'integer | between:50,3000',
+                'refresh_time' => 'integer | between:1,300'
             ]
         );
         // update and save

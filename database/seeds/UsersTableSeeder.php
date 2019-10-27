@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
             $superadmin->email = env('INITIAL_SUPERADMIN_EMAIL');
             $superadmin->email_verified_at = $now;
             $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
-            $superadmin->api_token = Str::random(60);
+            $superadmin->api_token = env('INITIAL_SUPERADMIN_API_TOKEN');
         $superadmin->save();
         $superadmin->roles()->attach($superadminRole);
 
@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
             $user1->email = env('INITIAL_USER_EMAIL_1');
             $user1->email_verified_at = $now;
             $user1->password = Hash::make(env('INITIAL_USER_PASSWORD_1'));
-            $user1->api_token = Str::random(60);
+            $user1->api_token = env('INITIAL_USER_API_TOKEN_1');
         $user1->save();
         $user1->roles()->attach($adminRole);
 
@@ -71,7 +71,7 @@ class UsersTableSeeder extends Seeder
             $user2->email = env('INITIAL_USER_EMAIL_2');
             $user2->email_verified_at = $now;
             $user2->password = Hash::make(env('INITIAL_USER_PASSWORD_2'));
-            $user2->api_token = Str::random(60);
+            $user2->api_token = env('INITIAL_USER_API_TOKEN_2');
         $user2->save();
         $user2->roles()->attach($userRole);
 
@@ -82,7 +82,7 @@ class UsersTableSeeder extends Seeder
             $user3->email = env('INITIAL_USER_EMAIL_3');
             $user3->email_verified_at = $now;
             $user3->password = Hash::make(env('INITIAL_USER_PASSWORD_3'));
-            $user3->api_token = Str::random(60);
+            $user3->api_token = env('INITIAL_USER_API_TOKEN_3');
         $user3->save();
         $user3->roles()->attach($testerRole);
         $user3->roles()->attach($inspectorRole);
@@ -101,7 +101,7 @@ class UsersTableSeeder extends Seeder
          */
 
         // fetch layouts
-        $demoLayout = Layout::whereName('Demo')->first();
+        $testLayout = Layout::whereName('Test')->first();
         $basicLayout = Layout::whereName('Basic')->first();
 
         // create a demo channel
@@ -122,6 +122,20 @@ class UsersTableSeeder extends Seeder
         $channelDemo3->description = "Dritter Channel für eine kleine Demonstration";
         $channelDemo3->user()->associate($superadmin);
         $channelDemo3->save();
+
+        $channelDemo4 = new Channel();
+        $channelDemo4->name = "Kanal-4";
+        $channelDemo4->description = "Vierter Channel für eine kleine Demonstration";
+        $channelDemo4->user()->associate($superadmin);
+        $channelDemo4->save();
+
+
+        $channelDemo5 = new Channel();
+        $channelDemo5->name = "Testkanal";
+        $channelDemo5->description = "Ausgabe eines Testbildschirms mit Informationen";
+        $channelDemo5->user()->associate($superadmin);
+        $channelDemo5->save();
+
 
         // create a standard device
 
@@ -152,38 +166,119 @@ class UsersTableSeeder extends Seeder
 
         // now make some screens with a layout for that channel
 
-        $screen1 = new Screen();
-        $screen1->name = "Intro";
-        $screen1->description = "Erster Screen";
-        $screen1->background_color = "#000000";
-        $screen1->text_color = "#FFFFFF";
-        $screen1->heading = "Willkommen";
-        $screen1->layout()->associate($demoLayout);
-        $screen1->channel()->associate($channelDemo1);
-        $screen1->save();
+        $screen_1_1 = new Screen();
+        $screen_1_1->name = "Intro";
+        $screen_1_1->description = "Zeigt die Nummer des Kanals an";
+        $screen_1_1->background_color = "#000000";
+        $screen_1_1->text_color = "#FFFFFF";
+        $screen_1_1->heading = "Kanal 1";
+        $screen_1_1->layout()->associate($basicLayout);
+        $screen_1_1->channel()->associate($channelDemo1);
+        $screen_1_1->save();
 
-        $screen2 = new Screen();
-        $screen2->name = "Slide-1";
-        $screen2->description = "Zweiter Screen";
-        $screen2->background_color = "#FFFFFF";
-        $screen2->text_color = "#000000";
-        $screen2->heading = "VSPOT";
-        $screen2->subheading = "Digital Signage Solution";
-        $screen2->layout()->associate($basicLayout);
-        $screen2->channel()->associate($channelDemo1);
-        $screen2->save();
+        $screen_1_2 = new Screen();
+        $screen_1_2->name = "Projektname";
+        $screen_1_2->description = "Zeigt zweizeilig das Branding";
+        $screen_1_2->background_color = "#FFFFFF";
+        $screen_1_2->text_color = "#000000";
+        $screen_1_2->heading = "VSPOT";
+        $screen_1_2->subheading = "Digital Signage Solution";
+        $screen_1_2->layout()->associate($basicLayout);
+        $screen_1_2->channel()->associate($channelDemo1);
+        $screen_1_2->save();
 
-        $screen3 = new Screen();
-        $screen3->name = "Slide-2";
-        $screen3->description = "Dritter Screen";
-        $screen3->background_color = "#FFFFFF";
-        $screen3->text_color = "#000000";
-        $screen3->heading = "Autoren";
-        $screen3->subheading = "Stefan Süß & Daniel Sixl";
-        $screen3->layout()->associate($basicLayout);
-        $screen3->channel()->associate($channelDemo1);
-        $screen3->channel()->associate($channelDemo2);
-        $screen3->save();
+        $screen_1_3 = new Screen();
+        $screen_1_3->name = "Autoren";
+        $screen_1_3->description = "Zeigt Daniel Sixl und Stefan Süß";
+        $screen_1_3->background_color = "#C70038";
+        $screen_1_3->text_color = "#FFFFFF";
+        $screen_1_3->heading = "Autoren";
+        $screen_1_3->subheading = "Stefan Süß & Daniel Sixl";
+        $screen_1_3->layout()->associate($basicLayout);
+        $screen_1_3->channel()->associate($channelDemo1);
+        $screen_1_3->save();
+
+        $screen_1_4 = new Screen();
+        $screen_1_4->name = "Danke";
+        $screen_1_4->description = "Zeigt Danke";
+        $screen_1_4->background_color = "#0074D9";
+        $screen_1_4->text_color = "#FFFFFF";
+        $screen_1_4->heading = "Vielen Dank!";
+        $screen_1_4->layout()->associate($basicLayout);
+        $screen_1_4->channel()->associate($channelDemo1);
+        $screen_1_4->save();
+
+        $screen_1_5 = new Screen();
+        $screen_1_5->name = "Danke";
+        $screen_1_5->description = "Zeigt Verabschiedung";
+        $screen_1_5->background_color = "#FFDC00";
+        $screen_1_5->text_color = "#000000";
+        $screen_1_5->heading = "Ciao...";
+        $screen_1_5->layout()->associate($basicLayout);
+        $screen_1_5->channel()->associate($channelDemo1);
+        $screen_1_5->save();
+
+        $screen_2_1 = new Screen();
+        $screen_2_1->name = "Intro";
+        $screen_2_1->description = "Zeigt die Nummer des Kanals an";
+        $screen_2_1->background_color = "#3D9970";
+        $screen_2_1->text_color = "#FFFFFF";
+        $screen_2_1->heading = "Kanal 2";
+        $screen_2_1->layout()->associate($basicLayout);
+        $screen_2_1->channel()->associate($channelDemo2);
+        $screen_2_1->save();
+
+        $screen_2_2 = new Screen();
+        $screen_2_2->name = "Projektname";
+        $screen_2_2->description = "Zeigt zweizeilig das Branding";
+        $screen_2_2->background_color = "#7FDBFF";
+        $screen_2_2->text_color = "#000000";
+        $screen_2_2->heading = "VSPOT";
+        $screen_2_2->subheading = "Digital Signage Solution";
+        $screen_2_2->layout()->associate($basicLayout);
+        $screen_2_2->channel()->associate($channelDemo2);
+        $screen_2_2->save();
+
+        $screen_2_2 = new Screen();
+        $screen_2_2->name = "Projektname";
+        $screen_2_2->description = "Zeigt zweizeilig das Branding";
+        $screen_2_2->background_color = "#B10DC9";
+        $screen_2_2->text_color = "#FFFFFF";
+        $screen_2_2->heading = "12:00";
+        $screen_2_2->subheading = "Mittagspause";
+        $screen_2_2->layout()->associate($basicLayout);
+        $screen_2_2->channel()->associate($channelDemo2);
+        $screen_2_2->save();
+
+        $screen_3_1 = new Screen();
+        $screen_3_1->name = "Intro";
+        $screen_3_1->description = "Zeigt die Nummer des Kanals an";
+        $screen_3_1->background_color = "#F012BE";
+        $screen_3_1->text_color = "#FFFFFF";
+        $screen_3_1->heading = "Kanal 3";
+        $screen_3_1->layout()->associate($basicLayout);
+        $screen_3_1->channel()->associate($channelDemo3);
+        $screen_3_1->save();
+
+        $screen_3_2 = new Screen();
+        $screen_3_2->name = "Zweiter Slide";
+        $screen_3_2->description = "Wechselt auf das Test-Layout";
+        $screen_3_2->background_color = "#000000";
+        $screen_3_2->text_color = "#FAFAFA";
+        $screen_3_2->heading = "Guten Tag";
+        $screen_3_2->subheading = "Dies ist eine weitere Demonstration";
+        $screen_3_2->layout()->associate($basicLayout);
+        $screen_3_2->channel()->associate($channelDemo3);
+        $screen_3_2->save();
+
+        $screen_4_1 = new Screen();
+        $screen_4_1->name = "Test";
+        $screen_4_1->description = "Anzeige Test-Layout";
+        $screen_4_1->background_color = "#000000";
+        $screen_4_1->text_color = "#FAFAFA";
+        $screen_4_1->layout()->associate($testLayout);
+        $screen_4_1->channel()->associate($channelDemo5);
+        $screen_4_1->save();
 
     }
 }

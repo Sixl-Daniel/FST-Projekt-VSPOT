@@ -13,10 +13,8 @@ class LayoutsTableSeeder extends Seeder
     public function run()
     {
         $layouts = [
-            ['name' => 'Demo'],
+            ['name' => 'Test'],
             ['name' => 'Basic'],
-            ['name' => 'Advanced'],
-            ['name' => 'Pro']
         ];
 
         foreach ($layouts as $layout) {

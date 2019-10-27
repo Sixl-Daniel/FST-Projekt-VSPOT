@@ -136,7 +136,7 @@ return [
         ],
         'layout_id' => [
             'exists' => 'Dieses Layout existiert nicht.',
-        ],
+        ]
     ],
 
     /*
@@ -183,6 +183,9 @@ return [
         'display_name'          => 'Anzeigename',
         'product_reference'     => 'Gerätekennung',
         'location'              => 'Ort',
+        'display_time'          => 'Anzeigedauer',
+        'transition_time'       => 'Überblendungsdauer',
+        'refresh_time'          => 'Refresh-Intervall',
 
     ],
 ];

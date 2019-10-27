@@ -22,6 +22,15 @@
                     <div class="col-md-8 col-lg-9">
                         {{ Form::vspotText('description', 'Beschreibung') }}
                     </div>
+                    <div class="col-md-4">
+                        {{ Form::vspotText('display_time', 'Anzeigedauer (ms)') }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ Form::vspotText('transition_time', 'Überblendung (ms)') }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ Form::vspotText('refresh_time', 'Refresh (s)') }}
+                    </div>
                 </div>
             </div>
             <div class="panel-footer text-right">

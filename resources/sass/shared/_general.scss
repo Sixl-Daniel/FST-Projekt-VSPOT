@@ -2,9 +2,20 @@ body {
     -webkit-backface-visibility: hidden;
 }
 
-.qr-wrapper {
-    border: 1px solid #d1d1d1;
-    margin: 0 auto;
-    display: inline-block;
-    box-shadow: 3px 7px 10px rgba(0, 0, 0, 0.45);
+svg {
+    max-width: 100%;
+    height: auto;
 }
+
+
+.qr-wrapper {
+    text-align: center;
+    svg {
+        margin: 0 auto;
+        display: inline-block;
+    }
+    &--shadowed svg {
+        box-shadow: 3px 7px 10px rgba(0, 0, 0, 0.45);
+    }
+}
+

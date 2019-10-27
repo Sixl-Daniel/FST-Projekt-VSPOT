@@ -16,6 +16,14 @@ Route::view('datenschutz', 'frontend.pages.secondary.datenschutz')->name('datens
 // PUBLIC TESTING
 Route::get('api/demo', 'Test\JsonDemoController@index')->name('demo.api.json');
 
+// PUBLIC WEB API, TOKEN VERIFICATION
+
+Route::middleware('auth:api')->group(function() {
+    Route::namespace('Web')->name('.web')->prefix('web/v1')->group(function () {
+        Route::get('{user}/{device}', 'WebAccessController@respond')->name('webaccess');
+    });
+});
+
 // VERIFIED USERS
 
 Auth::routes(['verify' => true]);

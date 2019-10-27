@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Channel extends Model
 {
-
     protected $fillable = [
-        'name', 'description'
+        'name', 'description', 'display_time_ms', 'transition_time_ms', 'refresh_time_ms'
     ];
 
     // relationships

@@ -10,10 +10,21 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .qr-wrapper {
-  border: 1px solid #d1d1d1;
+  text-align: center;
+}
+
+.qr-wrapper svg {
   margin: 0 auto;
   display: inline-block;
+}
+
+.qr-wrapper--shadowed svg {
   box-shadow: 3px 7px 10px rgba(0, 0, 0, 0.45);
 }
 
@@ -143,6 +154,11 @@ p.text-fit-button-line {
 
 #logout-form {
   display: none;
+}
+
+.text-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .login-page,

@@ -26,6 +26,41 @@
                         <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="fas fa-trash"></i> Löschen</button>
                     </form>
                     <a href="{{ route('devices.edit', $device->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-edit"></i> Editieren</a>
+                    <button type="button" class="btn btn-success btn-sm btn-lg" data-toggle="modal" data-target="#modal-device-link-{{ $device->id }}"><i class="fas fa-link"></i></button>
+                    <button type="button" class="btn btn-success btn-sm btn-lg" data-toggle="modal" data-target="#modal-device-qr-{{ $device->id }}"><i class="fas fa-qrcode"></i></button>
+                </div>
+            </div>
+        </div>
+        {{-- modal link --}}
+        <div id="modal-device-link-{{ $device->id }}" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Link für {{ $device->display_name }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <a class="text-wrap" href="{{ $device->webURL }}" target="_blank">{{ $device->webURL }}</a>
+{{--                        <div class="qr-wrapper my-3">{!! $device->qr !!}</div>--}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- modal link --}}
+        <div id="modal-device-qr-{{ $device->id }}" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">QR-Code für {{ $device->display_name }}</h4>
+                    </div>
+                    <div class="modal-body"><div class="qr-wrapper">{!! $device->qr !!}</div></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Schließen</button>
+                    </div>
                 </div>
             </div>
         </div>
