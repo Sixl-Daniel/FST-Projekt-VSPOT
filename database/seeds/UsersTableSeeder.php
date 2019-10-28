@@ -129,12 +129,17 @@ class UsersTableSeeder extends Seeder
         $channelDemo4->user()->associate($superadmin);
         $channelDemo4->save();
 
-
         $channelDemo5 = new Channel();
         $channelDemo5->name = "Testkanal";
         $channelDemo5->description = "Ausgabe eines Testbildschirms mit Informationen";
         $channelDemo5->user()->associate($superadmin);
         $channelDemo5->save();
+
+        $channelDemo6 = new Channel();
+        $channelDemo6->name = "Elemente";
+        $channelDemo6->description = "Testen von Farben und Hintergrundbild";
+        $channelDemo6->user()->associate($superadmin);
+        $channelDemo6->save();
 
 
         // create a standard device
@@ -145,7 +150,7 @@ class UsersTableSeeder extends Seeder
         $deviceMonitor1->product_reference = 'Samsung SyncMaster 2253BW';
         $deviceMonitor1->location = 'Wohnzimmer';
         $deviceMonitor1->user()->associate($superadmin);
-        $deviceMonitor1->channel()->associate($channelDemo1);
+        $deviceMonitor1->channel()->associate($channelDemo6);
         $deviceMonitor1->save();
 
         $deviceMonitor2 = new Device();
@@ -279,6 +284,101 @@ class UsersTableSeeder extends Seeder
         $screen_4_1->layout()->associate($testLayout);
         $screen_4_1->channel()->associate($channelDemo5);
         $screen_4_1->save();
+
+        // Impressionen
+
+        $linkCdn = 'https://picsum.photos/';
+        $imgWidth = 1600;
+        $imgHeight = 900;
+        $imgFileExt = "webp";
+
+        $screen_6_1 = new Screen();
+        $screen_6_1->name = "Impressionen-1";
+        $screen_6_1->description = "Testen von Farben und Bild";
+        $screen_6_1->background_color = "rgb(0,0,0)";
+        $screen_6_1->overlay_color = "rgba(0, 0, 0, 0.5)";
+        $screen_6_1->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?grayscale&random=1" . "." . $imgFileExt;
+        $screen_6_1->text_color = "rgb(255, 255, 255)";
+        $screen_6_1->heading = "Impressionen";
+        $screen_6_1->layout()->associate($basicLayout);
+        $screen_6_1->channel()->associate($channelDemo6);
+        $screen_6_1->save();
+
+        $screen_6_2 = new Screen();
+        $screen_6_2->name = "Impressionen-2";
+        $screen_6_2->description = "Testen von Farben und Bild";
+        $screen_6_2->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=2" . "." . $imgFileExt;
+        $screen_6_2->layout()->associate($basicLayout);
+        $screen_6_2->channel()->associate($channelDemo6);
+        $screen_6_2->save();
+
+        $screen_6_3 = new Screen();
+        $screen_6_3->name = "Impressionen-3";
+        $screen_6_3->description = "Testen von Farben und Bild";;
+        $screen_6_3->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=3" . "." . $imgFileExt;
+        $screen_6_3->layout()->associate($basicLayout);
+        $screen_6_3->channel()->associate($channelDemo6);
+        $screen_6_3->save();
+
+        $screen_6_4 = new Screen();
+        $screen_6_4->name = "Impressionen-4";
+        $screen_6_4->description = "Testen von Farben und Bild";
+        $screen_6_4->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=4" . "." . $imgFileExt;
+        $screen_6_4->layout()->associate($basicLayout);
+        $screen_6_4->channel()->associate($channelDemo6);
+        $screen_6_4->save();
+
+        $screen_6_5 = new Screen();
+        $screen_6_5->name = "Impressionen-5";
+        $screen_6_5->description = "Testen von Farben und Bild";
+        $screen_6_5->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=5" . "."  . $imgFileExt;
+        $screen_6_5->layout()->associate($basicLayout);
+        $screen_6_5->channel()->associate($channelDemo6);
+        $screen_6_5->save();
+
+        $screen_6_6 = new Screen();
+        $screen_6_6->name = "Impressionen-6";
+        $screen_6_6->description = "Testen von Farben und Bild";
+        $screen_6_6->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=6" .".". $imgFileExt;
+        $screen_6_6->layout()->associate($basicLayout);
+        $screen_6_6->channel()->associate($channelDemo6);
+        $screen_6_6->save();
+
+        $screen_6_7 = new Screen();
+        $screen_6_7->name = "Impressionen-7";
+        $screen_6_7->description = "Testen von Farben und Bild";
+        $screen_6_7->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=7" . "." . $imgFileExt;
+        $screen_6_7->layout()->associate($basicLayout);
+        $screen_6_7->channel()->associate($channelDemo6);
+        $screen_6_7->save();
+
+        $screen_6_8 = new Screen();
+        $screen_6_8->name = "Impressionen-8";
+        $screen_6_8->description = "Testen von Farben und Bild";
+        $screen_6_8->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=8" . "." . $imgFileExt;
+        $screen_6_8->layout()->associate($basicLayout);
+        $screen_6_8->channel()->associate($channelDemo6);
+        $screen_6_8->save();
+
+        $screen_6_9 = new Screen();
+        $screen_6_9->name = "Impressionen-9";
+        $screen_6_9->description = "Testen von Farben und Bild";
+        $screen_6_9->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=9" . "." . $imgFileExt;
+        $screen_6_9->layout()->associate($basicLayout);
+        $screen_6_9->channel()->associate($channelDemo6);
+        $screen_6_9->save();
+
+        $screen_6_10 = new Screen();
+        $screen_6_10->name = "Impressionen-10";
+        $screen_6_10->description = "Testen von Farben und Bild";
+        $screen_6_10->background_color = "rgb(0,0,0)";
+        $screen_6_10->overlay_color = "rgba(0, 0, 0, 0.5)";
+        $screen_6_10->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=10" . "." . $imgFileExt;
+        $screen_6_10->text_color = "rgb(255, 255, 255)";
+        $screen_6_10->heading = "Ende";
+        $screen_6_10->layout()->associate($basicLayout);
+        $screen_6_10->channel()->associate($channelDemo6);
+        $screen_6_10->save();
 
     }
 }

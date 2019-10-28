@@ -10,7 +10,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         @if( $channel->screens()->count() > 0)
-                        <p class="text-primary text-bold">{{ $channel->screens()->count() }} {{ str_plural('Screen', $channel->screens()->count()) }} in diesem Channel</p>
+                        <a href="{{ route('channels.screens.index', $channel->id) }}" class="text-primary text-bold">{{ $channel->screens()->count() }} {{ str_plural('Screen', $channel->screens()->count()) }} in diesem Channel</a>
                         @else
                         <p class="text-muted">Keine Screens</p>
                         @endif

@@ -148,11 +148,6 @@ h6 {
 }
 
 .swiper-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     overflow: hidden;
     z-index: 1;
     opacity: 1;
@@ -162,16 +157,31 @@ h6 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .swiper-slide {
     text-align: center;
-    background: #000000;
     color: #FEFEFE;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    background-color: #000000;
+    background-position: center;
+}
+
+.swiper-slide .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .swiper-pagination-bullet {

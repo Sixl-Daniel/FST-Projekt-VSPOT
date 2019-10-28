@@ -28,26 +28,26 @@ Kanal: {{ $channel->name }}
 @endsection
 
 @unless($noChannel)
-    @section('top_css')
-    @parent()
-    <style>
-    /* dynamic css for screens */
-    @foreach ($screens as $screen)
-    {{ '.swiper-slide-'. $loop->iteration . ' {' }}
-
-        @if(!empty($screen->background_color))
-        background: {{ $screen->background_color }};
-        @endif
-
-        @if(!empty($screen->text_color))
-        color: {{ $screen->text_color }};
-        @endif
-
-    {{ '}' }}
-    @endforeach
-    /* end dynamic css for screens */
-    </style>
-    @endsection
+@section('top_css')
+@parent()
+<style>
+/* dynamic css for screens */
+@foreach ($screens as $screen)
+{{ '.swiper-slide-'. $loop->iteration . ' {' }}
+@if(!empty($screen->background_color))
+    background-color: {{ $screen->background_color }};
+@endif
+@if(!empty($screen->bg_img_cdn_link))
+    background-image: url({{ $screen->bg_img_cdn_link }});
+@endif
+@if(!empty($screen->text_color))
+    color: {{ $screen->text_color }};
+@endif
+{{ '}' }}
+@endforeach
+/* end dynamic css for screens */
+</style>
+@endsection
 @endunless
 
 @section('content')
@@ -60,7 +60,10 @@ Kanal: {{ $channel->name }}
             </article>
         @else
             @forelse ($screens as $screen)
-                <article class="swiper-slide swiper-slide-{{ $loop->iteration }}">
+                <article id="swiper-slide-id-{{ $loop->iteration }}" class="swiper-slide swiper-slide-{{ $loop->iteration }}">
+                    @if(!empty($screen->overlay_color))
+                    <div class="overlay" style="background-color: {{ $screen->overlay_color }}"></div>
+                    @endif
                     @includeFirst(['web.screentype.'.$screen->layout->name, 'web._layout_missing'])
                 </article>
             @empty
@@ -89,11 +92,14 @@ Kanal: {{ $channel->name }}
 
     var swiper = new Swiper('.swiper-container', {
         direction: 'horizontal',
+        @if(!$noChannel && $screens->count() > 1)
         loop: true,
-        effect: 'fade',
         autoplay: {
             delay: displayTime,
         },
+        preloadImages: false,
+        @endif
+        effect: 'fade',
         allowTouchMove: false,
         speed: transitionTime,
         @if(!$noChannel && $screens->count() > 2)

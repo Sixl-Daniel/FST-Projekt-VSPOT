@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use App\Layout;
+use App\Rules\ValidColor;
 use App\Screen;
 use Illuminate\Http\Request;
 
@@ -136,12 +137,17 @@ class ScreenController extends Controller
     public function update(Request $request, $channel_id, Screen $screen)
     {
         // validate
+        $colorValidator = new ValidColor();
         $this->validate(
             $request,
             [
                 'name' => 'required | string | max:32',
                 'description' => 'nullable | string | max:64',
-                'layout_id' => 'required | exists:layouts,id'
+                'layout_id' => 'required | exists:layouts,id',
+                'background_color' => ['nullable', $colorValidator],
+                'bg_img_cdn_link' => 'nullable | url',
+                'overlay_color' => ['nullable', $colorValidator],
+                'text_color' => ['nullable', $colorValidator],
             ]
         );
         // update and save
