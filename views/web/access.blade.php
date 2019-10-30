@@ -64,7 +64,7 @@ Kanal: {{ $channel->name }}
                     @if(!empty($screen->overlay_color))
                     <div class="overlay" style="background-color: {{ $screen->overlay_color }}"></div>
                     @endif
-                    @includeFirst(['web.screentype.'.$screen->layout->name, 'web._layout_missing'])
+                    @includeFirst(['web.screentype.'.lcfirst($screen->layout->name), 'web._layout_missing'])
                 </article>
             @empty
                 <article class="swiper-slide">
