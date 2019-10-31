@@ -49,7 +49,6 @@
                     <div class="col-xs-12 col-md-6 col-lg-2">
                         {{ Form::vspotText('text_color', 'Textfarbe') }}
                     </div>
-
                     {{-- individual form elements : --}}
                     @include('backend.signage.screens._form_elements_config')
                 </div>
@@ -68,6 +67,9 @@
 <script>
     jQuery(document).ready(function($) {
         $('#screen-layout-select').select2({width: '100%'});
+        $('#background_color').colorpicker();
+        $('#overlay_color').colorpicker();
+        $('#text_color').colorpicker();
     });
 </script>
 @endsection

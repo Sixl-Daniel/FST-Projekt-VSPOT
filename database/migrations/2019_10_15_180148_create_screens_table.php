@@ -21,9 +21,9 @@ class CreateScreensTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('active')->default(1); // todo
 
-            $table->string('background_color')->nullable()->default('rgba(0,0,0,0)');
+            $table->string('background_color')->nullable()->default('rgb(0,0,0)');
             $table->string('bg_img_cdn_link')->nullable();
-            $table->string('overlay_color')->nullable()->default('rgba(0,0,0,0)');
+            $table->string('overlay_color')->nullable()->default('rgba(255,255,255,0)');
             $table->string('text_color')->nullable()->default('rgba(255,255,255,1)');
 
             // screen specific fields

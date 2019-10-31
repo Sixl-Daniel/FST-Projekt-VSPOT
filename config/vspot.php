@@ -3,8 +3,7 @@
 return [
 
     'screens' => [
-        'demo' => ['heading'],
-        'basic' => ['heading', 'subheading'],
+        'basic' => ['heading', 'subheading','textarea'],
     ],
 
 ];

@@ -28,6 +28,8 @@ class WebAccessController extends Controller
             ]);
         }
 
+        // open view with information, if no channel
+
         if(!$device->channel) return view('web.access')
             ->with('noChannel', true)
             ->withUser($user)
@@ -35,8 +37,8 @@ class WebAccessController extends Controller
 
         $channel = $device->channel;
 
+        // deliver channel and screens otherwise
 
-        // deliver screens otherwise
         $screens = $channel->screens;
         return view('web.access')
             ->with('noChannel', false)
