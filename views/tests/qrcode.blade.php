@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('pageTitle', 'Tests')
+@section('pageTitle', 'Test QR-Code')
 
 @section('content')
 <div class="container content">

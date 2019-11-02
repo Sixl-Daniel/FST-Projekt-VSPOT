@@ -1,4 +1,41 @@
+/* selects */
+
 .js-enhanced-select {
     visibility: hidden;
     transition: visibility 300ms ease-out;
 }
+
+/* color picker */
+
+.vspot-color-picker {
+
+    .colorpicker-saturation {
+        width: 250px;
+        height: 250px;
+    }
+
+    .colorpicker-hue,
+    .colorpicker-alpha {
+        width: 40px;
+        height: 250px;
+    }
+
+    .colorpicker-color,
+    .colorpicker-color div {
+        height: 40px;
+    }
+
+    .colorpicker-selectors i {
+        height: 17px;
+        width: 17px;
+    }
+
+}
+
+/* html editor */
+
+textarea.ql-container {
+    resize: none;
+}
+
+

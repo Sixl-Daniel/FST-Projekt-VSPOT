@@ -1,0 +1,65 @@
+/* content */
+
+.content {
+    padding: 0 5%;
+    &--basic {
+        font-size: 95%;
+        text-align: center;
+    }
+    &--html {
+        font-size: 65%;
+    }
+}
+
+/* elements */
+
+.html_block {
+    p {
+        > span[style*="background-color"],
+        > b[style*="background-color"] {
+            padding: 0 0.25em;
+            border-radius: 3px;
+            box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+/* headings */
+
+.heading {
+    font-language-override: normal;
+    font-kerning: auto;
+    font-feature-settings: 'kern', 'liga', 'dlig', 'hlig', 'cswh';
+    font-synthesis: weight style;
+    &--main {
+        font-weight: 200;
+        margin: 1rem 0;
+    }
+    &--sub {
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+}
+
+/* notification */
+
+#notification {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    font-size: 50%;
+    border-radius: 6px 6px 0 0;
+    margin-left: 50%;
+    transform: translateX(-50%) translateY(100%);
+
+    //transform: translate3d(-50%, 100%, 0);
+    transition: transform 600ms ease-in-out;
+    &.visible {
+
+        transform: translateX(-50%) translateY(0);
+        //transform: translate3d(-50%, 0%, 0);
+    }
+}

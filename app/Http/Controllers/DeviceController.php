@@ -59,7 +59,7 @@ class DeviceController extends Controller
             $request,
             [
                 'display_name' => 'required | alpha_dash | max:32 | unique:devices',
-                'product_reference' => 'nullable | string | max:32',
+                'product_reference' => 'nullable | string | max:64',
                 'location' => 'nullable | string | max:32',
                 'description' => 'nullable | string | max:64'
             ]
@@ -128,9 +128,9 @@ class DeviceController extends Controller
             $request,
             [
                 'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,'.$device->id,
-                'product_reference' => 'nullable | string | max:32',
+                'product_reference' => 'nullable | string | max:64',
                 'location' => 'nullable | string | max:32',
-                'description' => 'nullable | string | max:64',
+                'description' => 'nullable | string | max:128',
                 'channel_id' => 'nullable | exists:channels,id'
             ]
         );

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Purifier;
 
 class Screen extends Model
 {
@@ -13,6 +14,12 @@ class Screen extends Model
         'name', 'description',
         'background_color', 'text_color', 'bg_img_cdn_link', 'overlay_color', 'heading', 'subheading', 'html_block', 'text_block'
     ];
+
+    // purify html content
+    public function setHtmlBlockAttribute($value)
+    {
+        $this->attributes['html_block'] = Purifier::clean($value);
+    }
 
     // relationships
 

@@ -5,12 +5,12 @@
 <title>VSPOT - Digital Signage Solution</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <meta name="author" content="Daniel Sixl">
-@stack('top_stylesheets')
-@stack('top_scripts')
 @yield('top_info')
+@stack('top_stylesheets_stack')
 @section('top_css')
-@include('web.includes.base_css')
+<link rel="stylesheet" href="{{ asset('css/web-access.css') }}">
 @show
+@stack('top_scripts_stack')
 </head>
 <body class="fadeIn">
 @yield('content')

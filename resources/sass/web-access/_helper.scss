@@ -1,0 +1,73 @@
+.lead {
+    font-size: 1.414rem;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+@mixin font-weight($weight) {
+    $weights: (
+        thin: 100,
+        extra-light: 200,
+        ultra-light: 200,
+        light: 300,
+        normal: 400,
+        book: 400,
+        regular: 400,
+        medium: 500,
+        semi-bold: 600,
+        demi-bold: 600,
+        bold: 700,
+        extra-bold: 800,
+        ultra-bold: 900,
+        heavy: 900,
+        black: 900,
+        ultra: 900,
+        ultra-black: 900,
+        extra-ultra: 900
+    );
+
+    $output: $weight;
+    @if map-has-key($weights, $weight) {
+        $output: map-get($weights, $weight);
+    }
+
+    font-weight: $output;
+}
+
+//.w100 {
+//    @include font-weight(thin);
+//}
+.w200 {
+    @include font-weight(extra-light);
+}
+.w300 {
+    @include font-weight(light);
+}
+.w400 {
+    @include font-weight(book);
+}
+//.w500 {
+//    @include font-weight(medium);
+//}
+//.w600 {
+//    @include font-weight(semi-bold);
+//}
+.w700 {
+    @include font-weight(bold);
+}
+.w800 {
+    @include font-weight(extra-bold);
+}
+.w900 {
+    @include font-weight(ultra-bold);
+}

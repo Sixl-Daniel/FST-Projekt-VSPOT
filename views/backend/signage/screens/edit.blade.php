@@ -66,10 +66,90 @@
 @section('js')
 <script>
     jQuery(document).ready(function($) {
-        $('#screen-layout-select').select2({width: '100%'});
-        $('#background_color').colorpicker();
-        $('#overlay_color').colorpicker();
-        $('#text_color').colorpicker();
+
+        /* selects */
+
+        $layoutSelector = $('#screen-layout-select');
+        if($layoutSelector.length){
+            $layoutSelector.select2({width: '100%'});
+        }
+
+        /* color picker */
+
+        cpOptions = {
+            customClass: 'vspot-color-picker',
+            colorSelectors: {
+                'blue': '#0074D9',
+                'aqua': '#7FDBFF',
+                'teal': '#39CCCC',
+                'olive': '#3D9970',
+                'green': '#2ECC40',
+                'lime': '#01FF70',
+                'yellow': '#FFDC00',
+                'orange': '#FF851B',
+                'red': '#FF4136',
+                'fuchsia': '#F012BE',
+                'purple': '#B10DC9',
+                'white': '#FFFFFF',
+                'silver': '#DDDDDD',
+                'gray': '#AAAAAA',
+                'darkgray': '#444444',
+                'black': '#111111',
+                'vspot': '#C70038'
+            },
+            sliders: {
+                saturation: {
+                    maxLeft: 250,
+                    maxTop: 250
+                },
+                hue: {
+                    maxTop: 250
+                },
+                alpha: {
+                    maxTop: 250
+                }
+            }
+        };
+
+        $bgColorInput = $('#background_color');
+        if($bgColorInput.length){
+            $bgColorInput.colorpicker(cpOptions);
+        }
+
+        $overlayColorInput = $('#overlay_color');
+        if($overlayColorInput.length){
+            $overlayColorInput.colorpicker(cpOptions);
+        }
+
+        $textColorInput = $('#text_color');
+        if($textColorInput.length){
+            $textColorInput.colorpicker(cpOptions);
+        }
+
+        /* html block */
+
+        $htmlBlock = $('#html_block');
+        if($htmlBlock.length){
+
+            $editorOptions = {
+                styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3'],
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+                    // ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    // ['table', ['table']],
+                    // ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'undo', 'redo', 'help']],
+                ],
+            }
+
+            $htmlBlock.summernote($editorOptions);
+
+        }
+
     });
 </script>
 @endsection

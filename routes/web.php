@@ -61,6 +61,8 @@ Route::group(['middleware' => ['verified']], function () {
     Route::middleware('can:run-tests')->group(function () {
         // ns \Test & prefix /test
         Route::namespace('Test')->name('test.')->prefix('test')->group(function () {
+            // playground
+            Route::get('playground', 'TestFrontendController@playground')->name('test-playground');
             // test sending of email
             Route::get('email', 'TestFrontendController@email')->name('test-email');
             // test QR-Codes

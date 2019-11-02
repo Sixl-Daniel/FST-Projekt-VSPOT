@@ -1,12 +1,12 @@
 @extends('web.master')
 
-@push('top_stylesheets')
+@push('top_stylesheets_stack')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,400i,700,800,900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" integrity="sha256-DBYdrj7BxKM3slMeqBVWX2otx7x4eqoHRJCsSDJ0Nxw=" crossorigin="anonymous" />
 @endpush
 
-@push('top_scripts')
+@push('top_scripts_stack')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js" integrity="sha256-4sETKhh3aSyi6NRiA+qunPaTawqSMDQca/xLWu27Hg4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
 @endpush
@@ -64,7 +64,7 @@ Kanal: {{ $channel->name }}
                     @if(!empty($screen->overlay_color))
                     <div class="overlay" style="background-color: {{ $screen->overlay_color }}"></div>
                     @endif
-                    @includeFirst(['web.screentype.'.lcfirst($screen->layout->name), 'web._layout_missing'])
+                    @includeFirst(['web.screentype.'.strtolower($screen->layout->name), 'web._layout_missing'])
                 </article>
             @empty
                 <article class="swiper-slide">
@@ -78,22 +78,30 @@ Kanal: {{ $channel->name }}
     <div class="swiper-pagination"></div>
     @endif
 </main>
+<aside id="notification" class="pulse"></aside>
 @endsection
 
 @section('bottom_scripts')
 <script>
 (function initWebAccess() {
 
+    var l = console.log;
+
+    var notification = document.getElementById('notification');
+    var visibleClass = 'visible';
+
     var lastVersion = false;
+    var isOffline = false;
 
     var displayTime = {{ $channel->display_time ?? 5000 }};
     var transitionTime = {{ $channel->transition_time ??  1000 }};
     var refreshTime = {{ $channel->refresh_time ??  5 }} * 1000;
 
     var swiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
+        direction: 'vertical',
         @if(!$noChannel && $screens->count() > 1)
         loop: true,
+        parallax:true,
         autoplay: {
             delay: displayTime,
         },
@@ -110,6 +118,10 @@ Kanal: {{ $channel->name }}
         @endif
     });
 
+    function isNetworkError(error) {
+        return !!error.isAxiosError && !error.response;
+    }
+
     (function refresh() {
         setTimeout(function() {
             axios.get('{!! $device->webURLUpdate !!}')
@@ -120,10 +132,26 @@ Kanal: {{ $channel->name }}
                     } else {
                         lastVersion = newVersion;
                     }
-                    // console.log("Letzte Version: " + lastVersion + " / Neue Version: " + newVersion);
+                    // notification.textContent='';
+                    isOffline = false;
+                    if (notification.classList.contains(visibleClass)) {
+                        notification.classList.remove(visibleClass);
+                    }
+                    // l("Letzte Version: " + lastVersion + " / Neue Version: " + newVersion);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if (isNetworkError(error)) {
+                        var errorEvent = new Date();
+                        var dateOptions = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+                        var eventDateTimeString = 'Offline seit ' + (errorEvent.toLocaleDateString('de-DE', dateOptions)) + ' Uhr';
+                        l(eventDateTimeString);
+                        if(!isOffline) notification.textContent = eventDateTimeString;
+                        if (!notification.classList.contains(visibleClass)) {
+                            notification.classList.add(visibleClass);
+                        }
+                        isOffline = true;
+                    }
+                    l(error);
                 })
                 .finally(function () {
                     refresh();

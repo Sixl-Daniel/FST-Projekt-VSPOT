@@ -1,0 +1,32 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 900ms ease-out;
+}
+
+$pulseShadowInactive: rgba(128,128,128, 0);
+$pulseShadowActive: rgba(128,128,128, 0.4);
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 $pulseShadowActive;
+    }
+    70% {
+        box-shadow: 0 0 0 10px $pulseShadowInactive;
+    }
+    100% {
+        box-shadow: 0 0 0 0 $pulseShadowInactive;
+    }
+}
+
+.visible.pulse {
+    box-shadow: 0 0 0 $pulseShadowActive;
+    animation: pulse 2s infinite;
+}

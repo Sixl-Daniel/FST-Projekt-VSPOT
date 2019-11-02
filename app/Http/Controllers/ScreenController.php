@@ -67,7 +67,7 @@ class ScreenController extends Controller
             $request,
             [
                 'name' => 'required | string | max:32',
-                'description' => 'nullable | string | max:64',
+                'description' => 'nullable | string | max:128',
                 'layout_id' => 'required | exists:layouts,id'
             ]
         );
@@ -110,7 +110,7 @@ class ScreenController extends Controller
     public function edit($channel_id, Screen $screen)
     {
         try {
-            $layoutName = lcfirst($screen->layout->name);
+            $layoutName = strtolower($screen->layout->name);
             $layoutConfig = config('vspot.screens');
             $screenConfig = array_key_exists($layoutName, $layoutConfig) ? $layoutConfig[$layoutName] : [];
             $layouts = Layout::all()->pluck('name', 'id');
@@ -142,7 +142,7 @@ class ScreenController extends Controller
             $request,
             [
                 'name' => 'required | string | max:32',
-                'description' => 'nullable | string | max:64',
+                'description' => 'nullable | string | max:128',
                 'layout_id' => 'required | exists:layouts,id',
                 'background_color' => ['nullable', $colorValidator],
                 'bg_img_cdn_link' => 'nullable | url',
