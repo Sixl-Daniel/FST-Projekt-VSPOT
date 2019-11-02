@@ -181,50 +181,48 @@ class DemoContentSeeder extends Seeder
 
         // Screens des Channels "Projekt-VSPOT"
 
-        $screen_vspot_2 = new Screen();
-        $screen_vspot_2->name = "Projektname";
-        $screen_vspot_2->description = "Zeigt zweizeilig Projektname und -beschreibung";
-        $screen_vspot_2->background_color = "#000000";
-        $screen_vspot_2->text_color = "#FFFFFF";
-        $screen_vspot_2->heading = "Projekt VSPOT";
-        $screen_vspot_2->subheading = 'Umsetzung eines Systems für digitale Beschilderung';
-        $screen_vspot_2->layout()->associate($basicLayout);
-        $screen_vspot_2->channel()->associate($channel_vspot);
-        $screen_vspot_2->save();
+        $screen_vspot_project_name_description = new Screen();
+        $screen_vspot_project_name_description->name = "Projektname";
+        $screen_vspot_project_name_description->description = "Zeigt zweizeilig Projektname und -beschreibung";
+        $screen_vspot_project_name_description->background_color = "#000000";
+        $screen_vspot_project_name_description->text_color = "#FFFFFF";
+        $screen_vspot_project_name_description->heading = "Projekt VSPOT";
+        $screen_vspot_project_name_description->subheading = 'Umsetzung eines Systems für digitale Beschilderung';
+        $screen_vspot_project_name_description->layout()->associate($basicLayout);
+        $screen_vspot_project_name_description->channel()->associate($channel_vspot);
+        $screen_vspot_project_name_description->save();
 
-        $screen_vspot_3 = new Screen();
-        $screen_vspot_3->name = "Autoren";
-        $screen_vspot_3->description = "Zeigt die Autoren, Daniel Sixl und Stefan Süß";
-        $screen_vspot_3->background_color = "#C70038";
-        $screen_vspot_3->text_color = "#FFFFFF";
-        $screen_vspot_3->heading = "Autoren";
-        $screen_vspot_3->subheading = "Stefan Süß & Daniel Sixl";
-        $screen_vspot_3->layout()->associate($basicLayout);
-        $screen_vspot_3->channel()->associate($channel_vspot);
-        $screen_vspot_3->save();
+        $screen_vspot_authors = new Screen();
+        $screen_vspot_authors->name = "Autoren";
+        $screen_vspot_authors->description = "Zeigt die Autoren, Daniel Sixl und Stefan Süß";
+        $screen_vspot_authors->background_color = "#C70038";
+        $screen_vspot_authors->text_color = "#FFFFFF";
+        $screen_vspot_authors->heading = "Autoren";
+        $screen_vspot_authors->subheading = "Stefan Süß & Daniel Sixl";
+        $screen_vspot_authors->layout()->associate($basicLayout);
+        $screen_vspot_authors->channel()->associate($channel_vspot);
+        $screen_vspot_authors->save();
 
-        $screen_vspot_4 = new Screen();
-        $screen_vspot_4->name = "Logo";
-        $screen_vspot_4->description = "Zeigt das Logo in der Text-Variante";
-        $screen_vspot_4->bg_img_cdn_link = "https://res.cloudinary.com/sixl/image/upload/v1572628911/vspot/vspot_screen_logo_text.png";
-        $screen_vspot_4->layout()->associate($basicLayout);
-        $screen_vspot_4->channel()->associate($channel_vspot);
-        $screen_vspot_4->save();
+        $screen_vspot_logo = new Screen();
+        $screen_vspot_logo->name = "Logo";
+        $screen_vspot_logo->description = "Zeigt das Logo in der Text-Variante";
+        $screen_vspot_logo->bg_img_cdn_link = "https://res.cloudinary.com/sixl/image/upload/v1572628911/vspot/vspot_screen_logo_text.png";
+        $screen_vspot_logo->layout()->associate($basicLayout);
+        $screen_vspot_logo->channel()->associate($channel_vspot);
+        $screen_vspot_logo->save();
 
-
-
-        $screen_vspot_6_html =
+        $screen_vspot_schema_techstack_html =
         "
         <img src='https://res.cloudinary.com/sixl/image/upload/v1572699638/vspot/vspot_schema_techstack.svg' alt='Schema Technologie'>
         ";
-        $screen_vspot_6 = new Screen();
-        $screen_vspot_6->name = "Schema Technologie";
-        $screen_vspot_6->description = "SVG mit den eingesetzten Lösungen des Projekts";
-        $screen_vspot_6->background_color = "#FFFFFF";
-        $screen_vspot_6->html_block = $screen_vspot_6_html;
-        $screen_vspot_6->layout()->associate($htmlLayout);
-        $screen_vspot_6->channel()->associate($channel_vspot);
-        $screen_vspot_6->save();
+        $screen_vspot_schema_techstack = new Screen();
+        $screen_vspot_schema_techstack->name = "Schema Technologie";
+        $screen_vspot_schema_techstack->description = "SVG mit den eingesetzten Lösungen des Projekts";
+        $screen_vspot_schema_techstack->background_color = "#FFFFFF";
+        $screen_vspot_schema_techstack->html_block = $screen_vspot_schema_techstack_html;
+        $screen_vspot_schema_techstack->layout()->associate($htmlLayout);
+        $screen_vspot_schema_techstack->channel()->associate($channel_vspot);
+        $screen_vspot_schema_techstack->save();
 
         $screen_vspot_erm_html =
         "
@@ -239,11 +237,10 @@ class DemoContentSeeder extends Seeder
         $screen_vspot_erm->channel()->associate($channel_vspot);
         $screen_vspot_erm->save();
 
-
         $screen_vspot_invitation_html =
         "
         <h3>Projektvorstellung</h3>
-        <h1><span class='w700'>VSPOT</span> <span class='w200'>Digital Signage Solution</span></h1>
+        <h1><span class='w700'>VSPOT</span><br><span class='w200'>Digital Signage Solution</span></h1>
         <hr>
         <h2>Stefan Süß und Daniel Sixl</h2>
         <p>Kommen Sie uns besuchen: <b style=\"background-color:#C70038;\">Erdgeschoss / Zimmer 3</span></p>
