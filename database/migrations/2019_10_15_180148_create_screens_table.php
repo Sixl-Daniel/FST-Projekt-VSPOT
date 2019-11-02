@@ -17,9 +17,10 @@ class CreateScreensTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('channel_id');
             $table->unsignedBigInteger('layout_id');
+
             $table->string('name');
             $table->string('description')->nullable();
-            $table->boolean('active')->default(1); // todo
+            $table->boolean('active')->default(1);
 
             $table->string('background_color')->nullable()->default('rgb(0,0,0)');
             $table->string('bg_img_cdn_link')->nullable();
@@ -35,6 +36,7 @@ class CreateScreensTable extends Migration
 
             $table->timestamps();
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
+            $table->unique(['channel_id', 'name']);
         });
     }
 

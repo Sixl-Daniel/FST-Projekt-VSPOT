@@ -15,6 +15,12 @@ class Screen extends Model
         'background_color', 'text_color', 'bg_img_cdn_link', 'overlay_color', 'heading', 'subheading', 'html_block', 'text_block'
     ];
 
+    protected $appends = ['layout_name'];
+
+    protected $hidden = [
+        'id', 'channel_id', 'layout_id', 'created_at', 'updated_at', 'layout', 'active'
+    ];
+
     // purify html content
     public function setHtmlBlockAttribute($value)
     {
@@ -39,6 +45,13 @@ class Screen extends Model
     public function layout ()
     {
         return $this->belongsTo('App\Layout');
+    }
+
+    /* custom attributes */
+
+    public function getLayoutNameAttribute()
+    {
+        return $this->layout->name;
     }
 
 }

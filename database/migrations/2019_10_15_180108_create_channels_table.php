@@ -16,13 +16,14 @@ class CreateChannelsTable extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->unsignedInteger('display_time')->default(5000);
             $table->unsignedInteger('transition_time')->default(1000);
             $table->unsignedInteger('refresh_time')->default(5);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unique(['user_id', 'name']);
         });
     }
 

@@ -39,15 +39,30 @@ class UsersTableSeeder extends Seeder
          */
 
         $superadmin = new User();
-            $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
-            $superadmin->first_name = env('INITIAL_SUPERADMIN_FIRST_NAME');
-            $superadmin->last_name = env('INITIAL_SUPERADMIN_LAST_NAME');
-            $superadmin->email = env('INITIAL_SUPERADMIN_EMAIL');
-            $superadmin->email_verified_at = $now;
-            $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
-            $superadmin->api_token = env('INITIAL_SUPERADMIN_API_TOKEN');
+        $superadmin->username = env('INITIAL_SUPERADMIN_USERNAME');
+        $superadmin->first_name = env('INITIAL_SUPERADMIN_FIRST_NAME');
+        $superadmin->last_name = env('INITIAL_SUPERADMIN_LAST_NAME');
+        $superadmin->email = env('INITIAL_SUPERADMIN_EMAIL');
+        $superadmin->email_verified_at = $now;
+        $superadmin->password = Hash::make(env('INITIAL_SUPERADMIN_PASSWORD'));
+        $superadmin->api_token = env('INITIAL_SUPERADMIN_API_TOKEN');
         $superadmin->save();
         $superadmin->roles()->attach($superadminRole);
+
+        /*
+         * create initial admin from .env
+         */
+
+        $admin = new User();
+        $admin->username = env('INITIAL_ADMIN_USERNAME');
+        $admin->first_name = env('INITIAL_ADMIN_FIRST_NAME');
+        $admin->last_name = env('INITIAL_ADMIN_LAST_NAME');
+        $admin->email = env('INITIAL_ADMIN_EMAIL');
+        $admin->email_verified_at = $now;
+        $admin->password = Hash::make(env('INITIAL_ADMIN_PASSWORD'));
+        $admin->api_token = env('INITIAL_ADMIN_API_TOKEN');
+        $admin->save();
+        $admin->roles()->attach($adminRole);
 
         /*
          * create other initial users from .env
@@ -62,7 +77,7 @@ class UsersTableSeeder extends Seeder
             $user1->password = Hash::make(env('INITIAL_USER_PASSWORD_1'));
             $user1->api_token = env('INITIAL_USER_API_TOKEN_1');
         $user1->save();
-        $user1->roles()->attach($adminRole);
+        $user1->roles()->attach($userRole);
 
         $user2 = new User();
             $user2->username = env('INITIAL_USER_USERNAME_2');

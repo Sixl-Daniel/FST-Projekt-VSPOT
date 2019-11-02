@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 
 class WebAccessController extends Controller
 {
-    public function respond(Request $request, $user_id, $device_id)
+    public function respond_v1(Request $request, $user_id, $device_id)
     {
+
+        \Debugbar::disable();
+
         $user = User::find($user_id);
 
         // no access if provided user id is not matching provided token

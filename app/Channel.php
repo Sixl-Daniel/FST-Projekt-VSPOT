@@ -10,6 +10,10 @@ class Channel extends Model
         'name', 'description', 'display_time_ms', 'transition_time_ms', 'refresh_time_ms'
     ];
 
+    protected $hidden = [
+        'id', 'user_id', 'created_at', 'updated_at'
+    ];
+
     // relationships
 
     /**

@@ -55,10 +55,11 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         // validate
+        $user = auth()->user();
         $this->validate(
             $request,
             [
-                'display_name' => 'required | alpha_dash | max:32 | unique:devices',
+                'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,NULL,id,user_id,'.$user->id,
                 'product_reference' => 'nullable | string | max:64',
                 'location' => 'nullable | string | max:32',
                 'description' => 'nullable | string | max:64'

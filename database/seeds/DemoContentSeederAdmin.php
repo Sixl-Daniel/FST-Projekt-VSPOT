@@ -7,14 +7,16 @@ use App\Screen;
 use App\User;
 use Illuminate\Database\Seeder;
 
-class DemoContentSeeder extends Seeder
+class DemoContentSeederAdmin extends Seeder
 {
     public function run()
     {
 
         // fetch user
 
-        $superadmin = User::superadministrators()->first();
+        //$admin = User::superadministrators()->first();
+        //env('INITIAL_ADMIN_USERNAME')
+        $admin = User::whereUsername(env('INITIAL_ADMIN_USERNAME'))->first();
 
         // fetch layouts for screens
 
@@ -26,27 +28,77 @@ class DemoContentSeeder extends Seeder
          * CREATE DEVICES
          */
 
-        $deviceVSPOT1 = new Device();
-        $deviceVSPOT1->display_name = 'Monitor_Envy_27';
-        $deviceVSPOT1->description = 'Monitor 27 Zoll, mit Raspberry Pi "VSPOT-1" in silbernem Gehäuse';
-        $deviceVSPOT1->product_reference = 'HP Envy 27s';
-        $deviceVSPOT1->location = 'Wohnzimmer';
-        $deviceVSPOT1->user()->associate($superadmin);
-        $deviceVSPOT1->save();
-
-        $deviceVSPOT2 = new Device();
-        $deviceVSPOT2->display_name = 'Presenter';
-        $deviceVSPOT2->description = 'LCD-TV 50 Zoll, mit Raspberry Pi "VSPOT-2"';
-        $deviceVSPOT2->product_reference = 'Toshiba 50L4333D';
-        $deviceVSPOT2->location = 'Wohnzimmer';
-        $deviceVSPOT2->user()->associate($superadmin);
-        $deviceVSPOT2->save();
-
         $deviceDemo = new Device();
         $deviceDemo->display_name = 'Demo';
         $deviceDemo->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
-        $deviceDemo->user()->associate($superadmin);
+        $deviceDemo->user()->associate($admin);
         $deviceDemo->save();
+
+
+
+        /*
+         * CREATE CHANNEL "Testing"
+         */
+
+        $channel_testing = new Channel();
+        $channel_testing->name = "Testing";
+        $channel_testing->description = "Channel mit einigen einfachen Screens";
+        $channel_testing->user()->associate($admin);
+        $channel_testing->save();
+
+        // Screens des Channels "Testing"
+
+        $screen_testing_1 = new Screen();
+        $screen_testing_1->name = "Testing-1";
+        $screen_testing_1->background_color = "rgb(0,116,217)";
+        $screen_testing_1->text_color = "rgb(255, 255, 255)";
+        $screen_testing_1->heading = 'Erster Screen';
+        $screen_testing_1->layout()->associate($basicLayout);
+        $screen_testing_1->channel()->associate($channel_testing);
+        $screen_testing_1->save();
+
+        $screen_testing_2 = new Screen();
+        $screen_testing_2->name = "Testing-2";
+        $screen_testing_2->background_color = "rgb(57,204,204)";
+        $screen_testing_2->text_color = "rgb(255, 255, 255)";
+        $screen_testing_2->heading = 'Zweiter Screen';
+        $screen_testing_2->subheading = 'Mit Unterüberschrift';
+        $screen_testing_2->layout()->associate($basicLayout);
+        $screen_testing_2->channel()->associate($channel_testing);
+        $screen_testing_2->save();
+
+        $screen_testing_3 = new Screen();
+        $screen_testing_3->name = "Testing-3";
+        $screen_testing_3->background_color = "rgb(46,204,64)";
+        $screen_testing_3->text_color = "rgb(255, 255, 255)";
+        $screen_testing_3->heading = 'Dritter Screen';
+        $screen_testing_3->subheading = 'Mit Unterüberschrift';
+        $screen_testing_3->layout()->associate($basicLayout);
+        $screen_testing_3->channel()->associate($channel_testing);
+        $screen_testing_3->save();
+
+        $screen_testing_4 = new Screen();
+        $screen_testing_4->name = "Testing-4";
+        $screen_testing_4->background_color = "rgba(255,220,0,1)";
+        $screen_testing_4->text_color = "rgb(0, 0, 0)";
+        $screen_testing_4->heading = 'Vierter Screen';
+        $screen_testing_4->subheading = 'Mit Unterüberschrift';
+        $screen_testing_4->text_block =
+        'Zeile 1
+        Zeile 2
+        Zeile 3';
+        $screen_testing_4->layout()->associate($basicLayout);
+        $screen_testing_4->channel()->associate($channel_testing);
+        $screen_testing_4->save();
+
+        $screen_testing_5 = new Screen();
+        $screen_testing_5->name = "Testing-5";
+        $screen_testing_5->background_color = "rgb(177,13,201)";
+        $screen_testing_5->text_color = "rgb(255, 255, 255)";
+        $screen_testing_5->heading = 'Fünfter Screen';
+        $screen_testing_5->layout()->associate($basicLayout);
+        $screen_testing_5->channel()->associate($channel_testing);
+        $screen_testing_5->save();
 
 
 
@@ -57,7 +109,7 @@ class DemoContentSeeder extends Seeder
         $channel_information = new Channel();
         $channel_information->name = "Information";
         $channel_information->description = "Ausgabe eines Testbildschirms mit Informationen";
-        $channel_information->user()->associate($superadmin);
+        $channel_information->user()->associate($admin);
         $channel_information->save();
 
         // Screens des Channels "Information"
@@ -80,7 +132,7 @@ class DemoContentSeeder extends Seeder
         $channel_impressionen = new Channel();
         $channel_impressionen->name = "Impressionen";
         $channel_impressionen->description = "Eine Sammlung von Stimmungsbildern";
-        $channel_impressionen->user()->associate($superadmin);
+        $channel_impressionen->user()->associate($admin);
         $channel_impressionen->save();
 
         // Screens des Channels "Impressionen"
@@ -176,7 +228,7 @@ class DemoContentSeeder extends Seeder
         $channel_vspot = new Channel();
         $channel_vspot->name = "Projekt-VSPOT";
         $channel_vspot->description = "Zeigt Screens rund um das Projekt";
-        $channel_vspot->user()->associate($superadmin);
+        $channel_vspot->user()->associate($admin);
         $channel_vspot->save();
 
         // Screens des Channels "Projekt-VSPOT"
@@ -212,9 +264,7 @@ class DemoContentSeeder extends Seeder
         $screen_vspot_logo->save();
 
         $screen_vspot_schema_techstack_html =
-        "
-        <img src='https://res.cloudinary.com/sixl/image/upload/v1572699638/vspot/vspot_schema_techstack.svg' alt='Schema Technologie'>
-        ";
+        "<img src='https://res.cloudinary.com/sixl/image/upload/v1572699638/vspot/vspot_schema_techstack.svg' alt='Schema Technologie'>";
         $screen_vspot_schema_techstack = new Screen();
         $screen_vspot_schema_techstack->name = "Schema Technologie";
         $screen_vspot_schema_techstack->description = "SVG mit den eingesetzten Lösungen des Projekts";
@@ -225,11 +275,9 @@ class DemoContentSeeder extends Seeder
         $screen_vspot_schema_techstack->save();
 
         $screen_vspot_erm_html =
-        "
-        <img src='https://res.cloudinary.com/sixl/image/upload/v1572701447/vspot/erm.svg' alt='Schema Datanbank'>
-        ";
+        "<img src='https://res.cloudinary.com/sixl/image/upload/v1572701447/vspot/erm.svg' alt='Schema Datenbank'>";
         $screen_vspot_erm = new Screen();
-        $screen_vspot_erm->name = "Schema Datanbank";
+        $screen_vspot_erm->name = "Schema Datenbank";
         $screen_vspot_erm->description = "SVG mit den eingesetzten Lösungen des Projekts";
         $screen_vspot_erm->background_color = "#FFFFFF";
         $screen_vspot_erm->html_block = $screen_vspot_erm_html;
@@ -238,8 +286,7 @@ class DemoContentSeeder extends Seeder
         $screen_vspot_erm->save();
 
         $screen_vspot_invitation_html =
-        "
-        <h3>Projektvorstellung</h3>
+        "<h3>Projektvorstellung</h3>
         <h2><span class='w700'>VSPOT</span> <small class='w200'>Digital Signage Solution</small></h2>
         <h3 class='w400'>Stefan Süß und Daniel Sixl</h3>
         <p>Kommen Sie uns besuchen: <b style=\"background-color:#C70038;\">Erdgeschoss / Zimmer 3</span></p>
@@ -263,18 +310,16 @@ class DemoContentSeeder extends Seeder
         $channel_reception = new Channel();
         $channel_reception->name = "Empfangsbereich";
         $channel_reception->description = "Zeigt beispielhaft Screens eines Empfangsbereichs";
-        $channel_reception->user()->associate($superadmin);
+        $channel_reception->user()->associate($admin);
         $channel_reception->save();
 
         // Screens des Channels "Empfangsbereich"
 
         $screen_reception_1_html =
-        "
-        <h3>Willkommen</h3>
+        "<h3>Willkommen</h3>
         <h1>Herr Stefan Süß</h1>
         <p>Ihr Termin: <b style=\"background-color:rgb(107,165,74);\">Zimmer E03</b>, bei <span style=\"background-color:rgb(231,148,57);\">Herrn Sixl</span></p>
-        <ul><li>08:00 - 09:30 Besprechung Projekt VSPOT</li><li>10:00 - 11:30 BarCamp Digital Signage</li></ul>
-        ";
+        <ul><li>08:00 - 09:30 Besprechung Projekt VSPOT</li><li>10:00 - 11:30 BarCamp Digital Signage</li></ul>";
         $screen_reception_1 = new Screen();
         $screen_reception_1->name = "Termin Süß";
         $screen_reception_1->description = "Termin mit Herrn Süß";
@@ -288,13 +333,11 @@ class DemoContentSeeder extends Seeder
         $screen_reception_1->save();
 
         $screen_reception_2_html =
-        "
-        <h3>Heute um 16:45 Uhr</h3>
+        "<h3>Heute um 16:45 Uhr</h3>
         <h1>Live Coding Event</h1>
         <h2>mit Christian Schnagl</h2>
         <p>Kommen Sie uns besuchen: <b style=\"background-color:rgb(74,165,155);\">Halle 4 / Stand 37</span></p>
-        <blockquote><p>Talk is cheap. Show me the code.<br><small>— Linus Torvalds</small></p></blockquote>
-        ";
+        <blockquote><p>Talk is cheap. Show me the code.<br><small>— Linus Torvalds</small></p></blockquote>";
         $screen_reception_2 = new Screen();
         $screen_reception_2->name = "Live Coding Event";
         $screen_reception_2->description = "Heute 12:00 Uhr, Zitat Linus";
@@ -312,9 +355,7 @@ class DemoContentSeeder extends Seeder
          * Initial device associations
          */
 
-        $deviceVSPOT1->channel()->associate($channel_impressionen)->save();
-        $deviceVSPOT2->channel()->associate($channel_reception)->save();
-        $deviceDemo->channel()->associate($channel_vspot)->save();
+        $deviceDemo->channel()->associate($channel_testing)->save();
 
     }
 }

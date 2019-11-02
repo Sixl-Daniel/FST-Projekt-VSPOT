@@ -16,13 +16,13 @@
 </div>
 @endif
 
-@if(in_array('textblock', $screenConfig))
+@if(in_array('text_block', $screenConfig))
     <div class="col-xs-12 col-md-6">
         {{ Form::vspotTextarea('text_block', 'Textblock') }}
     </div>
 @endif
 
-@if(in_array('htmlblock', $screenConfig))
+@if(in_array('html_block', $screenConfig))
     <div class="col-xs-12">
         {{ Form::vspotTextarea('html_block', 'Textblock') }}
     </div>

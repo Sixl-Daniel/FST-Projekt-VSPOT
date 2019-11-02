@@ -111,7 +111,7 @@ class ScreenController extends Controller
     {
         try {
             $layoutName = strtolower($screen->layout->name);
-            $layoutConfig = config('vspot.screens');
+            $layoutConfig = config('vspot.layouts');
             $screenConfig = array_key_exists($layoutName, $layoutConfig) ? $layoutConfig[$layoutName] : [];
             $layouts = Layout::all()->pluck('name', 'id');
             return view('backend.signage.screens.edit')

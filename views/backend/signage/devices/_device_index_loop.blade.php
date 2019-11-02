@@ -26,44 +26,50 @@
                         <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="fas fa-trash"></i> Löschen</button>
                     </form>
                     <a href="{{ route('devices.edit', $device->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-edit"></i> Editieren</a>
-                    <button type="button" class="btn btn-success btn-sm btn-lg" data-toggle="modal" data-target="#modal-device-link-{{ $device->id }}"><i class="fas fa-link"></i></button>
-                    <button type="button" class="btn btn-success btn-sm btn-lg" data-toggle="modal" data-target="#modal-device-qr-{{ $device->id }}"><i class="fas fa-qrcode"></i></button>
+
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-device-web-link-{{ $device->id }}"><i class="fas fa-link"></i> Web</button>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-device-web-qr-{{ $device->id }}"><i class="fas fa-qrcode"></i> Web</button>
+                        <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#modal-device-api-link-{{ $device->id }}"><i class="fas fa-link"></i> API</button>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-device-api-qr-{{ $device->id }}"><i class="fas fa-qrcode"></i> API</button>
+                    </div>
+
+                    {{--<div class="dropdown" style="display: inline-block;">--}}
+                    {{--    <button type="button" class="btn btn-default btn-sm dropdown-toggle"  id="dropdown-menu-dev-{{ $device->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
+                    {{--        Links--}}
+                    {{--        <span class="caret"></span>--}}
+                    {{--    </button>--}}
+                    {{--    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-menu-dev-{{ $device->id }}">--}}
+                    {{--        <li class="dropdown-header">Web-Access</li>--}}
+                    {{--        <li><a href="#" data-toggle="modal" data-target="#modal-device-web-link-{{ $device->id }}"><i class="fas fa-fw fa-link"></i> Link</a></li>--}}
+                    {{--        <li><a href="#" data-toggle="modal" data-target="#modal-device-web-qr-{{ $device->id }}"><i class="fas fa-fw fa-qrcode"></i> QR-Code</a></li>--}}
+                    {{--        <li role="separator" class="divider"></li>--}}
+                    {{--        <li class="dropdown-header">API-Access</li>--}}
+                    {{--        <li><a href="#" data-toggle="modal" data-target="#modal-device-api-link-{{ $device->id }}"><i class="fas fa-fw fa-link"></i> Link</a></li>--}}
+                    {{--        <li><a href="#" data-toggle="modal" data-target="#modal-device-api-qr-{{ $device->id }}"><i class="fas fa-fw fa-qrcode"></i> QR-Code</a></li>--}}
+                    {{--    </ul>--}}
+                    {{--</div>--}}
+
                 </div>
             </div>
         </div>
-        {{-- modal link --}}
-        <div id="modal-device-link-{{ $device->id }}" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Link für {{ $device->display_name }}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <a class="text-wrap" href="{{ $device->webURL }}" target="_blank">{{ $device->webURL }}</a>
-{{--                        <div class="qr-wrapper my-3">{!! $device->qr !!}</div>--}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Schließen</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- modal link --}}
-        <div id="modal-device-qr-{{ $device->id }}" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">QR-Code für {{ $device->display_name }}</h4>
-                    </div>
-                    <div class="modal-body"><div class="qr-wrapper">{!! $device->qr !!}</div></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Schließen</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @component('backend.components.modal', ['id'=>"modal-device-web-link-$device->id", 'size'=>'lg' , 'title'=>"Web-Access für $device->display_name"])
+            <a class="text-wrap" href="{{ $device->weburl }}" target="_blank">{{ $device->weburl }}</a>
+        @endcomponent
+
+        @component('backend.components.modal', ['id'=>"modal-device-web-qr-$device->id", 'size'=>'sm' , 'title'=>"Web-Access für $device->display_name"])
+            <div class="qr-wrapper">{!! $device->webqr !!}</div>
+        @endcomponent
+
+        @component('backend.components.modal', ['id'=>"modal-device-api-link-$device->id", 'size'=>'lg' , 'title'=>"API-Access für $device->display_name"])
+            <a class="text-wrap" href="{{ $device->apiurl }}" target="_blank">{{ $device->apiurl }}</a>
+        @endcomponent
+
+        @component('backend.components.modal', ['id'=>"modal-device-api-qr-$device->id", 'size'=>'sm' , 'title'=>"API-Access für $device->display_name"])
+            <div class="qr-wrapper">{!! $device->apiqr !!}</div>
+        @endcomponent
+
     @endforeach
 </div>
 {{ $devices->links() }}
