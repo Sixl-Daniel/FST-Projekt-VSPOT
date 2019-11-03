@@ -49,6 +49,7 @@ Route::group(['middleware' => ['verified']], function () {
 
     // gate: manage signage
     Route::middleware('can:manage-signage')->group(function () {
+        Route::get('devices/{device}/pdf/', 'DeviceController@streamPdf')->name('devices.pdf');
         Route::resource('devices', 'DeviceController', ['except' => ['show']]);
         Route::resource('channels', 'ChannelController', ['except' => ['show']]);
         Route::resource('channels.screens', 'ScreenController', ['except' => ['show']]);

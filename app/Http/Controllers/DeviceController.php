@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -194,6 +195,42 @@ class DeviceController extends Controller
             Log::error('Fehler in "DeviceController@destroy"!');
             return back()->with('flash-error', "Das Gerät $device->display_name konnte wegen eines Fehlers nicht gelöscht werden.");
         }
+    }
+
+    /**
+     * Stream a PDF with data for web- and api-access.
+     *
+     * @param  \App\Device  $device
+     */
+
+    public function streamPdf($deviceId)
+    {
+
+        $user = auth()->user();
+        $device = $user->devices()->whereId($deviceId)->first();
+        $dt = Carbon::now();
+
+        $qrCodeSize = 180;
+
+        $data['date'] = $dt->isoFormat('D. MMMM GGGG');
+        $data['time'] = $dt->isoFormat('HH:mm');
+        $data['year'] = $dt->isoFormat('GGGG');
+
+        $data['user'] = $user;
+        $data['device'] = $device;
+        $data['qrCodeSize'] = $qrCodeSize;
+
+        $data['weburl'] = $device->weburl;
+        $data['webqr_b64'] = base64_encode($device->makeQR(false));
+        $data['webqr_b64_ts'] = base64_encode($device->makeQR(false, true));
+
+        $data['apiurl'] = $device->apiurl;
+        $data['apiqr_b64'] = base64_encode($device->makeQR(true));
+        $data['apiqr_b64_ts'] = base64_encode($device->makeQR(true, true));
+
+        $pdf = PDF::loadView('pdf.device-access-links', $data);
+        return $pdf->stream();
+
     }
 
 }
