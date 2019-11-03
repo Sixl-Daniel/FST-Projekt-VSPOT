@@ -49,17 +49,15 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
     color: #FFFFFF;
-    padding: 0.5em 1em;
+    padding: 1em 2em 0.8em;
     font-size: 50%;
     border-radius: 6px 6px 0 0;
     margin-left: 50%;
-    transform: translateX(-50%) translateY(100%);
-
-    //transform: translate3d(-50%, 100%, 0);
     transition: transform 600ms ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-width: 2px 2px 0;
+    transform: translate3d(-50%, 100%, 0);
     &.visible {
-
-        transform: translateX(-50%) translateY(0);
-        //transform: translate3d(-50%, 0%, 0);
+        transform: translate3d(-50%, 0%, 0);
     }
 }
