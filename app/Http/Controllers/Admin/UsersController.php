@@ -100,15 +100,12 @@ class UsersController extends Controller
         }
 
         // validate
-        $this->validate(
-            $request,
-            [
+        $request->validate([
             'username' => 'required | alpha_dash | max:32 | unique:users,username,'.$user->id,
             'email' => 'required | string | email | max:128 | unique:users,email,'.$user->id,
             'first_name' => 'required | string | max:128',
             'last_name' => 'required | string | max:128'
-            ]
-        );
+        ]);
 
         // update and save
         try
