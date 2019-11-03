@@ -22,7 +22,7 @@
 <main>@yield('content')</main>
 <footer>
 @section('footer')
-    <p class="copyright"><small>@ {{ $year }} Daniel Sixl / <a href="mailto:info@vspot.eu">info@vspot.eu</a></small> <small class="float-right">Stand vom {{ $date }}, {{ $time }} Uhr</small></p>
+    <p class="copyright"><small>&copy; {{ $year }} Daniel Sixl / <a href="mailto:info@vspot.eu">info@vspot.eu</a></small> <small class="float-right">Stand vom {{ $date }}, {{ $time }} Uhr</small></p>
 @show
 </footer>
 </body>
