@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Device;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use PDF;
 
 class DeviceController extends Controller
 {
@@ -55,16 +58,20 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         // validate
-        $user = auth()->user();
-        $this->validate(
-            $request,
-            [
-                'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,NULL,id,user_id,'.$user->id,
-                'product_reference' => 'nullable | string | max:64',
-                'location' => 'nullable | string | max:32',
-                'description' => 'nullable | string | max:64'
-            ]
-        );
+        $request->validate([
+            'display_name' => [
+                'required',
+                'alpha_dash',
+                'max:32',
+                Rule::unique('devices')->where(function ($query) {
+                    return $query->where('user_id', auth()->id());
+                })
+            ],
+            'product_reference' => 'nullable | string | max:64',
+            'location' => 'nullable | string | max:32',
+            'description' => 'nullable | string | max:64'
+        ]);
+
         // save
         try
         {
@@ -124,18 +131,27 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
+        $user = auth()->user();
+
         // validate
-        $this->validate(
-            $request,
-            [
-                'display_name' => 'required | alpha_dash | max:32 | unique:devices,display_name,'.$device->id,
-                'product_reference' => 'nullable | string | max:64',
-                'location' => 'nullable | string | max:32',
-                'description' => 'nullable | string | max:128',
-                'channel_id' => 'nullable | exists:channels,id'
-            ]
-        );
+
+        $request->validate([
+            'display_name' => [
+                'required',
+                'alpha_dash',
+                'max:32',
+                Rule::unique('devices')->ignore($device)->where(function ($query) {
+                    return $query->where('user_id', auth()->id());
+                })
+            ],
+            'product_reference' => 'nullable | string | max:64',
+            'location' => 'nullable | string | max:32',
+            'description' => 'nullable | string | max:128',
+            'channel_id' => 'nullable | exists:channels,id',
+        ]);
+
         // update and save
+
         try
         {
             $channelId = $request->channel;
@@ -164,10 +180,10 @@ class DeviceController extends Controller
     public function destroy(Device $device)
     {
 
-//        if(auth()->user()->devices()->count() < 2)
-//        {
-//            return back()->with('flash-error', 'Das letzte verbleibende Gerät darf nicht gelöscht werden.');
-//        }
+        // if(auth()->user()->devices()->count() < 2)
+        // {
+        //     return back()->with('flash-error', 'Das letzte verbleibende Gerät darf nicht gelöscht werden.');
+        // }
 
         try {
             $device->delete();
@@ -179,4 +195,6 @@ class DeviceController extends Controller
             return back()->with('flash-error', "Das Gerät $device->display_name konnte wegen eines Fehlers nicht gelöscht werden.");
         }
     }
+
 }
+
