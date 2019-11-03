@@ -20,11 +20,11 @@
                     <form class="inline-form" action="{{ route('channels.destroy', $channel->id) }}" method="post">
                         @csrf
                         {{ method_field('delete') }}
-                        <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="fas fa-trash"></i> Löschen</button>
+                        <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="far fa-trash-alt"></i> Löschen</button>
                     </form>
-                    <a href="{{ route('channels.edit', $channel->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-edit"></i> Eigenschaften</a>
+                    <a href="{{ route('channels.edit', $channel->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="far fa-edit"></i> Eigenschaften</a>
                     @if( $channel->screens()->count() > 0)
-                    <a href="{{ route('channels.screens.index', $channel->id) }}" class="btn btn-primary btn-sm has-icon-left"><i class="fas fa-sitemap"></i> Screens</a>
+                    <a href="{{ route('channels.screens.index', $channel->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-layer-group"></i> Screens</a>
                     @else
                     <a href="{{ route('channels.screens.index', $channel->id) }}" class="btn btn-primary btn-sm has-icon-left"><i class="fas fa-plus"></i> Screens hinzufügen</a>
                     @endif

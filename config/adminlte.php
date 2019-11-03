@@ -129,13 +129,13 @@ return [
         [
             'text' => 'Frontend',
             'url' => '/',
-            'icon' => 'fas fa-fw fa-arrow-left',
+            'icon' => 'fas fa-fw fa-globe',
         ],
         ['header' => 'Hauptmenü'],
         [
             'text' => 'Dashboard',
             'url' => 'dashboard',
-            'icon' => 'fas fa-fw fa-thumbtack',
+            'icon' => 'fas fa-fw fa-th',
         ],
         [
             'text' => 'Devices',
@@ -145,13 +145,13 @@ return [
                 [
                     'text' => 'Geräteliste',
                     'url' => 'devices',
-                    'icon' => 'fas fa-fw fa-clipboard-list',
+                    'icon' => 'fas fa-fw fa-list-alt',
                     'active' => ['devices', 'devices/?page=*', 'devices/*/edit'],
                 ],
                 [
                     'text' => 'Neues Gerät',
                     'url' => 'devices/create',
-                    'icon' => 'fas fa-fw fa-plus-square',
+                    'icon' => 'fas fa-fw fa-folder-plus',
                     'active' => ['devices/create'],
                 ],
             ],
@@ -164,13 +164,13 @@ return [
                 [
                     'text' => 'Channelliste',
                     'url' => 'channels',
-                    'icon' => 'fas fa-fw fa-clipboard-list',
+                    'icon' => 'fas fa-fw fa-list-alt',
                     'active' => ['channels', 'channels/?page=*', 'channels/*/screens', 'channels/*/screens/create', 'channels/*/screens/*/edit'],
                 ],
                 [
                     'text' => 'Neuer Channel',
                     'url' => 'channels/create',
-                    'icon' => 'fas fa-fw fa-plus-square',
+                    'icon' => 'fas fa-fw fa-folder-plus',
                     'active' => ['channels/create'],
                 ],
             ],

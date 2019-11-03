@@ -14,9 +14,9 @@
                         <form class="inline-form" action="{{ route('channels.screens.destroy', [$channel->id, $screen]) }}" method="post">
                             @csrf
                             {{ method_field('delete') }}
-                            <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="fas fa-trash"></i> Löschen</button>
+                            <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="far fa-trash-alt"></i> Löschen</button>
                         </form>
-                        <a href="{{ route('channels.screens.edit', [$channel->id, $screen]) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-edit"></i> Editieren</a>
+                        <a href="{{ route('channels.screens.edit', [$channel->id, $screen]) }}" class="btn btn-default btn-sm has-icon-left"><i class="fa fa-edit"></i> Editieren</a>
                     </div>
                 </div>
             </div>

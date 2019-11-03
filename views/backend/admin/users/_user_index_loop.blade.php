@@ -51,9 +51,9 @@
                     <form class="inline-form" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                         @csrf
                         {{ method_field('delete') }}
-                        <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="fas fa-trash"></i> Löschen</button>
+                        <button type="submit" class="btn btn-danger btn-sm has-icon-left"><i class="far fa-trash-alt"></i> Löschen</button>
                     </form>
-                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="fas fa-edit"></i> Editieren</a>
+                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-default btn-sm has-icon-left"><i class="far fa-edit"></i> Editieren</a>
                     @endif
                 </div>
             </div>
