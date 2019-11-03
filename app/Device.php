@@ -25,9 +25,21 @@ class Device extends Model
         return $this->makePublicURL();
     }
 
+    public function getWebURLUpdateAttribute()
+    {
+        $link = $this->makePublicURL();
+        return  $link .= '&timestamp';
+    }
+
     public function getApiURLAttribute()
     {
         return $this->makePublicURL(true);
+    }
+
+    public function getApiURLUpdateAttribute()
+    {
+        $link = $this->makePublicURL(true);
+        return  $link .= '&timestamp';
     }
 
     private function makeQR($api = false)
