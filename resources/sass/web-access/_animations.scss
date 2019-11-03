@@ -12,14 +12,14 @@
 }
 
 $pulseShadowInactive: rgba(128,128,128, 0);
-$pulseShadowActive: rgba(128,128,128, 0.4);
+$pulseShadowActive: rgba(128,128,128, 0.8);
 
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 $pulseShadowActive;
     }
     70% {
-        box-shadow: 0 0 0 10px $pulseShadowInactive;
+        box-shadow: 0 0 0 12px $pulseShadowInactive;
     }
     100% {
         box-shadow: 0 0 0 0 $pulseShadowInactive;
