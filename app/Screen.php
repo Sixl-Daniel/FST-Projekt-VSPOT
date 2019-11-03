@@ -18,7 +18,7 @@ class Screen extends Model
     protected $appends = ['layout_name'];
 
     protected $hidden = [
-        'id', 'channel_id', 'layout_id', 'created_at', 'updated_at', 'layout', 'active'
+        'id', 'channel_id', 'layout_id', 'created_at', 'updated_at', 'layout', 'active', 'name', 'description'
     ];
 
     // purify html content
