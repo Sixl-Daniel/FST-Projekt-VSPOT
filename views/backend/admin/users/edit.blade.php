@@ -17,6 +17,7 @@
             'route' => ['admin.users.update', $user->id]
         ]) !!}
         <div class="panel panel-default panel--user panel--user-edit">
+            <div class="panel-heading"><h2 class="h3">{{$user->last_name}}, {{$user->first_name}}</h2></div>
             <div class="panel-body">
                 <div class="media">
                     <div class="media-left">
@@ -24,13 +25,14 @@
                     </div>
                     <div class="media-body">
                         <div class="user-status-labels pull-right">
-                            {!! $user->is('admin') ? '<span class="label label-info">Admin</span>' : '' !!}
-                            {!! $user->is('superadmin') ? '<span class="label label-info">Superadmin</span>' : '' !!}
-                            {!! $user->rejected ? '<span class="label label-danger">Gesperrt</span>' : '' !!}
-                            {!! $user->pending ? '<span class="label label-warning">Prüfen</span>' : '' !!}
+                            {!! $user->is('superadmin') ? '<span class="label label-primary">Superadmin</span>' : '' !!}
+                            {!! $user->is('admin') ? '<span class="label label-primary">Admin</span>' : '' !!}
+                            {!! $user->is('guest') ? '<span class="label label-danger">Gast</span>' : '' !!}
                         </div>
-                        <h3>{{$user->name}}</h3>
-                        <p>Username: <b>{{$user->username}}</b></p>
+                        <p>
+                            Bisheriger Username: <b>{{$user->username}}</b><br>
+                            Bisherige Rollen:@forelse($user->roles as $role)@if(!$loop->first),@endif <b>{{ ucfirst($role->name) }}</b>@empty <b class="text-danger">Gast, ohne Benutzerrolle</b>@endforelse
+                        </p>
                     </div>
                 </div>
                 <div class="row">
