@@ -23,9 +23,15 @@ class WebAccessController extends Controller
 
         // check if request is for timestamp only and provide latest timestamp as json
         if($request->exists('timestamp')) {
-            $lastUpdate = $device->updated_at->timestamp;
-            if($device->channel && $device->channel->updated_at->timestamp > $lastUpdate)
-                $lastUpdate = $device->channel->updated_at->timestamp;
+
+            $lastUpdateDevice = $device->updated_at->timestamp;
+            $lastUpdate = $lastUpdateDevice;
+
+            if($device->channel) {
+                $lastUpdateChannel = $device->channel->updated_at->timestamp;
+                if($lastUpdateChannel > $lastUpdateDevice) $lastUpdate = $lastUpdateChannel;
+            }
+
             return response()->json([
                 'lastUpdate' => $lastUpdate
             ]);
