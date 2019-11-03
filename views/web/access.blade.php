@@ -85,17 +85,21 @@ Kanal: {{ $channel->name }}
 <script>
 (function initWebAccess() {
 
+    /* show logs */
+
+    var debug = false;
+
+    if(!debug){
+        if(!window.console) window.console = {};
+        var methods = ["log", "debug", "warn", "info"];
+        for(var i=0; i < methods.length; i++){
+            console[methods[i]] = function(){};
+        }
+    }
+
     var l = console.log;
 
-    var notification = document.getElementById('notification');
-    var visibleClass = 'visible';
-
-    var lastVersion = false;
-    var isOffline = false;
-
-    var displayTime = {{ $channel->display_time ?? 5000 }};
-    var transitionTime = {{ $channel->transition_time ??  1000 }};
-    var refreshTime = {{ $channel->refresh_time ??  5 }} * 1000;
+    /* init swiper */
 
     var swiper = new Swiper('.swiper-container', {
         direction: 'vertical',
@@ -118,9 +122,25 @@ Kanal: {{ $channel->name }}
         @endif
     });
 
+    /* refreshing channel, online status */
+
+    var notification = document.getElementById('notification');
+    var visibleClass = 'visible';
+
+    var lastVersion = false;
+    var isOffline = false;
+
+    var displayTime = {{ $channel->display_time ?? 5000 }};
+    var transitionTime = {{ $channel->transition_time ??  1000 }};
+    var refreshTime = {{ $channel->refresh_time ??  5 }} * 1000;
+
     function isNetworkError(error) {
         return !!error.isAxiosError && !error.response;
     }
+
+    var offlineSinceTime;
+    var offlineDurationSeconds = 0;
+    var offlineTolerance = 45; /* notification on screen after x seconds */
 
     (function refresh() {
         setTimeout(function() {
@@ -132,7 +152,6 @@ Kanal: {{ $channel->name }}
                     } else {
                         lastVersion = newVersion;
                     }
-                    // notification.textContent='';
                     isOffline = false;
                     if (notification.classList.contains(visibleClass)) {
                         notification.classList.remove(visibleClass);
@@ -141,15 +160,19 @@ Kanal: {{ $channel->name }}
                 })
                 .catch(function (error) {
                     if (isNetworkError(error)) {
-                        var errorEvent = new Date();
-                        var dateOptions = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
-                        var eventDateTimeString = 'Offline seit ' + (errorEvent.toLocaleDateString('de-DE', dateOptions)) + ' Uhr';
-                        l(eventDateTimeString);
-                        if(!isOffline) notification.textContent = eventDateTimeString;
-                        if (!notification.classList.contains(visibleClass)) {
+                        var errorEventTime = new Date();
+                        if(!isOffline) {
+                            offlineSinceTime = new Date();
+                            var dateOptions = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+                            var eventDateTimeString = 'Offline seit ' + (errorEventTime.toLocaleDateString('de-DE', dateOptions)) + ' Uhr';
+                            notification.textContent = eventDateTimeString;
+                        }
+                        if (isOffline && (offlineDurationSeconds >= offlineTolerance) && !notification.classList.contains(visibleClass)) {
                             notification.classList.add(visibleClass);
                         }
                         isOffline = true;
+                        offlineDurationSeconds = Math.round((errorEventTime - offlineSinceTime) / 1000);
+                        l("Das Gerät ist seit " + offlineDurationSeconds + " Sekunden offline.\n[Zeitstempel: " + offlineSinceTime + ']');
                     }
                     l(error);
                 })
