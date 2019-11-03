@@ -14,6 +14,10 @@
     text-align: right;
 }
 
+.text-center {
+    text-align: right;
+}
+
 @mixin font-weight($weight) {
     $weights: (
         thin: 100,
@@ -47,27 +51,35 @@
 //.w100 {
 //    @include font-weight(thin);
 //}
+
 .w200 {
     @include font-weight(extra-light);
 }
+
 .w300 {
     @include font-weight(light);
 }
+
 .w400 {
     @include font-weight(book);
 }
+
 //.w500 {
 //    @include font-weight(medium);
 //}
+
 //.w600 {
 //    @include font-weight(semi-bold);
 //}
+
 .w700 {
     @include font-weight(bold);
 }
+
 .w800 {
     @include font-weight(extra-bold);
 }
+
 .w900 {
     @include font-weight(ultra-bold);
 }
