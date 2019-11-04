@@ -6,6 +6,17 @@
     <meta name="author" content="Daniel Sixl">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@hasSection('pageTitle')@yield('pageTitle') – @endif{{ config('app.name', 'Laravel') }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=001">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=001">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=001">
+    <link rel="manifest" href="/site.webmanifest?v=001">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=001" color="#c70038">
+    <link rel="shortcut icon" href="/favicon.ico?v=001">
+    <meta name="apple-mobile-web-app-title" content="VSPOT">
+    <meta name="application-name" content="VSPOT">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=001">
+    <meta name="theme-color" content="#ffffff">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,900&display=swap">
     <link rel="stylesheet" href="{{ asset('css/app-frontend.css') }}">

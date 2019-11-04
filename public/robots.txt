@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /*test*
+Disallow: /*demo*
+Disallow: /*private*
+Noindex: /*test*
+Noindex: /*demo*
+Noindex: /*private*
