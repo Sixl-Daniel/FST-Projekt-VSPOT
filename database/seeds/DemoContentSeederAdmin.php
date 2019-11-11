@@ -114,14 +114,14 @@ class DemoContentSeederAdmin extends Seeder
 
         // Screens des Channels "Information"
 
-        $screen_information_1 = new Screen();
-        $screen_information_1->name = "Information";
-        $screen_information_1->description = "Anzeige des Test-Layouts mit Basisinformationen";
-        $screen_information_1->background_color = "#000000";
-        $screen_information_1->text_color = "#FAFAFA";
-        $screen_information_1->layout()->associate($testLayout);
-        $screen_information_1->channel()->associate($channel_information);
-        $screen_information_1->save();
+        $screen_information = new Screen();
+        $screen_information->name = "Information";
+        $screen_information->description = "Anzeige des Test-Layouts mit Basisinformationen";
+        $screen_information->background_color = "#000000";
+        $screen_information->text_color = "#FAFAFA";
+        $screen_information->layout()->associate($testLayout);
+        $screen_information->channel()->associate($channel_information);
+        $screen_information->save();
 
 
 
@@ -138,86 +138,36 @@ class DemoContentSeederAdmin extends Seeder
         // Screens des Channels "Impressionen"
 
         $linkCdn = 'https://picsum.photos/';
-        $imgWidth = 1600;
-        $imgHeight = 900;
+        $imgWidth = 3200;
+        $imgHeight = 1800;
         $imgFileExt = "webp";
 
-        $screen_impressionen_1 = new Screen();
-        $screen_impressionen_1->name = "Impressionen-1";
-        $screen_impressionen_1->background_color = "rgb(0,0,0)";
-        $screen_impressionen_1->overlay_color = "rgba(0, 0, 0, 0.5)";
-        $screen_impressionen_1->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?grayscale&random=1" . "." . $imgFileExt;
-        $screen_impressionen_1->text_color = "rgb(255, 255, 255)";
-        $screen_impressionen_1->heading = "Impressionen";
-        $screen_impressionen_1->subheading = 'Demo für das Projekt „Digital Signage“';
-        $screen_impressionen_1->layout()->associate($basicLayout);
-        $screen_impressionen_1->channel()->associate($channel_impressionen);
-        $screen_impressionen_1->save();
+        $imageCount = 12;
 
-        $screen_impressionen_2 = new Screen();
-        $screen_impressionen_2->name = "Impressionen-2";
-        $screen_impressionen_2->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=2" . "." . $imgFileExt;
-        $screen_impressionen_2->layout()->associate($basicLayout);
-        $screen_impressionen_2->channel()->associate($channel_impressionen);
-        $screen_impressionen_2->save();
+        $screen_impressionen_first = new Screen();
+        $screen_impressionen_first->name = "Impression 00 (Intro)";
+        $screen_impressionen_first->background_color = "rgb(0,0,0)";
+        $screen_impressionen_first->overlay_color = "rgba(0, 0, 0, 0.75)";
+        $screen_impressionen_first->bg_img_cdn_link = $linkCdn . "id/0/" . $imgWidth . "/" . $imgHeight . "?grayscale" . "." . $imgFileExt;
+        $screen_impressionen_first->text_color = "rgb(255, 255, 255)";
+        $screen_impressionen_first->heading = "Impressionen";
+        $screen_impressionen_first->subheading = 'Demo für das Projekt „Digital Signage“';
+        $screen_impressionen_first->layout()->associate($basicLayout);
+        $screen_impressionen_first->channel()->associate($channel_impressionen);
+        $screen_impressionen_first->save();
 
-        $screen_impressionen_3 = new Screen();
-        $screen_impressionen_3->name = "Impressionen-3";
-        $screen_impressionen_3->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=3" . "." . $imgFileExt;
-        $screen_impressionen_3->layout()->associate($basicLayout);
-        $screen_impressionen_3->channel()->associate($channel_impressionen);
-        $screen_impressionen_3->save();
-
-        $screen_impressionen_4 = new Screen();
-        $screen_impressionen_4->name = "Impressionen-4";
-        $screen_impressionen_4->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=4" . "." . $imgFileExt;
-        $screen_impressionen_4->layout()->associate($basicLayout);
-        $screen_impressionen_4->channel()->associate($channel_impressionen);
-        $screen_impressionen_4->save();
-
-        $screen_impressionen_5 = new Screen();
-        $screen_impressionen_5->name = "Impressionen-5";
-        $screen_impressionen_5->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=5" . "."  . $imgFileExt;
-        $screen_impressionen_5->layout()->associate($basicLayout);
-        $screen_impressionen_5->channel()->associate($channel_impressionen);
-        $screen_impressionen_5->save();
-
-        $screen_impressionen_6 = new Screen();
-        $screen_impressionen_6->name = "Impressionen-6";
-        $screen_impressionen_6->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=6" .".". $imgFileExt;
-        $screen_impressionen_6->layout()->associate($basicLayout);
-        $screen_impressionen_6->channel()->associate($channel_impressionen);
-        $screen_impressionen_6->save();
-
-        $screen_impressionen_7 = new Screen();
-        $screen_impressionen_7->name = "Impressionen-7";
-        $screen_impressionen_7->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=7" . "." . $imgFileExt;
-        $screen_impressionen_7->layout()->associate($basicLayout);
-        $screen_impressionen_7->channel()->associate($channel_impressionen);
-        $screen_impressionen_7->save();
-
-        $screen_impressionen_8 = new Screen();
-        $screen_impressionen_8->name = "Impressionen-8";
-        $screen_impressionen_8->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=8" . "." . $imgFileExt;
-        $screen_impressionen_8->layout()->associate($basicLayout);
-        $screen_impressionen_8->channel()->associate($channel_impressionen);
-        $screen_impressionen_8->save();
-
-        $screen_impressionen_9 = new Screen();
-        $screen_impressionen_9->name = "Impressionen-9";
-        $screen_impressionen_9->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=9" . "." . $imgFileExt;
-        $screen_impressionen_9->layout()->associate($basicLayout);
-        $screen_impressionen_9->channel()->associate($channel_impressionen);
-        $screen_impressionen_9->save();
-
-        $screen_impressionen_10 = new Screen();
-        $screen_impressionen_10->name = "Impressionen-10";
-        $screen_impressionen_10->background_color = "rgb(0,0,0)";
-        $screen_impressionen_10->overlay_color = "rgba(0, 0, 0, 0.5)";
-        $screen_impressionen_10->bg_img_cdn_link = $linkCdn . $imgWidth . "/" . $imgHeight . "?random=10" . "." . $imgFileExt;
-        $screen_impressionen_10->layout()->associate($basicLayout);
-        $screen_impressionen_10->channel()->associate($channel_impressionen);
-        $screen_impressionen_10->save();
+        for($loop=1; $loop <= $imageCount; $loop++) {
+            $padLoop = str_pad($loop, 2, '0', STR_PAD_LEFT);
+            $screen_impressionen = new Screen();
+            $screen_impressionen->name = "Impression " . $padLoop;
+            $screen_impressionen->background_color = "rgb(0,0,0)";
+            $screen_impressionen->overlay_color = "rgba(0, 0, 0, 0.25)";
+            $screen_impressionen->bg_img_cdn_link = $linkCdn . "id/" . $loop . "/" . $imgWidth . "/" . $imgHeight . "." . $imgFileExt;
+            $screen_impressionen->heading = 'Screen ' . $padLoop;
+            $screen_impressionen->layout()->associate($basicLayout);
+            $screen_impressionen->channel()->associate($channel_impressionen);
+            $screen_impressionen->save();
+        }
 
 
 
