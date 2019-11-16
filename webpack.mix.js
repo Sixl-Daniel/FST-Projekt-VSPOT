@@ -7,7 +7,7 @@ mix.webpackConfig({
         new SWPrecacheWebpackPlugin({
             cacheId: 'pwa',
             filename: 'service-worker.js',
-            staticFileGlobs: ['public/**/*.{css,eot,svg,png,jpg,ttf,woff,woff2,js,html}'],
+            staticFileGlobs: ['public/**/*.{css,eot,svg,png,jpg,ico,ttf,woff,woff2,js,html}'],
             minify: true,
             stripPrefix: 'public/',
             handleFetch: true,
@@ -17,7 +17,7 @@ mix.webpackConfig({
                 '/datenschutz': ['views/frontend/pages/secondary/datenschutz.blade.php'],
                 '/impressum': ['views/frontend/pages/secondary/impressum.blade.php'],
             },
-            staticFileGlobsIgnorePatterns: [/\.map$/, /mix-manifest\.json$/, /manifest\.json$/, /service-worker\.js$/],
+            staticFileGlobsIgnorePatterns: [/\.map$/, /mix-manifest\.json$/, /site\.webmanifest$/, /manifest\.json$/, /service-worker\.js$/],
             navigateFallback: '/',
             runtimeCaching: [
                 {
