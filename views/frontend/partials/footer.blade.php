@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{{ url('/') }}"><b>VSPOT</b> Digital Signage Solution</a>
+                <a class="nav-item nav-link" href="{{ url('/') }}"><b>VSPOT</b> Digital&nbsp;Signage&nbsp;Solution</a>
             </div>
             <div class="navbar-nav">
                 <a class="nav-item nav-link email" href="mailto:{{ env('APP_MAIL') }}">{{ env('APP_MAIL') }}</a>

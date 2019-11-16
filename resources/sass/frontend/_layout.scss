@@ -16,6 +16,11 @@ main {
 
 footer {
     @include media-breakpoint-down(sm) {
-       .container { flex-direction: column; }
+        .container { flex-direction: column; }
+        .nav-link {
+            padding: 0.1rem 1rem;
+            font-size: 0.66rem;
+            text-align: center;
+        }
     }
 }
