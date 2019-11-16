@@ -6,12 +6,17 @@
     <meta name="author" content="Daniel Sixl">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@hasSection('pageTitle')@yield('pageTitle') – @endif{{ config('app.name', 'Laravel') }}</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=001">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-512x512.png?v=001">
+    <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png?v=001">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=001">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=001">
-    <link rel="manifest" href="/site.webmanifest?v=001">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png?v=001">
+    <link rel="manifest" href="/site.webmanifest?v=002">
     <link rel="mask-icon" href="/safari-pinned-tab.svg?v=001" color="#c70038">
     <link rel="shortcut icon" href="/favicon.ico?v=001">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="VSPOT">
     <meta name="application-name" content="VSPOT">
     <meta name="msapplication-TileColor" content="#ffffff">
