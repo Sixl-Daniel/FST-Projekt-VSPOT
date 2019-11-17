@@ -131,7 +131,7 @@
                     Surfverhaltens) gespeichert werden, werden diese in dieser Datenschutzerklärung gesondert
                     behandelt.</p>
                 <h3>Server-Log-Dateien</h3>
-                <p>Der Webspace-Provider (webgo GmbH, Wandsbeker Zollstr. 95, 22041 Hamburg) erhebt und speichert,
+                <p>Unser Webspace-Provider <a href="https://uberspace.de/de/about/privacy/" target="_blank">UberSpace</a> (Jonas Pasche, Kaiserstr. 15, 55116 Mainz) erhebt und speichert,
                     aus technischen Gründen, automatisch Informationen in so genannten Server-Log-Dateien, die Ihr
                     Browser automatisch an uns übermittelt. Dies sind:</p>
                 <ul class="collection">
