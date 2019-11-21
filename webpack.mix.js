@@ -1,21 +1,20 @@
 const mix = require('laravel-mix');
-
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 mix.webpackConfig({
     plugins: [
         new SWPrecacheWebpackPlugin({
-            cacheId: 'pwa',
+            cacheId: 'vspot-pwa',
             filename: 'service-worker.js',
             staticFileGlobs: ['public/**/*.{css,eot,svg,png,jpg,ico,ttf,woff,woff2,js,html}'],
             minify: true,
             stripPrefix: 'public/',
             handleFetch: true,
             dynamicUrlToDependencies: {
-                '/': ['views/frontend/pages/primary/front.blade.php'],
-                '/produkt': ['views/frontend/pages/primary/produkt.blade.php'],
-                '/datenschutz': ['views/frontend/pages/secondary/datenschutz.blade.php'],
-                '/impressum': ['views/frontend/pages/secondary/impressum.blade.php'],
+                // '/': ['views/frontend/pages/primary/front.blade.php'],
+                // '/produkt': ['views/frontend/pages/primary/produkt.blade.php'],
+                // '/datenschutz': ['views/frontend/pages/secondary/datenschutz.blade.php'],
+                // '/impressum': ['views/frontend/pages/secondary/impressum.blade.php'],
             },
             staticFileGlobsIgnorePatterns: [/\.map$/, /mix-manifest\.json$/, /site\.webmanifest$/, /manifest\.json$/, /service-worker\.js$/],
             navigateFallback: '/',
