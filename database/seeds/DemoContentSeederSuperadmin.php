@@ -27,26 +27,35 @@ class DemoContentSeederSuperadmin extends Seeder
          */
 
         $deviceVSPOT1 = new Device();
-        $deviceVSPOT1->display_name = 'Monitor_Envy_27';
-        $deviceVSPOT1->description = 'Monitor 27 Zoll, mit Raspberry Pi "VSPOT-1" in silbernem Gehäuse';
-        $deviceVSPOT1->product_reference = 'HP Envy 27s';
-        $deviceVSPOT1->location = 'Wohnzimmer';
+        $deviceVSPOT1->display_name = 'Philips_32';
+        $deviceVSPOT1->description = 'LED-TV 32 Zoll, mit Raspberry Pi 3B+ "VSPOT-1" in silbernem Vesa-Case';
+        $deviceVSPOT1->product_reference = 'Philips 32PFL5606H';
         $deviceVSPOT1->user()->associate($superadmin);
         $deviceVSPOT1->save();
+        $deviceVSPOT1->update(['api_token' => 'XIJVBa813uogjjwJyX4Gp9IN4XjNihGjGk7wuugQtHr9x']);
 
         $deviceVSPOT2 = new Device();
-        $deviceVSPOT2->display_name = 'Presenter';
-        $deviceVSPOT2->description = 'LCD-TV 50 Zoll, mit Raspberry Pi "VSPOT-2"';
+        $deviceVSPOT2->display_name = 'Toshiba_50';
+        $deviceVSPOT2->description = 'LCD-TV 50 Zoll, mit Raspberry Pi 4B+ "VSPOT-2" in Flirc-Case';
         $deviceVSPOT2->product_reference = 'Toshiba 50L4333D';
-        $deviceVSPOT2->location = 'Wohnzimmer';
         $deviceVSPOT2->user()->associate($superadmin);
         $deviceVSPOT2->save();
+        $deviceVSPOT2->update(['api_token' => 'fJGNkUNVMY5jGFKMD0JPGS371W27FEATBszPvj6n3FgHS']);
+
+        $deviceVSPOT3 = new Device();
+        $deviceVSPOT3->display_name = 'Samsung_22';
+        $deviceVSPOT3->description = 'LCD-Monitor 22 Zoll, mit Raspberry Pi 2 "VSPOT-3" in schwarzem Case';
+        $deviceVSPOT3->product_reference = 'Samsung 2253BW';
+        $deviceVSPOT3->user()->associate($superadmin);
+        $deviceVSPOT3->save();
+        $deviceVSPOT3->update(['api_token' => 'Qszo0RUI44uabgZzgZpVwD126mzov76rLgsxkpE3dOhmj']);
 
         $deviceDemo = new Device();
         $deviceDemo->display_name = 'Demo';
         $deviceDemo->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo->user()->associate($superadmin);
         $deviceDemo->save();
+        $deviceDemo->update(['api_token' => 'GAA2GzBawsTNoUteFGkF84D4FFvY5dSKcvqsWaMgyViic']);
 
 
 

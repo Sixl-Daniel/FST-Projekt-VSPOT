@@ -16,12 +16,11 @@ Route::view('datenschutz', 'frontend.pages.secondary.datenschutz')->name('datens
 // PUBLIC TESTING
 Route::get('api/demo', 'Test\JsonDemoController@index')->name('demo.api.json');
 
-// PUBLIC WEB API, TOKEN VERIFICATION
+// DEVICE AND APPLICATION ACCESS API, DEVICE TOKEN VERIFICATION
 
-Route::middleware('auth:api')->group(function() {
-    Route::namespace('Web')->name('web.')->prefix('web/v1')->group(function () {
-        Route::get('{user}/{device}', 'WebAccessController@respond_v1')->name('access_v1');
-    });
+Route::namespace('Access')->name('access.') ->group(function () {
+    Route::prefix('web/v1')->get('{user}/{device}', 'DeviceWebAccessController@respond_v1')->name('web');
+    Route::prefix('api/v1')->get('{user}/{device}', 'DeviceApiAccessController@respond_v1')->name('api');
 });
 
 // VERIFIED USERS

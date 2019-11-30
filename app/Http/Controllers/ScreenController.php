@@ -6,7 +6,10 @@ use App\Channel;
 use App\Layout;
 use App\Rules\ValidColor;
 use App\Screen;
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class ScreenController extends Controller

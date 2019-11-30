@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class ChannelController extends Controller

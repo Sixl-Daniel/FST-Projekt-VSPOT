@@ -13,56 +13,59 @@
         text-align: center;
         width: 25%;
     }
+    .auth-device-link {
+        font-size: 14px;
+    }
     .copyright {
         margin-top: 1.5em;
+    }
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active{
+        text-decoration: none;
     }
 @endpush
 
 @section('content')
 <h1 class="heading"><span class="w700">VSPOT</span> <span class="w200">Digital Signage Solution</span></h1>
-<table>
-    <tr>
-        <th>Benutzer:</th>
-        <th>Bezeichnung:</th>
-        <th>Gerätereferenz:</th>
-        <th>Location:</th>
-    </tr>
-    <tr>
-        <td>{{ $user->name }}</td>
-        <td>{{ $device->display_name }}</td>
-        <td>{{ $device->product_reference ?? 'ohne Angabe' }}</td>
-        <td>{{ $device->location ?? 'ohne Angabe' }}</td>
-    </tr>
-</table>
-<p><strong>Beschreibung:</strong><br>{{ $device->description }}</p>
+
 <section>
-    <h2>Link für den Web-Zugang</h2>
-    <p><a href="{{ $weburl }}">{{ $weburl }}</a></p>
+    <table>
+        <tr>
+            <th>Benutzer:</th>
+            <th>Bezeichnung:</th>
+            <th>Gerätereferenz:</th>
+            <th>Location:</th>
+        </tr>
+        <tr>
+            <td>{{ $user->name }}</td>
+            <td>{{ $device->display_name }}</td>
+            <td>{{ $device->product_reference ?? 'ohne Angabe' }}</td>
+            <td>{{ $device->location ?? 'ohne Angabe' }}</td>
+        </tr>
+    </table>
+    <p><strong>Beschreibung:</strong><br>{{ $device->description }}</p><p><strong>Achtung:</strong><br>Die Zugänge auf dieser Seite sollten nur für Geräte und Applikationen verwendet werden. Die hier eingesetzten Keys sind geräte- bzw. applikationsabhängig und autorisieren diese.</p>
 </section>
+
 <section>
-    <h2>Link für den API-Zugang</h2>
-    <p><a href="{{ $apiurl }}">{{ $apiurl }}</a></p>
+    <h2>Zugänge für Geräte und Applikationen</h2>
+    <p>Web-Zugang für Geräte:<br><a class="auth-device-link" href="{{ $weburl }}">{{ $weburl }}</a></p>
+    <p>API-Zugang für Applikationen:<br><a class="auth-device-link" href="{{ $apiurl }}">{{ $apiurl }}</a></p>
+    <p>Um nur den Zeitstempel des letzten Updates als JSON-Response zu erhalten, hängen Sie bitte den Parameter <b>timestamp</b> an den jeweiligen Link an.</p>
 </section>
-<section>
-    <h2>Zeitstempel</h2>
-    <p>Um nur den Zeitstempel des letzten Updates als JSON-Response zu erhalten, hängen Sie bitte den Parameter <b>timestamp</b> an den jeweiligen Link an:</p>
-    <p>Letztes Update des Web-Zugangs:<br><a href="{{ $apiurl . '&timestamp' }}">{{ $apiurl . '&timestamp' }}</a></p>
-    <p>Letztes Update des API-Zugangs:<br><a href="{{ $weburl . '&timestamp' }}">{{ $weburl . '&timestamp' }}</a></p></p>
-</section>
+
 <section>
     <h2>QR-Codes</h2>
     <table class="qr-codes">
         <tr>
-            <th>Web-Access<br>Inhalte</th>
-            <th>API-Access<br>Inhalte</th>
-            <th>Web-Access<br>Zeitstempel</th>
-            <th>API-Access<br>Zeitstempel</th>
+            <th>Web-Access</th>
+            <th>API-Access</th>
         </tr>
         <tr>
-            <td><img width="{{ $qrCodeSize }}" height="{{ $qrCodeSize }}" src="data:image/png;base64, {{ $webqr_b64 }}"/></td>
-            <td><img width="{{ $qrCodeSize }}" height="{{ $qrCodeSize }}" src="data:image/png;base64, {{ $apiqr_b64 }}"/></td>
-            <td><img width="{{ $qrCodeSize }}" height="{{ $qrCodeSize }}" src="data:image/png;base64, {{ $webqr_b64_ts }}"/></td>
-            <td><img width="{{ $qrCodeSize }}" height="{{ $qrCodeSize }}" src="data:image/png;base64, {{ $apiqr_b64_ts }}"/></td>
+            <td><img src="data:image/png;base64, {{ $webqr_b64 }}"/></td>
+            <td><img src="data:image/png;base64, {{ $apiqr_b64 }}"/></td>
         </tr>
     </table>
 </section>

@@ -21,6 +21,7 @@ class CreateDevicesTable extends Migration
             $table->string('description')->nullable();
             $table->string('product_reference')->nullable();
             $table->string('location')->nullable();
+            $table->string('api_token', 45)->unique()->nullable()->default(null);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unique(['user_id', 'display_name']);

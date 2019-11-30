@@ -15,6 +15,10 @@
     .float-right { float: right; }
     .w200 { font-weight: 200; }
     .w700 { font-weight: 700; }
+    footer {
+        margin-top: 3em;
+        border-top: 1px solid black;
+    }
     @stack('top_css')
 </style>
 </head>

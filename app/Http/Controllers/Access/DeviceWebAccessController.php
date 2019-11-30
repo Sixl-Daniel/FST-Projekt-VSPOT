@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Access;
 
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
-class WebAccessController extends Controller
+class DeviceWebAccessController extends Controller
 {
     public function respond_v1(Request $request, $user_id, $device_id)
     {
 
         \Debugbar::disable();
 
+        // get user and device
+
         $user = User::find($user_id);
-
-        // no access if provided user id is not matching provided token
-        if($user->api_token != $request->api_token) abort(403, 'Unberechtigter Zugriff');
-
-        // get device
         $device = $user->devices->find($device_id);
+
+        // no access without device api-token
+        if(!$request->api_token || $device->api_token != $request->api_token) abort(403, 'Unberechtigter Zugriff auf dieses Gerät');
 
         // check if request is for timestamp only and provide latest timestamp as json
         if($request->exists('timestamp')) {

@@ -14,8 +14,6 @@ class DemoContentSeederAdmin extends Seeder
 
         // fetch user
 
-        //$admin = User::superadministrators()->first();
-        //env('INITIAL_ADMIN_USERNAME')
         $admin = User::whereUsername(env('INITIAL_ADMIN_USERNAME'))->first();
 
         // fetch layouts for screens
@@ -23,6 +21,8 @@ class DemoContentSeederAdmin extends Seeder
         $testLayout = Layout::whereName('Test')->first();
         $basicLayout = Layout::whereName('Basic')->first();
         $htmlLayout = Layout::whereName('HTML')->first();
+
+
 
         /*
          * CREATE DEVICES
@@ -33,7 +33,7 @@ class DemoContentSeederAdmin extends Seeder
         $deviceDemo->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo->user()->associate($admin);
         $deviceDemo->save();
-
+        $deviceDemo->update(['api_token' => 'kQy24i57RTEvlOIHLVXCr0h19i503VPY6849O1pJwBSKv']);
 
 
         /*
