@@ -5,7 +5,8 @@ require('laravel-mix-purgecss');
 /* purge options */
 
 $purgeOptions = {
-    folders: ['views'],
+    folders: ['views','app','resources'],
+    whitelistPatterns: [/^view-/],
 };
 
 /* frontend build */
