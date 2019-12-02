@@ -17,7 +17,7 @@ return [
 
     'title_prefix' => '',
 
-    'title_postfix' => ' — ' . env('APP_NAME'),
+    'title_postfix' => ' – ' . env('APP_NAME'),
 
     /*
     |--------------------------------------------------------------------------
