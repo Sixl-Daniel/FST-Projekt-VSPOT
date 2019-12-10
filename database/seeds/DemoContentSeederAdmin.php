@@ -124,7 +124,7 @@ class DemoContentSeederAdmin extends Seeder
             $screen_performance->background_color = $bgColor;
             $screen_performance->text_color = $fgColor;
             $screen_performance->heading = "$loop. Screen";
-            $screen_performance->heading = "Bildschirm $padLoop/$countScreensChannelPerformance";
+            $screen_performance->subheading = "Bildschirm $padLoop/$countScreensChannelPerformance";
             $screen_performance->layout()->associate($basicLayout);
             $screen_performance->channel()->associate($channel_performance);
             $screen_performance->save();
