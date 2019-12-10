@@ -22,8 +22,6 @@ class DemoContentSeederAdmin extends Seeder
         $basicLayout = Layout::whereName('Basic')->first();
         $htmlLayout = Layout::whereName('HTML')->first();
 
-
-
         /*
          * CREATE DEVICES
          */
@@ -34,7 +32,6 @@ class DemoContentSeederAdmin extends Seeder
         $deviceDemo->user()->associate($admin);
         $deviceDemo->save();
         $deviceDemo->update(['api_token' => 'kQy24i57RTEvlOIHLVXCr0h19i503VPY6849O1pJwBSKv']);
-
 
         /*
          * CREATE CHANNEL "Testing"
@@ -100,7 +97,38 @@ class DemoContentSeederAdmin extends Seeder
         $screen_testing_5->channel()->associate($channel_testing);
         $screen_testing_5->save();
 
+        /*
+         * CREATE CHANNEL "TestingPerformance"
+         */
 
+        $channel_performance = new Channel();
+        $channel_performance->name = "Testing-Performance";
+        $channel_performance->description = "Channel mit 100 Screens, Basic";
+        $channel_performance->user()->associate($admin);
+        $channel_performance->save();
+
+        // Screens des Channels "Testing-Performance"
+
+        $countScreensChannelPerformance = 100;
+
+        for($loop=1; $loop <= $countScreensChannelPerformance; $loop++) {
+            $r = rand(0,255);
+            $g = rand(0,255);
+            $b = rand(0,255);
+            $bgColor = 'rgb('.$r.', '.$g.', '.$b.')';
+            $fgColor = (($r*0.299 + $g*0.587 + $b*0.114) > 150) ? "rgb(0, 0, 0)" : "rgb(255, 255, 255)";
+            $padLoop = str_pad($loop, 3, '0', STR_PAD_LEFT);
+            $screen_performance = new Screen();
+            $screen_performance->name = "Testing-$padLoop";
+            $screen_performance->description = "$loop. Screen des Channels „Testing-Performance“";
+            $screen_performance->background_color = $bgColor;
+            $screen_performance->text_color = $fgColor;
+            $screen_performance->heading = "$loop. Screen";
+            $screen_performance->heading = "Bildschirm $padLoop/$countScreensChannelPerformance";
+            $screen_performance->layout()->associate($basicLayout);
+            $screen_performance->channel()->associate($channel_performance);
+            $screen_performance->save();
+        }
 
         /*
          * CREATE CHANNEL "Information"
@@ -122,8 +150,6 @@ class DemoContentSeederAdmin extends Seeder
         $screen_information->layout()->associate($testLayout);
         $screen_information->channel()->associate($channel_information);
         $screen_information->save();
-
-
 
         /*
          * CREATE CHANNEL "Impressionen"
@@ -168,8 +194,6 @@ class DemoContentSeederAdmin extends Seeder
             $screen_impressionen->channel()->associate($channel_impressionen);
             $screen_impressionen->save();
         }
-
-
 
         /*
          * CREATE CHANNEL "Projekt-VSPOT"
@@ -252,7 +276,6 @@ class DemoContentSeederAdmin extends Seeder
         $screen_vspot_invitation->channel()->associate($channel_vspot);
         $screen_vspot_invitation->save();
 
-
         /*
          * CREATE CHANNEL "Empfangsbereich"
          */
@@ -299,7 +322,6 @@ class DemoContentSeederAdmin extends Seeder
         $screen_reception_2->layout()->associate($htmlLayout);
         $screen_reception_2->channel()->associate($channel_reception);
         $screen_reception_2->save();
-
 
         /*
          * Initial device associations
