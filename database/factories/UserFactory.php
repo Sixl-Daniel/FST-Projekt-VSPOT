@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Helper;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -17,21 +18,15 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $randomCreatedAt = Carbon::now();
-    $randomCreatedAt
-        ->subDays(rand(2,144))
-        ->setHours(rand(0,23))
-        ->setMinutes(rand(0,59))
-        ->setSeconds(rand(0,59));
-    $randomVerifiedAt = $randomCreatedAt->copy()->addMinutes(rand(2,30));
+    $randomDate = Helper::getRandomRegisterDate();
     return [
         'username' => $faker->userName,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'created_at' => $randomCreatedAt,
-        'updated_at' => $randomCreatedAt,
-        'email_verified_at' => $randomVerifiedAt,
+        'created_at' => $randomDate['created'],
+        'updated_at' => $randomDate['created'],
+        'email_verified_at' => $randomDate['verified'],
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
         'api_token' => Str::random(64)
