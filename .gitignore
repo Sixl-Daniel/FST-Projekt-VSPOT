@@ -22,3 +22,4 @@ yarn-error.log
 /.phpstorm.meta.php
 
 service-worker.js
+/public/precache-manifest.*
