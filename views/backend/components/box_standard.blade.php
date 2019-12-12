@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="{{ $class ?? 'col-md-6' }}">
     <div class="box box-{{ $type ?? 'default' }}{{ ($solid ?? false) ? ' box-solid':''}}" data-widget="box-widget">
         <div class="box-header with-border">
             <h3 class="box-title"><i class="icon fas fa-{{ $icon ?? 'info-circle' }}"></i> {{ $title ?? 'Information' }}</h3>
