@@ -8,10 +8,10 @@
 
 @section('content')
 <div class="row">
-
-    @include('backend.dashboard.infobox-user-chart')
+    @can('manage-users')
+        @include('backend.dashboard.infobox-user-chart')
+    @endcan
     @include('backend.dashboard.infobox-messages')
     @include('backend.dashboard.infobox-quote')
-
 </div>
 @stop
