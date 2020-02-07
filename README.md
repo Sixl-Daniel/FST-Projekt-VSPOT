@@ -9,7 +9,7 @@
 <p>VSPOT is a graduation project (State-Certified Engineer CS).</p>
 </div>
 
-**Note**  
+## Note  
 This is a student project, not a tested, production ready solution. If you are a beginner developer in Laravel, searching for some ideas to develop your own software, have a look. Everything is in the source code.  
 **The linked example application is for grading purposes only. If you register, your account will not be activated!**  
 Well, it will be if you are a teacher of mine. Or if you ask politely 😉
