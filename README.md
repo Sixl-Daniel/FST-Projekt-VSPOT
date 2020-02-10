@@ -1,11 +1,11 @@
 <div align="center">
-<img src="./public/media/branding/logo.png?raw=true" width="300" height="300">
-<h1>VSPOT<br>Digital Signage Solution</h1>
-<p>
-  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-</p>
+<img src="https://raw.githubusercontent.com/Sixl-Daniel/FST-Projekt-VSPOT/master/public/media/branding/logo.png" width="300" height="300">
+
+<h1>VSPOT<br>Digital Signage Solution</h1>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    
 <p>VSPOT is a graduation project (State-Certified Engineer CS).</p>
 </div>
 
@@ -16,7 +16,7 @@ Well, it will be if you are a teacher of mine. Or if you ask politely 😉
 
 ## Author
 
-* **Daniel Sixl** – [Profile on GitHub](https://github.com/Sixl-Daniel)
+- **Daniel Sixl** – [Profile on GitHub](https://github.com/Sixl-Daniel)
 
 ## License
 
@@ -30,5 +30,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
   https://github.com/StefanSuess/VSPOT-AndroidApp
 
 ## Acknowledgments
-* Laravel  
+- Laravel  
     https://laravel.com/
