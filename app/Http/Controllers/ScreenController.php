@@ -222,7 +222,7 @@ class ScreenController extends Controller
             $screen->delete();
             return redirect()
                 ->route('channels.screens.index', $channel_id)
-                ->with('flash-success', "Der Channel $screen->name wurde gelöscht.");
+                ->with('flash-success', "Der Screen $screen->name wurde gelöscht.");
         }
         catch(ModelNotFoundException $e)
         {
