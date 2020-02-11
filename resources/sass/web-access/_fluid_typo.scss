@@ -23,11 +23,20 @@
     }
 }
 
-$min_width: 320px;
-$max_width: 3600px;
-$min_font: 16px;
-$max_font: 72px;
+$min_width_range_a: 240px;
+$max_width_range_a: 479px;
+$min_font_range_a: 8px;
+$max_font_range_a: 15px;
+
+$min_width_range_b: 480px;
+$max_width_range_b: 3600px;
+$min_font_range_b: 16px;
+$max_font_range_b: 72px;
 
 html {
-    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+    @include fluid-type($min_width_range_a, $max_width_range_a, $min_font_range_a, $max_font_range_a);
+}
+
+html {
+    @include fluid-type($min_width_range_b, $max_width_range_b, $min_font_range_b, $max_font_range_b);
 }

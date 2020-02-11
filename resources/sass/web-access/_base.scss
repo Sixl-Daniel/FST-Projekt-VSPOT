@@ -2,8 +2,8 @@ html {
     font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
-    font-size: 16px;
     font-variant-ligatures: common-ligatures;
+    font-size: 8px; // see _fluid_typo.scss for font-sizing
 }
 
 html, body {
