@@ -160,8 +160,7 @@ class ScreenController extends Controller
         }
         catch(Exception $e)
         {
-            Log::error('^ Fehler in "ScreenController@duplicate"!');
-            Log::error($e);
+            Log::error('Fehler in "ScreenController@duplicate"!');
             return back()->with('flash-error', "Der Screen $screen->name kann wegen eines Fehlers nicht dupliziert werden.");
         }
     }
