@@ -59,7 +59,7 @@ class DemoContentSeeder extends Seeder
 
         $deviceVSPOT1 = new Device();
         $deviceVSPOT1->display_name = 'Philips_32';
-        $deviceVSPOT1->description = 'LED-TV 32 Zoll, mit Raspberry Pi 3B+ "VSPOT-1" in silbernem Vesa-Case';
+        $deviceVSPOT1->description = 'LED-TV 32 Zoll, mit Raspberry Pi 3B+ "vspot1" in silbernem Vesa-Case';
         $deviceVSPOT1->product_reference = 'Philips 32PFL5606H';
         $deviceVSPOT1->user()->associate($superadmin);
         $deviceVSPOT1->save();
@@ -67,37 +67,66 @@ class DemoContentSeeder extends Seeder
 
         $deviceVSPOT2 = new Device();
         $deviceVSPOT2->display_name = 'Toshiba_50';
-        $deviceVSPOT2->description = 'LCD-TV 50 Zoll, mit Raspberry Pi 4B+ "VSPOT-2" in Flirc-Case';
+        $deviceVSPOT2->description = 'LCD-TV 50 Zoll, mit Raspberry Pi 4B+ "vspot2" in Flirc-Case';
         $deviceVSPOT2->product_reference = 'Toshiba 50L4333D';
         $deviceVSPOT2->user()->associate($superadmin);
         $deviceVSPOT2->save();
         $deviceVSPOT2->update(['api_token' => 'fJGNkUNVMY5jGFKMD0JPGS371W27FEATBszPvj6n3FgHS']);
 
         $deviceVSPOT3 = new Device();
-        $deviceVSPOT3->display_name = 'Samsung_22';
-        $deviceVSPOT3->description = 'LCD-Monitor 22 Zoll, mit Raspberry Pi 2 "VSPOT-3" in schwarzem Case';
-        $deviceVSPOT3->product_reference = 'Samsung 2253BW';
+        $deviceVSPOT3->display_name = 'Raspi';
+        $deviceVSPOT3->description = 'Raspberry Pi 3B+ "vspot3" in transparentem Case mit internem Screen';
+        $deviceVSPOT3->product_reference = 'Raspi3B+/vspot3';
         $deviceVSPOT3->user()->associate($superadmin);
         $deviceVSPOT3->save();
         $deviceVSPOT3->update(['api_token' => 'Qszo0RUI44uabgZzgZpVwD126mzov76rLgsxkpE3dOhmj']);
 
-        $deviceDemo = new Device();
-        $deviceDemo->display_name = 'Demo';
-        $deviceDemo->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
-        $deviceDemo->user()->associate($superadmin);
-        $deviceDemo->save();
-        $deviceDemo->update(['api_token' => 'GAA2GzBawsTNoUteFGkF84D4FFvY5dSKcvqsWaMgyViic']);
+        $deviceVSPOT3 = new Device();
+        $deviceVSPOT3->display_name = 'Samsung_22';
+        $deviceVSPOT3->description = 'LCD-Monitor 22 Zoll, mit Raspberry Pi 2 "vspot4" in schwarzem Case';
+        $deviceVSPOT3->product_reference = 'Samsung 2253BW';
+        $deviceVSPOT3->user()->associate($superadmin);
+        $deviceVSPOT3->save();
+        $deviceVSPOT3->update(['api_token' => '70dCIsCnFpGKMhqdIrDhmtXs2XgSXmXuJooarn7vZM70o']);
+
+        $deviceDemo1 = new Device();
+        $deviceDemo1->display_name = 'Demo 1';
+        $deviceDemo1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemo1->user()->associate($superadmin);
+        $deviceDemo1->save();
+        $deviceDemo1->update(['api_token' => 'GAA2GzBawsTNoUteFGkF84D4FFvY5dSKcvqsWaMgyViic']);
+
+        $deviceDemo2 = new Device();
+        $deviceDemo2->display_name = 'Demo 2';
+        $deviceDemo2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemo2->user()->associate($superadmin);
+        $deviceDemo2->save();
+        $deviceDemo2->update(['api_token' => 'LLtuXZoPexsWhjQWwqljd0USDEq5CH75SK6b42jio7fXb']);
+
+        $deviceApp = new Device();
+        $deviceApp->display_name = 'Öffentliche Anwendung (Demo-App)';
+        $deviceApp->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests von Applikationen';
+        $deviceApp->user()->associate($superadmin);
+        $deviceApp->save();
+        $deviceApp->update(['api_token' => '63uH2211JX4nyoP9tyTK08Kpwq4WwzwFxVKgRRsQ5T4wB']);
 
         /*
          * CREATE DEVICE FOR ADMIN
          */
 
-        $deviceDemoAdmin = new Device();
-        $deviceDemoAdmin->display_name = 'Demo';
-        $deviceDemoAdmin->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
-        $deviceDemoAdmin->user()->associate($admin);
-        $deviceDemoAdmin->save();
-        $deviceDemoAdmin->update(['api_token' => 'kQy24i57RTEvlOIHLVXCr0h19i503VPY6849O1pJwBSKv']);
+        $deviceDemoAdmin1 = new Device();
+        $deviceDemoAdmin1->display_name = 'Demo 1';
+        $deviceDemoAdmin1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemoAdmin1->user()->associate($admin);
+        $deviceDemoAdmin1->save();
+        $deviceDemoAdmin1->update(['api_token' => 'kQy24i57RTEvlOIHLVXCr0h19i503VPY6849O1pJwBSKv']);
+
+        $deviceDemoAdmin2 = new Device();
+        $deviceDemoAdmin2->display_name = 'Demo 2';
+        $deviceDemoAdmin2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemoAdmin2->user()->associate($admin);
+        $deviceDemoAdmin2->save();
+        $deviceDemoAdmin2->update(['api_token' => 'TcwOSBixeFaUq2lTHhKKhCaK88IA6GmXQ41OtR2GrD7Ty']);
 
         /*
          * CREATE CHANNEL "Information"
@@ -385,13 +414,13 @@ class DemoContentSeeder extends Seeder
 
         $deviceVSPOT1->channel()->associate($channel_impressionen)->save();
         $deviceVSPOT2->channel()->associate($channel_reception)->save();
-        $deviceDemo->channel()->associate($channel_vspot)->save();
+        $deviceDemo1->channel()->associate($channel_vspot)->save();
 
         /*
          * Initial device associations for admin
          */
 
-        $deviceDemoAdmin->channel()->associate($channel_testing_admin)->save();
+        $deviceDemoAdmin1->channel()->associate($channel_testing_admin)->save();
 
     }
 }
