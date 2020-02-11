@@ -65,8 +65,8 @@ class DeviceController extends Controller
         $request->validate([
             'display_name' => [
                 'required',
-                'alpha_dash',
-                'max:32',
+                'string',
+                'between:3,32',
                 Rule::unique('devices')->where(function ($query) {
                     return $query->where('user_id', auth()->id());
                 })
@@ -142,8 +142,8 @@ class DeviceController extends Controller
         $request->validate([
             'display_name' => [
                 'required',
-                'alpha_dash',
-                'max:32',
+                'string',
+                'between:3,32',
                 Rule::unique('devices')->ignore($device)->where(function ($query) {
                     return $query->where('user_id', auth()->id());
                 })
