@@ -36,7 +36,6 @@ class CreateScreensTable extends Migration
 
             $table->timestamps();
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
-            $table->unique(['channel_id', 'name']);
         });
     }
 

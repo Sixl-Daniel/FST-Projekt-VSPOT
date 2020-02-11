@@ -72,8 +72,8 @@ class ScreenController extends Controller
             [
                 'name' => [
                     'required',
-                    'alpha_dash',
-                    'max:32',
+                    'string',
+                    'between:3,32',
                     Rule::unique('screens')->where(function ($query) use ($channel_id) {
                         return $query->where('channel_id', $channel_id);
                     })
@@ -116,7 +116,9 @@ class ScreenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Screen  $screen
+     * @param
+     * @param \App\Channel $channel_id
+     * @param \App\Screen $screen
      * @return \Illuminate\Http\Response
      */
     public function edit($channel_id, Screen $screen)
@@ -140,6 +142,31 @@ class ScreenController extends Controller
     }
 
     /**
+     * Duplicate the specified screen.
+     *
+     * @param \App\Channel $channel_id
+     * @param \App\Screen $screen
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate($channel_id, Screen $screen)
+    {
+        try {
+            $screen->load('channel', 'layout');
+            $newScreen = $screen->replicate();
+            $newScreen->save();
+            return redirect()
+                ->route('channels.screens.index', $channel_id)
+                ->with('flash-success', "Der Screen wurde dupliziert.");
+        }
+        catch(Exception $e)
+        {
+            Log::error('^ Fehler in "ScreenController@duplicate"!');
+            Log::error($e);
+            return back()->with('flash-error', "Der Screen $screen->name kann wegen eines Fehlers nicht dupliziert werden.");
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -155,8 +182,8 @@ class ScreenController extends Controller
             [
                 'name' => [
                     'required',
-                    'alpha_dash',
-                    'max:32',
+                    'string',
+                    'between:3,32',
                     Rule::unique('screens')->ignore($screen)->where(function ($query) use ($channel_id) {
                         return $query->where('channel_id', $channel_id);
                     })
