@@ -63,7 +63,7 @@ class DemoContentSeeder extends Seeder
         $deviceVSPOT1->product_reference = 'Philips 32PFL5606H';
         $deviceVSPOT1->user()->associate($superadmin);
         $deviceVSPOT1->save();
-        $deviceVSPOT1->update(['api_token' => 'XIJVBa813uogjjwJyX4Gp9IN4XjNihGjGk7wuugQtHr9x']);
+        $deviceVSPOT1->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_VSPOT1')]);
 
         $deviceVSPOT2 = new Device();
         $deviceVSPOT2->display_name = 'Toshiba_50';
@@ -71,44 +71,36 @@ class DemoContentSeeder extends Seeder
         $deviceVSPOT2->product_reference = 'Toshiba 50L4333D';
         $deviceVSPOT2->user()->associate($superadmin);
         $deviceVSPOT2->save();
-        $deviceVSPOT2->update(['api_token' => 'fJGNkUNVMY5jGFKMD0JPGS371W27FEATBszPvj6n3FgHS']);
-
-        $deviceVSPOT3 = new Device();
-        $deviceVSPOT3->display_name = 'Raspi';
-        $deviceVSPOT3->description = 'Raspberry Pi 3B+ "vspot3" in transparentem Case mit internem Screen';
-        $deviceVSPOT3->product_reference = 'Raspi3B+/vspot3';
-        $deviceVSPOT3->user()->associate($superadmin);
-        $deviceVSPOT3->save();
-        $deviceVSPOT3->update(['api_token' => 'Qszo0RUI44uabgZzgZpVwD126mzov76rLgsxkpE3dOhmj']);
+        $deviceVSPOT2->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_VSPOT2')]);
 
         $deviceVSPOT3 = new Device();
         $deviceVSPOT3->display_name = 'Samsung_22';
-        $deviceVSPOT3->description = 'LCD-Monitor 22 Zoll, mit Raspberry Pi 2 "vspot4" in schwarzem Case';
-        $deviceVSPOT3->product_reference = 'Samsung 2253BW';
+        $deviceVSPOT3->description = 'LCD-Monitor 22 Zoll, mit Raspberry Pi 3B+ "vspot3" in schwarzem Case';
+        $deviceVSPOT3->product_reference = 'Raspi3B+/vspot3';
         $deviceVSPOT3->user()->associate($superadmin);
         $deviceVSPOT3->save();
-        $deviceVSPOT3->update(['api_token' => '70dCIsCnFpGKMhqdIrDhmtXs2XgSXmXuJooarn7vZM70o']);
+        $deviceVSPOT3->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_VSPOT3')]);
 
         $deviceDemo1 = new Device();
         $deviceDemo1->display_name = 'Demo 1';
         $deviceDemo1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo1->user()->associate($superadmin);
         $deviceDemo1->save();
-        $deviceDemo1->update(['api_token' => 'GAA2GzBawsTNoUteFGkF84D4FFvY5dSKcvqsWaMgyViic']);
+        $deviceDemo1->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMO1')]);
 
         $deviceDemo2 = new Device();
         $deviceDemo2->display_name = 'Demo 2';
         $deviceDemo2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo2->user()->associate($superadmin);
         $deviceDemo2->save();
-        $deviceDemo2->update(['api_token' => 'LLtuXZoPexsWhjQWwqljd0USDEq5CH75SK6b42jio7fXb']);
+        $deviceDemo2->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMO2')]);
 
         $deviceApp = new Device();
         $deviceApp->display_name = 'Öffentliche Anwendung (Demo-App)';
         $deviceApp->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests von Applikationen';
         $deviceApp->user()->associate($superadmin);
         $deviceApp->save();
-        $deviceApp->update(['api_token' => '63uH2211JX4nyoP9tyTK08Kpwq4WwzwFxVKgRRsQ5T4wB']);
+        $deviceApp->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMOAPP')]);
 
         /*
          * CREATE DEVICE FOR ADMIN
@@ -119,14 +111,14 @@ class DemoContentSeeder extends Seeder
         $deviceDemoAdmin1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemoAdmin1->user()->associate($admin);
         $deviceDemoAdmin1->save();
-        $deviceDemoAdmin1->update(['api_token' => 'kQy24i57RTEvlOIHLVXCr0h19i503VPY6849O1pJwBSKv']);
+        $deviceDemoAdmin1->update(['api_token' => env('DEVICETOKEN_ADMIN_DEMO1')]);
 
         $deviceDemoAdmin2 = new Device();
         $deviceDemoAdmin2->display_name = 'Demo 2';
         $deviceDemoAdmin2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemoAdmin2->user()->associate($admin);
         $deviceDemoAdmin2->save();
-        $deviceDemoAdmin2->update(['api_token' => 'TcwOSBixeFaUq2lTHhKKhCaK88IA6GmXQ41OtR2GrD7Ty']);
+        $deviceDemoAdmin2->update(['api_token' => env('DEVICETOKEN_ADMIN_DEMO2')]);
 
         /*
          * CREATE CHANNEL "Information"
