@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
     protected $fillable = [
-        'name', 'description', 'display_time', 'transition_time', 'refresh_time', 'uses_parallax'
+        'name', 'description', 'display_time', 'transition_time', 'refresh_time', 'uses_parallax', 'effect'
     ];
 
     protected $hidden = [

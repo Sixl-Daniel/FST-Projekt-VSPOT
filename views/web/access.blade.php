@@ -120,7 +120,7 @@ Kanal: {{ $channel->name }}
         },
         preloadImages: false,
         @endif
-        effect: 'fade',
+        effect: '{{ $channel->effect ??  'fade' }}',
         allowTouchMove: false,
         speed: transitionTime,
         @if(!$noChannel && $screens->count() > 2)
