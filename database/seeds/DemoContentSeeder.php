@@ -190,6 +190,7 @@ class DemoContentSeeder extends Seeder
         $channel_performance->description = "Channel mit 100 Screens, Basic";
         $channel_performance->display_time = 500;
         $channel_performance->transition_time = 250;
+        $channel_performance->effect = "slide";
         $channel_performance->user()->associate($superadmin);
         $channel_performance->save();
         $channel_performance_admin = $channel_performance->replicate();
