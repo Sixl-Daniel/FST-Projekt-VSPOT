@@ -139,12 +139,14 @@ class ChannelController extends Controller
             'description' => 'nullable | string | max:128',
             'display_time' => 'integer | between:500,30000',
             'transition_time' => 'integer | between:50,3000',
-            'refresh_time' => 'integer | between:1,300'
+            'refresh_time' => 'integer | between:1,300',
+            'uses_parallax' => 'boolean'
         ]);
 
         // update and save
         try
         {
+            if($request->missing('uses_parallax')) $request->merge(['uses_parallax' => 0]);
             $channel->fill($request->all())->save();
             return redirect()->route('channels.index')->with('flash-success', "Der Channel $channel->name wurde aktualisiert.");
         }

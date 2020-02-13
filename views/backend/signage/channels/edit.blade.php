@@ -31,6 +31,9 @@
                     <div class="col-md-4">
                         {{ Form::vspotText('refresh_time', 'Refresh (s)') }}
                     </div>
+                    <div class="col-sm-12">
+                        {{ Form::vspotCheckbox('uses_parallax', 'Parallaxen in der Animation verwenden') }}
+                    </div>
                 </div>
             </div>
             <div class="panel-footer text-right">

@@ -85,8 +85,6 @@ Kanal: {{ $channel->name }}
 <script>
 (function initWebAccess() {
 
-
-
     /* show logs */
 
     var logging = true;
@@ -113,8 +111,10 @@ Kanal: {{ $channel->name }}
         init: true,
         direction: 'vertical',
         @if(!$noChannel && $screens->count() > 1)
+            @if($channel->uses_parallax)
+            parallax: true,
+            @endunless
         loop: true,
-        parallax:true,
         autoplay: {
             delay: displayTime,
         },
@@ -129,6 +129,7 @@ Kanal: {{ $channel->name }}
             type: 'bullets'
         }
         @endif
+
     });
 
     /* refreshing channel, online status */
