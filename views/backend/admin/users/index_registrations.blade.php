@@ -3,7 +3,7 @@
 @section('title', 'Benutzer')
 
 @section('content_header')
-    <h1>Registrierungen <small>Unverifizierte Nutzer</small></h1>
+    <h1>Registrierungen (unverifizierte Nutzer)</h1>
 @stop
 
 @section('content')
