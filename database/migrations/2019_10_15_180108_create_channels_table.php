@@ -22,6 +22,7 @@ class CreateChannelsTable extends Migration
             $table->unsignedInteger('transition_time')->default(1000);
             $table->unsignedInteger('refresh_time')->default(5);
             $table->string('effect', 9)->default('fade');
+            $table->string('direction', 10)->default('horizontal');
             $table->boolean('uses_parallax')->default(0)->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

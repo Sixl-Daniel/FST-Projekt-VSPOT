@@ -22,16 +22,16 @@
                     <div class="col-md-8 col-lg-9">
                         {{ Form::vspotText('description', 'Beschreibung') }}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-2">
                         {{ Form::vspotText('display_time', 'Anzeigedauer (ms)') }}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-2">
                         {{ Form::vspotText('transition_time', 'Überblendung (ms)') }}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-2">
                         {{ Form::vspotText('refresh_time', 'Refresh (s)') }}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6 col-lg-3">
                         <div class="form-group{{ $errors->has('effects') ? ' has-error' : '' }}">
                             <label for="channel-effect-select">Übergangseffekt</label>
                             {{ Form::select('effect', ['slide'=>'Slide', 'fade'=>'Fade', 'cube'=>'Cube', 'coverflow'=>'Cover Flow', 'flip'=>'Flip'], $channel->effect, [
@@ -41,6 +41,19 @@
                             ]) }}
                             @if($errors->has('effects'))
                                 <span class="help-block"><strong>{{ $errors->first('effects') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="form-group{{ $errors->has('direction') ? ' has-error' : '' }}">
+                            <label for="channel-direction-select">Richtung</label>
+                            {{ Form::select('direction', ['horizontal'=>'Horizontal', 'vertical'=>'Vertikal'], $channel->direction, [
+                                'id' => 'channel-direction-select',
+                                'style' => 'visibility: hidden;',
+                                'class' => 'js-enhanced-select',
+                            ]) }}
+                            @if($errors->has('direction'))
+                                <span class="help-block"><strong>{{ $errors->first('direction') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -62,10 +75,12 @@
 @section('js')
 <script>
     jQuery(document).ready(function($) {
-        $('#channel-effect-select').select2({
+        var config = {
             width: '100%',
             minimumResultsForSearch: 'Infinity'
-        });
+        };
+        $('#channel-effect-select').select2(config);
+        $('#channel-direction-select').select2(config);
     });
 </script>
 @endsection

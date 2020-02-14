@@ -99,7 +99,7 @@ Kanal: {{ $channel->name }}
 
     var l = console.log;
 
-    /* get channel config */
+    /* gather channel timing config */
 
     var displayTime = {{ $channel->display_time ?? 5000 }};
     var transitionTime = {{ $channel->transition_time ??  1000 }};
@@ -109,7 +109,7 @@ Kanal: {{ $channel->name }}
 
     var swiper = new Swiper('.swiper-container', {
         init: true,
-        direction: 'vertical',
+        direction: '{{ $channel->direction ??  'horizontal' }}',
         @if(!$noChannel && $screens->count() > 1)
             @if($channel->uses_parallax)
             parallax: true,
