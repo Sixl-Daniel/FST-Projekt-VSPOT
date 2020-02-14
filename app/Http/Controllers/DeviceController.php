@@ -208,30 +208,19 @@ class DeviceController extends Controller
 
     public function streamPdf($deviceId)
     {
-
         $user = auth()->user();
         $device = $user->devices()->whereId($deviceId)->first();
         $dt = Carbon::now();
 
-        $qrCodeSize = 200;
+        $data['user'] = $user;
+        $data['device'] = $device;
 
         $data['date'] = $dt->isoFormat('D. MMMM GGGG');
         $data['time'] = $dt->isoFormat('HH:mm');
         $data['year'] = $dt->isoFormat('GGGG');
 
-        $data['user'] = $user;
-        $data['device'] = $device;
-        $data['qrCodeSize'] = $qrCodeSize;
-
-        $data['weburl'] = $device->weburl;
-        $data['webqr_b64'] = base64_encode($device->makeQR(false, false, $qrCodeSize));
-
-        $data['apiurl'] = $device->apiurl;
-        $data['apiqr_b64'] = base64_encode($device->makeQR(true, false, $qrCodeSize));
-
         $pdf = PDF::loadView('pdf.device-access-links', $data);
         return $pdf->stream();
-
     }
 
 }

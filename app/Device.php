@@ -33,6 +33,40 @@ class Device extends Model
         return $link;
     }
 
+    /* public functions */
+
+    public function makeQR($api = false, $timestamp = false, $size = 150, $format = 'png')
+    {
+        $link = $this->makeDeviceURL($api, $timestamp);
+        return QrCode::encoding('UTF-8')
+            ->format($format)
+            ->size($size)
+            ->margin(0)
+            ->backgroundColor(255,255,255)
+            ->color(0,0,0)
+            ->generate($link);
+    }
+
+    public function getWebQRImgSrc($qrCodeSize = 256)
+    {
+        return "data:image/png;base64," . base64_encode($this->makeQR(false, false, $qrCodeSize));
+    }
+
+    public function getApiQRImgSrc($qrCodeSize = 256)
+    {
+        return "data:image/png;base64," . base64_encode($this->makeQR(true, false, $qrCodeSize));
+    }
+
+    public function getWebQRUpdateImgSrc($qrCodeSize = 256)
+    {
+        return "data:image/png;base64," . base64_encode($this->makeQR(false, true, $qrCodeSize));
+    }
+
+    public function getApiQRUpdateImgSrc($qrCodeSize = 256)
+    {
+        return "data:image/png;base64," . base64_encode($this->makeQR(true, true, $qrCodeSize));
+    }
+
     /* custom attributes */
 
     public function getWebURLAttribute()
@@ -53,18 +87,6 @@ class Device extends Model
     public function getApiURLUpdateAttribute()
     {
         return $this->makeDeviceURL(true, true);
-    }
-
-    public function makeQR($api = false, $timestamp = false, $size = 150, $format = 'png')
-    {
-        $link = $this->makeDeviceURL($api, $timestamp);
-        return QrCode::encoding('UTF-8')
-            ->format($format)
-            ->size($size)
-            ->margin(0)
-            ->backgroundColor(255,255,255)
-            ->color(0,0,0)
-            ->generate($link);
     }
 
     // relationships

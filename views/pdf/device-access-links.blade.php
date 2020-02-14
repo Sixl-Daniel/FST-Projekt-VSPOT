@@ -51,8 +51,8 @@
 
 <section>
     <h2>Zugänge für Geräte und Applikationen</h2>
-    <p>Web-Zugang für Geräte:<br><a class="auth-device-link" href="{{ $weburl }}">{{ $weburl }}</a></p>
-    <p>API-Zugang für Applikationen:<br><a class="auth-device-link" href="{{ $apiurl }}">{{ $apiurl }}</a></p>
+    <p>Web-Zugang für Geräte:<br><a class="auth-device-link" href="{{ $device->weburl }}">{{ $device->weburl }}</a></p>
+    <p>API-Zugang für Applikationen:<br><a class="auth-device-link" href="{{ $device->apiurl }}">{{ $device->apiurl }}</a></p>
     <p>Um nur den Zeitstempel des letzten Updates als JSON-Response zu erhalten, hängen Sie bitte den Parameter <b>timestamp</b> an den jeweiligen Link an.</p>
 </section>
 
@@ -64,8 +64,8 @@
             <th>API-Access</th>
         </tr>
         <tr>
-            <td><img src="data:image/png;base64, {{ $webqr_b64 }}"/></td>
-            <td><img src="data:image/png;base64, {{ $apiqr_b64 }}"/></td>
+            <td><img src="{{ $device->getWebQRImgSrc(200) }}"/></td>
+            <td><img src="{{ $device->getApiQRImgSrc(200) }}"/></td>
         </tr>
     </table>
 </section>
