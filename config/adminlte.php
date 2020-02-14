@@ -301,13 +301,18 @@ return [
             ],
         ],
         [
-            'name' => 'Sweetalert2',
+            'name' => 'Izitoast',
             'active' => true,
             'files' => [
                 [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
+                ],
+                [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
                 ],
             ],
         ],
