@@ -3,10 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Purifier;
 
-class Screen extends Model
+class Screen extends Model implements Sortable
 {
+
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true
+    ];
 
     protected $touches = ['channel'];
 
@@ -20,6 +29,13 @@ class Screen extends Model
     protected $hidden = [
         'id', 'channel_id', 'layout_id', 'created_at', 'updated_at', 'layout', 'active', 'name', 'description'
     ];
+
+    // sort grouping
+
+    public function buildSortQuery()
+    {
+        return static::query()->where('channel_id', $this->channel_id);
+    }
 
     // purify html content
     public function setHtmlBlockAttribute($value)

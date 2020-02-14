@@ -53,6 +53,7 @@ Route::group(['middleware' => ['verified']], function () {
         Route::resource('channels', 'ChannelController', ['except' => ['show']]);
         Route::resource('channels.screens', 'ScreenController', ['except' => ['show']]);
         Route::get('channels/{channel}/screens/{screen}/duplicate', 'ScreenController@duplicate')->name('channels.screens.duplicate');
+        Route::get('channels/{channel}/screens/{screen}/move/{action}', 'ScreenController@move')->name('channels.screens.move');
     });
 
     // gate: run tests
