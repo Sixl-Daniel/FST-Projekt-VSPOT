@@ -18,7 +18,7 @@ class DeviceApiAccessController extends Controller
 
         $user = User::find($user_id);
         $device = $user->devices->find($device_id);
-        $device_views_public_channel = $device->channel->api_is_public;
+        $device_views_public_channel = $device->channel->api_is_public ?? false;
 
         // no access without device api-token for private channels
         if(!$device_views_public_channel) {
