@@ -23,10 +23,10 @@
                         {{ Form::vspotText('description', 'Beschreibung') }}
                     </div>
                     <div class="col-md-6">
-                        {{ Form::vspotCheckbox('web_is_public', 'Web-Access ist öffentlich, kein Key notwendig') }}
+                        {{ Form::vspotCheckbox('web_is_public', 'Öffentlicher <strong>Web-Access</strong> ohne Key', 'Öffentlich', 'Privat') }}
                     </div>
                     <div class="col-md-6">
-                        {{ Form::vspotCheckbox('api_is_public', 'API-Access ist öffentlich, kein Key notwendig') }}
+                        {{ Form::vspotCheckbox('api_is_public', 'Öffentlicher <strong>API-Access</strong> ohne Key', 'Öffentlich', 'Privat') }}
                     </div>
                     <div class="col-md-4 col-lg-2">
                         {{ Form::vspotText('display_time', 'Anzeigedauer (ms)') }}

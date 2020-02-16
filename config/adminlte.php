@@ -258,6 +258,22 @@ return [
 
     'plugins' => [
         [
+            'name' => 'BS-Toggle',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css',
+                ],
+            ],
+        ],
+        [
             'name' => 'Datatables',
             'active' => true,
             'files' => [
