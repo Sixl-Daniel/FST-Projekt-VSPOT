@@ -83,39 +83,39 @@ class DemoContentSeeder extends Seeder
 
         $deviceDemo1 = new Device();
         $deviceDemo1->display_name = 'Demo 1';
-        $deviceDemo1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemo1->description = 'Virtuelles Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo1->user()->associate($superadmin);
         $deviceDemo1->save();
         $deviceDemo1->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMO1')]);
 
         $deviceDemo2 = new Device();
         $deviceDemo2->display_name = 'Demo 2';
-        $deviceDemo2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemo2->description = 'Virtuelles Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemo2->user()->associate($superadmin);
         $deviceDemo2->save();
         $deviceDemo2->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMO2')]);
 
         $deviceApp = new Device();
         $deviceApp->display_name = 'Öffentliche Anwendung (Demo-App)';
-        $deviceApp->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests von Applikationen';
+        $deviceApp->description = 'Virtuelles Gerät, flexible Verwendung für Demos und Tests von Applikationen';
         $deviceApp->user()->associate($superadmin);
         $deviceApp->save();
         $deviceApp->update(['api_token' => env('DEVICETOKEN_SUPERADMIN_DEMOAPP')]);
 
         /*
-         * CREATE DEVICE FOR ADMIN
+         * CREATE DEVICES FOR ADMIN
          */
 
         $deviceDemoAdmin1 = new Device();
         $deviceDemoAdmin1->display_name = 'Demo 1';
-        $deviceDemoAdmin1->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemoAdmin1->description = 'Virtuelles Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemoAdmin1->user()->associate($admin);
         $deviceDemoAdmin1->save();
         $deviceDemoAdmin1->update(['api_token' => env('DEVICETOKEN_ADMIN_DEMO1')]);
 
         $deviceDemoAdmin2 = new Device();
         $deviceDemoAdmin2->display_name = 'Demo 2';
-        $deviceDemoAdmin2->description = 'Kein physikalisches Gerät, flexible Verwendung für Demos und Tests';
+        $deviceDemoAdmin2->description = 'Virtuelles Gerät, flexible Verwendung für Demos und Tests';
         $deviceDemoAdmin2->user()->associate($admin);
         $deviceDemoAdmin2->save();
         $deviceDemoAdmin2->update(['api_token' => env('DEVICETOKEN_ADMIN_DEMO2')]);
@@ -263,12 +263,14 @@ class DemoContentSeeder extends Seeder
         }
 
         /*
-         * CREATE CHANNEL "Projekt-VSPOT"
+         * CREATE CHANNEL "Projekt-VSPOT" / PUBLIC
          */
 
         $channel_vspot = new Channel();
         $channel_vspot->name = "Projekt-VSPOT";
         $channel_vspot->description = "Zeigt Screens rund um das Projekt";
+        $channel_vspot->web_is_public = 1;
+        $channel_vspot->api_is_public = 1;
         $channel_vspot->user()->associate($superadmin);
         $channel_vspot->save();
         $channel_vspot_admin = $channel_vspot->replicate();
@@ -407,7 +409,8 @@ class DemoContentSeeder extends Seeder
 
         $deviceVSPOT1->channel()->associate($channel_impressionen)->save();
         $deviceVSPOT2->channel()->associate($channel_reception)->save();
-        $deviceDemo1->channel()->associate($channel_vspot)->save();
+        $deviceDemo1->channel()->associate($channel_testing)->save();
+        $deviceApp->channel()->associate($channel_vspot)->save();
 
         /*
          * Initial device associations for admin
