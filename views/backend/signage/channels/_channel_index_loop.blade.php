@@ -3,7 +3,13 @@
     @foreach($channels as $channel)
         <div class="col-lg-6">
             <div class="panel panel-default panel--channel">
-                <div class="panel-heading"><h2>{{ $channel->name }}</h2></div>
+                <div class="panel-heading">
+                    <h2>{{ $channel->name }}</h2>
+                    <p>
+                        <span class="badge label-{{ $channel->api_is_public ? 'warning' : 'default' }} pull-right">API: {{ $channel->api_is_public ? 'Öffentlich' : 'Privat' }}</span>
+                        <span class="badge label-{{ $channel->web_is_public ? 'warning' : 'default' }} pull-right">Web: {{ $channel->web_is_public ? 'Öffentlich' : 'Privat' }}</span>
+                    </p>
+                </div>
                 <div class="panel-body">
                     <p class="lead">{{ $channel->description ?? 'Ohne Beschreibung' }}</p>
                 </div>

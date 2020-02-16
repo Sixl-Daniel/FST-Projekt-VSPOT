@@ -75,6 +75,16 @@
     .user-status-labels .label {
         margin: 0 0.25rem;
     }
+    &--channel .panel-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .badge {
+            margin-left: 15px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            &.label-default { background-color: $color_grey_light; }
+        }
+    }
 }
 
 .panel-footer {
