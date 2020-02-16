@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
     protected $fillable = [
-        'name', 'description', 'display_time', 'transition_time', 'refresh_time', 'uses_parallax', 'effect', 'direction'
+        'name', 'description', 'display_time', 'transition_time', 'refresh_time', 'uses_parallax', 'effect',
+        'direction', 'web_is_public', 'api_is_public'
     ];
 
     protected $hidden = [
@@ -15,7 +16,9 @@ class Channel extends Model
     ];
 
     protected $casts = [
-        'uses_parallax' => 'boolean'
+        'uses_parallax' => 'boolean',
+        'web_is_public' => 'boolean',
+        'api_is_public' => 'boolean'
     ];
 
     // relationships

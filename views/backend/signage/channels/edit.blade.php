@@ -22,6 +22,12 @@
                     <div class="col-md-8 col-lg-9">
                         {{ Form::vspotText('description', 'Beschreibung') }}
                     </div>
+                    <div class="col-md-6">
+                        {{ Form::vspotCheckbox('web_is_public', 'Web-Access ist öffentlich, kein Key notwendig') }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ Form::vspotCheckbox('api_is_public', 'API-Access ist öffentlich, kein Key notwendig') }}
+                    </div>
                     <div class="col-md-4 col-lg-2">
                         {{ Form::vspotText('display_time', 'Anzeigedauer (ms)') }}
                     </div>

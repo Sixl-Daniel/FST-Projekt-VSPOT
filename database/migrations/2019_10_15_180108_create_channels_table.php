@@ -18,6 +18,8 @@ class CreateChannelsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('description')->nullable();
+            $table->boolean('web_is_public')->default(0)->nullable();
+            $table->boolean('api_is_public')->default(0)->nullable();
             $table->unsignedInteger('display_time')->default(5000);
             $table->unsignedInteger('transition_time')->default(1000);
             $table->unsignedInteger('refresh_time')->default(5);

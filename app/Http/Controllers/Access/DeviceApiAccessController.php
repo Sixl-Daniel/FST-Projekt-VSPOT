@@ -18,9 +18,12 @@ class DeviceApiAccessController extends Controller
 
         $user = User::find($user_id);
         $device = $user->devices->find($device_id);
+        $device_views_public_channel = $device->channel->api_is_public;
 
-        // no access without device api-token
-        if(!$request->api_token || $device->api_token != $request->api_token) abort(403, 'Unberechtigter Zugriff auf dieses Gerät');
+        // no access without device api-token for private channels
+        if(!$device_views_public_channel) {
+            if (!$request->api_token || $device->api_token != $request->api_token) abort(403, 'Unberechtigter Zugriff');
+        }
 
         // check if request is for timestamp only and provide latest timestamp as json
         if($request->exists('timestamp')) {
