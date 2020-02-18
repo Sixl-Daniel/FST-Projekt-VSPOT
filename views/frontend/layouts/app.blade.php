@@ -14,7 +14,9 @@
     @show
     @stack('js-bottom')
     @include('frontend.partials.js.flash-message')
-    @include('cookieConsent::index')
+    @section('cookie-consent')
+        @include('cookieConsent::index')
+    @show
 </body>
 @show
 </html>

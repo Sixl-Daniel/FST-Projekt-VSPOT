@@ -10,4 +10,6 @@
 </div>
 @endsection
 
+@section('cookie-consent')@show
+
 @section('footer')@show
