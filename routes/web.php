@@ -13,6 +13,9 @@ Route::view('produkt', 'frontend.pages.primary.produkt')->name('produkt');
 Route::view('impressum', 'frontend.pages.secondary.impressum')->name('impressum');
 Route::view('datenschutz', 'frontend.pages.secondary.datenschutz')->name('datenschutz');
 
+// PUBLIC DEMO PAGES
+Route::view('demo', 'frontend.pages.tertiary.demo')->name('demo');
+
 // DEVICE AND APPLICATION ACCESS API, DEVICE TOKEN VERIFICATION
 
 Route::namespace('Access')->name('access.') ->group(function () {

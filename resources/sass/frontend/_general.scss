@@ -15,6 +15,10 @@ header nav {
     background-color: rgba(255, 255, 255, 0.65);
 }
 
+#logo-svg-main {
+    max-height: 70vh;
+}
+
 footer nav {
     justify-content: space-between;
     #{$a-tags} {
