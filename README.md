@@ -26,8 +26,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 - Electron Hybrid App  
   https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application  
-- Android App  
+- Android Client App  
   https://github.com/StefanSuess/VSPOT-AndroidApp
+- Android Companion App  
+  https://github.com/StefanSuess/Vspot-Companion
 
 ## Acknowledgments
 - Laravel  
