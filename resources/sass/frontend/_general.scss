@@ -68,6 +68,10 @@ footer nav {
         }
     }
 
+    .card {
+        box-shadow: 2px 4px 7px rgba(0,0,0,0.14)
+    }
+
     .card-header h2 {
         margin: #{$spacer * 1} 0 #{$spacer * 0.5};
     }
