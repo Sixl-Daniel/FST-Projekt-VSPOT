@@ -12,6 +12,7 @@
     @section('footer')
         @include('frontend.partials.footer')
     @show
+    @stack('html-bottom')
     @stack('js-bottom')
     @include('frontend.partials.js.flash-message')
     @section('cookie-consent')

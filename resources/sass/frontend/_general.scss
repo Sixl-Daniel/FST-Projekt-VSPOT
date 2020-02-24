@@ -1,17 +1,27 @@
-hr.separator {
-    margin: #{6 * $spacer} #{2 * $spacer};
-    border: none;
-    height: 1px;
-    background: $body-color;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#fff), to(#fff), color-stop(50%, $body-color));
+img {
+    display: block;
+    max-width: 100%;
+    &.frame-shadow {
+        box-shadow: 8px 14px 11px rgba(0, 0, 0, 0.4);
+        border: 1px solid $color_grey_light;
+    }
 }
 
-hr.separator-left {
-    margin: #{3 * $spacer} 0;
-    border: none;
-    height: 1px;
-    background:  $unobtrusive;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#fff), to(#fff), color-stop(0%, $unobtrusive));
+hr {
+    &.separator {
+        margin: #{6 * $spacer} #{2 * $spacer};
+        border: none;
+        height: 1px;
+        background: $body-color;
+        background: -webkit-gradient(linear, 0 0, 100% 0, from(#fff), to(#fff), color-stop(50%, $body-color));
+    }
+    &.separator-left {
+        margin: #{3 * $spacer} 0;
+        border: none;
+        height: 1px;
+        background:  $unobtrusive;
+        background: -webkit-gradient(linear, 0 0, 100% 0, from(#fff), to(#fff), color-stop(0%, $unobtrusive));
+    }
 }
 
 .hidden-form {
