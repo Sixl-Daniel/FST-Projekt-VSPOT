@@ -16,6 +16,7 @@
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link {{ activeMenu('') }}" href="{{ url('/') }}">Home</a>
                     <a class="nav-item nav-link {{ activeMenu('produkt') }}" href="{{ url('/produkt') }}">Produkt</a>
+                    <a class="nav-item nav-link {{ activeMenu('downloads') }}" href="{{ url('/downloads') }}">Downloads</a>
                     <a class="nav-item nav-link {{ activeMenu('impressum') }}" href="{{ url('/impressum') }}">Impressum</a>
                     <a class="nav-item nav-link {{ activeMenu('datenschutz') }}" href="{{ url('/datenschutz') }}">Datenschutz</a>
                 </div>

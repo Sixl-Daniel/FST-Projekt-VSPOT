@@ -8,6 +8,7 @@ View::composer('*', function($view){
 // PUBLIC PRIMARY PAGES
 Route::view('/', 'frontend.pages.primary.front')->name('front');
 Route::view('produkt', 'frontend.pages.primary.produkt')->name('produkt');
+Route::view('downloads', 'frontend.pages.primary.downloads')->name('downloads');
 
 // PUBLIC SECONDARY PAGES
 Route::view('impressum', 'frontend.pages.secondary.impressum')->name('impressum');
