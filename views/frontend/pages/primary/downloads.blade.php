@@ -57,8 +57,8 @@
                     </li>
                     <li class="list-group-item">
                         <h3>Images</h3>
-                        <p><a class="btn btn-lg btn-dark" href="{{ Storage::url('apps/image-230220-clean.zip')  }}"><i class="fas fa-compact-disc"></i><i class="fab fa-fw fa-raspberry-pi"></i> Raspbian-Image mit App (1.3GB)  <small>[.iso]</small></a></p>
-                        <p><a class="btn btn-lg btn-dark" href="{{ Storage::url('/apps/image-230220-clean.7z')  }}"><i class="fas fa-compact-disc"></i><i class="fab fa-fw fa-raspberry-pi"></i> Raspbian-Image mit App (936MB) <small>[.iso]</small></a></p>
+                        <p><a class="btn btn-lg btn-dark" href="{{ Storage::url('apps/image-230220-clean.zip')  }}"><i class="fas fa-compact-disc"></i><i class="fab fa-fw fa-raspberry-pi"></i> Raspbian-Image mit App (zip, 1.3GB)  <small>[.iso]</small></a></p>
+                        <p><a class="btn btn-lg btn-dark" href="{{ Storage::url('apps/image-230220-clean.7z')  }}"><i class="fas fa-compact-disc"></i><i class="fab fa-fw fa-raspberry-pi"></i> Raspbian-Image mit App (7z, 936MB) <small>[.iso]</small></a></p>
                     </li>
                 </ul>
             </div>
