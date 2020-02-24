@@ -4,11 +4,8 @@
 
 @section('content')
 <div class="container">
-
     <h1 class="page-heading page-heading">Downloads</h1>
-
     <div class="row justify-content-center align-items-end content">
-
         <div class="col-lg">
             <div class="card mb-4" >
                 <div class="card-header">
@@ -37,7 +34,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-lg">
             <div class="card mb-4" >
                 <div class="card-header">
@@ -63,6 +59,6 @@
                 </ul>
             </div>
         </div>
-
+    </div>
 </div>
 @endsection
