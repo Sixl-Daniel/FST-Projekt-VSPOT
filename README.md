@@ -28,8 +28,10 @@ VSPOT is a CMS for digital signage content. It manages users, devices and channe
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Accompanying projects
+## VSPOT projects
 
+- Backend (Laravel)  
+  https://github.com/Sixl-Daniel/FST-Projekt-VSPOT/
 - Desktop Client Application (Electron Hybrid App)  
   https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application  
   https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application-Dist
