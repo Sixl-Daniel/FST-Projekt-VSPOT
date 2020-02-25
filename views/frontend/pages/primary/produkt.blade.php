@@ -32,13 +32,14 @@
         ['file' => 'screens-edit', 'title'=>'Screen editieren'],
     ];
     @endphp
-    <div class="row  justify-content-center text-center">
+    <div id="vspot-backend-impressions-gallery" itemscope itemtype="http://schema.org/ImageGallery" class="row justify-content-center text-center">
         @foreach($images as $i=>$img)
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="{{asset('media/images/backend-demo-' . $img['file'] . '.jpg')}}" data-lightbox="backend-impressions" data-title="{{$img['title']}}" data-alt="{{$img['title']}}" class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail" src="{{asset('media/images/backend-demo-thumb-' . $img['file'] . '.jpg')}}" alt="{{$img['title']}}" title="{{$img['title']}}">
-                </a>
-            </div>
+        <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="col-6 col-sm-4 col-md-3 col-lg-2">
+            <a href="{{asset('media/images/backend-demo-' . $img['file'] . '.jpg')}}" itemprop="contentUrl" data-lightbox="backend-impressions" data-title="{{$img['title']}}" data-alt="{{$img['title']}}">
+                <img src="{{asset('media/images/backend-demo-thumb-' . $img['file'] . '.jpg')}}" itemprop="thumbnail" alt="{{$img['title']}}" title="{{$img['title']}}" class="img-fluid img-thumbnail"/>
+            </a>
+            <figcaption itemprop="caption description">{{$img['title']}}</figcaption>
+        </figure>
         @endforeach
     </div>
 </div>
