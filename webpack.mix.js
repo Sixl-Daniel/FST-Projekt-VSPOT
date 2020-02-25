@@ -1,30 +1,18 @@
 const mix = require('laravel-mix');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-require('laravel-mix-purgecss');
-
-/* purge options */
-
-$purgeOptions = {
-    folders: ['views','app','resources'],
-    whitelistPatterns: [/^view-/],
-    whitelist: ['vspot', 'skin-black'],
-};
 
 /* frontend build */
 
 mix.js('resources/js/app-frontend.js', 'public/js')
-   .sass('resources/sass/frontend/app-frontend.scss', 'public/css')
-   .purgeCss($purgeOptions);
+   .sass('resources/sass/frontend/app-frontend.scss', 'public/css');
 
 /* backend build */
 
-mix.sass('resources/sass/backend/app-backend.scss', 'public/css')
-   .purgeCss($purgeOptions);
+mix.sass('resources/sass/backend/app-backend.scss', 'public/css');
 
 /* web-access build */
 
-mix.sass('resources/sass/web-access/web-access.scss', 'public/css')
-   .purgeCss($purgeOptions);
+mix.sass('resources/sass/web-access/web-access.scss', 'public/css');
 
 /* service worker */
 
