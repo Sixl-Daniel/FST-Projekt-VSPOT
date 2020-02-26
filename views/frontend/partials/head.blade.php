@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,900&display=swap">
     <link rel="stylesheet" href="{{ asset('css/app-frontend.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="prefetch" href="{{asset('media/images/backend-demo.gif')}}">
     @stack('css-top')
     @include('frontend.partials.js.serviceworker')
     @stack('js-top')
