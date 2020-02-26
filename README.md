@@ -14,6 +14,12 @@ This is a student project, not a tested, production ready solution. If you are a
 **The linked example application is for grading purposes only. If you register, your account will not be activated!**  
 Well, it will be if you are a teacher of mine. Or if you ask politely 😉
 
+## About
+
+VSPOT is a CMS for digital signage content. It manages users, devices and channels. Generated content can be viewed by a dedicated [mobile application](https://github.com/StefanSuess/VSPOT-AndroidApp) or [desktop application](https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application). Content is made available  via a JSON-API or a regular webpage.
+
+![](https://github.com/Sixl-Daniel/FST-Projekt-VSPOT/blob/master/public/media/images/backend-demo.gif "VSPOT Backend")
+
 ## Author
 
 - **Daniel Sixl** – [Profile on GitHub](https://github.com/Sixl-Daniel)
@@ -22,13 +28,16 @@ Well, it will be if you are a teacher of mine. Or if you ask politely 😉
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Accompanying projects
+## VSPOT projects
 
-- Electron Hybrid App  
+- Backend (Laravel)  
+  https://github.com/Sixl-Daniel/FST-Projekt-VSPOT/
+- Desktop Client Application (Electron Hybrid App)  
   https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application  
-- Android Client App  
+  https://github.com/Sixl-Daniel/VSPOT-Hybrid-Application-Dist
+- Mobile Client Application (Android App)  
   https://github.com/StefanSuess/VSPOT-AndroidApp
-- Android Companion App  
+- Network Companion Application (Android App)  
   https://github.com/StefanSuess/VSPOT-Companion
   
 ## Acknowledgments
