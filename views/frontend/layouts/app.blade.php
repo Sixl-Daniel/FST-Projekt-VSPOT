@@ -3,6 +3,7 @@
 @section('head')
     @include('frontend.partials.head')
 @show
+@include('frontend.partials.ascii')
 @section('body')
 <body id="vspot" class="view-{{ str_replace('.', '-', $view_name) }}@yield('body-class')">
     @section('header')
