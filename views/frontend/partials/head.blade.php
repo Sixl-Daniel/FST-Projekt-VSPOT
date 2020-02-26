@@ -4,6 +4,7 @@
     <meta name="author" content="Daniel Sixl">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@hasSection('pageTitle')@yield('pageTitle') – @endif{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="VSPOT is a simple digital signage solution that lets you create and control your content on different devices.">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon-512x512.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
