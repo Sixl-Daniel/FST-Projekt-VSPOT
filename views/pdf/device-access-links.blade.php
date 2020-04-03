@@ -29,7 +29,7 @@
 @endpush
 
 @section('content')
-<h1 class="heading"><span class="w700">VSPOT</span> <span class="w200">Digital Signage Solution</span></h1>
+<h1 class="heading"><span class="bolder">VSPOT</span> <span class="lighter">Digital Signage Solution</span></h1>
 
 <section>
     <table>

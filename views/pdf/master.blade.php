@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>VSPOT Digital Signage Solution</title>
-<style>
+<style type="text/css" media="all">
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
     table { width: 100%; }
+    tr, th { text-align: left; }
     .text-left { text-align: left; }
     .text-center { text-align: center; }
     .text-right { text-align: right; }
     .float-left { float: left; }
     .float-right { float: right; }
-    .w200 { font-weight: 200; }
-    .w700 { font-weight: 700; }
+    .lighter { font-weight: lighter; }
+    .bolder { font-weight: bolder; }
     footer {
         margin-top: 3em;
         border-top: 1px solid black;
